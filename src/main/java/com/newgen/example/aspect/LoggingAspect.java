@@ -23,7 +23,7 @@ public class LoggingAspect {
 
 	private static final Logger logger = LoggerFactory.getLogger(LoggingAspect.class);
 
-	@Around("execution(* com.newgen.example.controller.IndexController.*(..) | * com.newgen.example.controller.LoginController.*(..) | * com.newgen.example.service.LoginService.*(..))")
+	@Around("execution(* com.newgen.example.controller.IndexController.*(..)) || execution(* com.newgen.example.controller.SessionController.*(..))")
 //	@Around("@annotation(MethodLogger)")
 	// @Around(value="execution(* *)) && (@annotation(Loggable)")
 	public Object around(ProceedingJoinPoint joinPoint) throws Throwable {

@@ -4,15 +4,12 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 
-import org.springframework.stereotype.Service;
-
 import com.newgen.example.dto.ChangePasswordDTO;
 import com.newgen.example.dto.UserChangeFormDTO;
 import com.newgen.example.dto.UserDTO;
 import com.newgen.example.exception.CustomException;
 import com.newgen.example.model.StatusResponse;
 
-@Service
 public interface UserService {
 
 	StatusResponse changePassword(@NotEmpty(message = "Header: org cannot be empty") String org,

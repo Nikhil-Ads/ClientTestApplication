@@ -7,15 +7,12 @@ import java.util.List;
 
 import javax.validation.constraints.NotEmpty;
 
-import org.springframework.stereotype.Service;
-
 import com.newgen.example.dto.ContentDTO;
 
 /**
  * @author Nikhil Adlakha
  *
  */
-@Service
 public interface ContentService {
 
 	List<ContentDTO> searchContents(@NotEmpty(message = "Header: org cannot be empty") String org,

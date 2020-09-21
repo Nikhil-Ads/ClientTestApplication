@@ -14,6 +14,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.newgen.example.converter.ContentToContentDTOConverter;
@@ -26,6 +27,7 @@ import lombok.extern.slf4j.Slf4j;
  * @author Nikhil Adlakha
  *
  */
+@Service
 @Slf4j
 public class ContentServiceImpl extends GeneralService implements ContentService {
 	

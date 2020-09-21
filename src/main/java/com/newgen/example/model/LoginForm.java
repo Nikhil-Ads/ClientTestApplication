@@ -11,51 +11,51 @@ import org.springframework.validation.annotation.Validated;
 public class LoginForm {
 	
 	@NotEmpty(message="")
-	@Pattern(regexp="[a-z0-9\\-_.]*[a-z0-9]+@([a-z0-9\\-]*[.])+[a-z]{2,}", message= "Email must have a prefix, @ and a suffix")
-	private String email;
+	@Pattern(regexp="[a-z0-9\\-_.]*[a-z0-9]+@([a-z0-9\\-]*[.])+[a-z]{2,}", message= "emailId must have a prefix, @ and a suffix")
+	private String emailId;
 	
 	@NotEmpty(message="")
-	@Pattern(regexp=".*", message = "Password does not follow set standards")
-	private String pass;
+	@Pattern(regexp=".*", message = "passwordword does not follow set standards")
+	private String password;
 	
-	public LoginForm(String email,String pass) {
-		this.email=email;
-		this.pass=pass;
+	public LoginForm(String emailId,String password) {
+		this.emailId=emailId;
+		this.password=password;
 	}
 
 	/**
-	 * @return the email
+	 * @return the emailId
 	 */
-	public final String getEmail() {
-		return email;
+	public final String getemailId() {
+		return emailId;
 	}
 
 	/**
-	 * @param email the email to set
+	 * @param emailId the emailId to set
 	 */
-	public final void setEmail(String email) {
-		this.email = email;
+	public final void setemailId(String emailId) {
+		this.emailId = emailId;
 	}
 
 	/**
-	 * @return the pass
+	 * @return the password
 	 */
-	public final String getPass() {
-		return pass;
+	public final String getpassword() {
+		return password;
 	}
 
 	/**
-	 * @param pass the pass to set
+	 * @param password the password to set
 	 */
-	public final void setPass(String pass) {
-		this.pass = pass;
+	public final void setpassword(String password) {
+		this.password = password;
 	}
 	
 	@Override
 	public String toString() {
 		return "{"+
-					" \"emailId\" : "+getEmail()+
-					",\"password\": "+getPass()+					
+					" \"emailIdId\" : "+getemailId()+
+					",\"password\": "+getpassword()+					
 					"}";
 	}
 }

@@ -13,6 +13,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.newgen.example.converter.FolderToFolderDTOConverter;
@@ -26,6 +27,7 @@ import lombok.extern.slf4j.Slf4j;
  * @author Nikhil Adlakha
  *
  */
+@Service
 @Slf4j
 public class FolderServiceImpl extends GeneralService implements FolderService {
 	
@@ -35,7 +37,7 @@ public class FolderServiceImpl extends GeneralService implements FolderService {
 	@Value("${ecm_next.url}+${folder_service}+${folder_create_folder}")
 	private String createFolder_url;
 	
-	@Value("${ecm_next.url}+${folder_service}+${user_search_folder}")
+	@Value("${ecm_next.url}+${folder_service}+${folder_search_folder}")
 	private String searchFolders_url;
 	
 	@Value("${ecm_next.url}+${folder_service}+${folder_delete_folder}")

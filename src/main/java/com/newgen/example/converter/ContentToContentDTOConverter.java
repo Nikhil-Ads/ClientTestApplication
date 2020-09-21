@@ -4,6 +4,7 @@
 package com.newgen.example.converter;
 
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
 import com.newgen.example.dto.ContentDTO;
 import com.newgen.example.model.Content;
@@ -12,6 +13,7 @@ import com.newgen.example.model.Content;
  * @author Nikhil Adlakha
  *
  */
+@Component
 public class ContentToContentDTOConverter implements Converter<Content, ContentDTO> {
 
 	@Override

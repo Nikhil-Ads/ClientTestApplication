@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -39,14 +40,15 @@ public class SessionController extends ExceptionThrower {
 			@RequestHeader
 			@NotEmpty(message="Header: ORG must not be empty")
 			String org,
+			@RequestBody
 			@NotNull(message = "Request body cannot be empty")
 			@Valid
-			LoginForm loginForm) throws CustomException {		
+			LoginForm form) throws CustomException {		
 		String entity=null;
 		
 		if(inputValidator.validateInput("header_org", org, "String", 5, false,"ECM"))
 				throwInvalidOrgException();
-		else {	entity=loginService.login(org, loginForm);
+		else {	entity=loginService.login(org, form);
 				if(entity == null)
 					throwECMServiceException();
 			 }

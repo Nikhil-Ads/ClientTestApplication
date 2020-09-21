@@ -1,12 +1,12 @@
 package com.newgen.example.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.stereotype.Service;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.newgen.example.model.LoginForm;
@@ -15,33 +15,32 @@ import com.newgen.example.model.TokenResponse;
 
 import lombok.extern.slf4j.Slf4j;
 
+@Service
 @Slf4j
-public class SessionServiceImpl implements SessionService{
+public class SessionServiceImpl extends GeneralService implements SessionService{
 	
-	@Autowired
-	private RestTemplate restTemplate;
-	
-	@Value("${ecm_next.url}+${user_service}+${user_login}")
+	@Value("${ecm_next.url}${user_service}${user_login}")
 	private String login_url; 
 	
-	@Value("${ecm_next.url}+${user_service}+${user_logout}")
+	@Value("${ecm_next.url}${user_service}${user_logout}")
 	private String logout_url;
 
-	@Value("${ecm_next.url}+${user_service}+${user_get_token}")
+	@Value("${ecm_next.url}${user_service}${user_get_token}")
 	private String getTokens_url;
 
-	@Value("${ecm_next.url}+${user_service}+${user_validate_token}")
+	@Value("${ecm_next.url}${user_service}${user_validate_token}")
 	private String validateToken_url;
 	
 	@Override
-	public String login(String org, LoginForm loginForm){
+	public String login(String org, LoginForm form){
 		log.debug("Entering Method: login()");
 		UriComponentsBuilder builder=UriComponentsBuilder.fromUriString(login_url);
 		
 		HttpHeaders headers=new HttpHeaders();
 		headers.set("org", org);
+		headers.setContentType(MediaType.APPLICATION_JSON);
 		
-		HttpEntity<String> request=new HttpEntity<>(loginForm.toString(), headers);
+		HttpEntity<LoginForm> request=new HttpEntity<>(form, headers);
 		
 		ResponseEntity<String> response = restTemplate.exchange(builder.toUriString(), HttpMethod.POST, request, String.class);
 		
