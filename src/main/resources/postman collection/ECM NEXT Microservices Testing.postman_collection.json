@@ -1,0 +1,2373 @@
+{
+	"info": {
+		"_postman_id": "bc07d702-51b3-4b84-866f-c29a891b9567",
+		"name": "ECM NEXT Microservices Testing",
+		"description": "This collection contains all the API testing done for ECM Next Microservices.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User Authentication Service",
+			"item": [
+				{
+					"name": "Login To ECM Next",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "org",
+								"value": "{{ORG}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"emailId\":\"niks8adlakha@gmail.com\",\r\n    \"password\":\"Sy$tem@123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8183/session/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8183",
+							"path": [
+								"session",
+								"login"
+							]
+						},
+						"description": "Tests the /users/login :POST API"
+					},
+					"response": [
+						{
+							"name": "Login To ECM Next",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "org",
+										"value": "{{ORG}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"emailId\":\"niks8adlakha@gmail.com\",\r\n    \"password\":\"Sy$tem@123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8183/session/login",
+									"host": [
+										"localhost"
+									],
+									"port": "8183",
+									"path": [
+										"session",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Sample",
+									"value": "d6059f80-3004-4c1b-b191-c99d6491e2f9"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 22 Sep 2020 09:54:54 GMT"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"accessToken\": \"eyJ0eXAiOiJKV1QiLCJub25jZSI6IkhRY3JELXpYbGZfQnVVcmhUYmNLOUpVWUMyZ1F5T1RibDdrNS1rTldQWU0iLCJhbGciOiJSUzI1NiIsIng1dCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyIsImtpZCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8xMGMxNTA1Mi1mODI1LTQ1NGUtYTdhNy0xMmZhMWNhNWY2OGEvIiwiaWF0IjoxNjAwNzY4MTkzLCJuYmYiOjE2MDA3NjgxOTMsImV4cCI6MTYwMDc3MjA5MywiYWNjdCI6MCwiYWNyIjoiMSIsImFpbyI6IkUyQmdZRGdoWG1BU1lYV0tPZmgzaVgvRTdLckorNTQ4MzlhVEZ5bTZhaDRubzNlZ3JUMEEiLCJhbXIiOlsicHdkIl0sImFwcF9kaXNwbGF5bmFtZSI6IkVDTSBOZXh0QUQgMiIsImFwcGlkIjoiOWI5ZmUwYzQtNDIyOS00NDhkLTg2ZTUtMDNjMzU0NWEyOWI2IiwiYXBwaWRhY3IiOiIwIiwiaWR0eXAiOiJ1c2VyIiwiaXBhZGRyIjoiMjAuNDAuNDQuMTY5IiwibmFtZSI6Ik5pa2hpbCBBZGxha2hhIiwib2lkIjoiOTJkYWQ1ZDctMGY5OS00OTM5LTllYzctZDMzMWY2NmVhN2U1IiwicGxhdGYiOiIxNCIsInB1aWQiOiIxMDAzMjAwMEUyNEUzNkYwIiwicmgiOiIwLkFBQUFVbERCRUNYNFRrV25weEw2SEtYMmlzVGduNXNwUW8xRWh1VUR3MVJhS2JaQUFQdy4iLCJzY3AiOiJEaXJlY3RvcnkuQWNjZXNzQXNVc2VyLkFsbCBEaXJlY3RvcnkuUmVhZC5BbGwgRGlyZWN0b3J5LlJlYWRXcml0ZS5BbGwgR3JvdXAuUmVhZC5BbGwgR3JvdXAuUmVhZFdyaXRlLkFsbCBNZW1iZXIuUmVhZC5IaWRkZW4gb2ZmbGluZV9hY2Nlc3Mgb3BlbmlkIFBvbGljeS5SZWFkLkFsbCBVc2VyLlJlYWQgVXNlci5SZWFkLkFsbCBVc2VyLlJlYWRCYXNpYy5BbGwgVXNlci5SZWFkV3JpdGUgVXNlci5SZWFkV3JpdGUuQWxsIiwic3ViIjoiODh1LWVZcVNxXzJjOW5wTS1BV3hoTDdxWkhka3F4b28yUzd1YnFEdEwwayIsInRlbmFudF9yZWdpb25fc2NvcGUiOiJBUyIsInRpZCI6IjEwYzE1MDUyLWY4MjUtNDU0ZS1hN2E3LTEyZmExY2E1ZjY4YSIsInVuaXF1ZV9uYW1lIjoibmlrczhhZGxha2hhLmdtYWlsLmNvbUBlY21uZXh0YWQub25taWNyb3NvZnQuY29tIiwidXBuIjoibmlrczhhZGxha2hhLmdtYWlsLmNvbUBlY21uZXh0YWQub25taWNyb3NvZnQuY29tIiwidXRpIjoiTFJPRmh3bm9UMEtmaklYQWlwVUdBUSIsInZlciI6IjEuMCIsIndpZHMiOlsiYjc5ZmJmNGQtM2VmOS00Njg5LTgxNDMtNzZiMTk0ZTg1NTA5Il0sInhtc190Y2R0IjoxNTk0MjAzMjg5fQ.PWDep3UfygAfSQwG7Ua2USwsFEC8qQ0g8my7mCfLafY5_YFC5qs4p-jZV2q8EMJRN6DosS9htWnen3Q45BLpMxrkHkYX8mt8CTIfOJywUsx1qTAcu1lxlss_r_ZATzyujN87zsxJ0VE3gztcgVJtVImaino1V2ITDSLo9qJHVNqyJvSa52CbbagXI5gzPAu6SeCUXEs7fUMwGGsVI-kZmyROD717VM_dCvj6uDfLIXql9Lbs9kBfbNJ2lQpv-j5BpCSqRoXe4qp_JVc4yRQ4erdBMjNrt3xgv3gCbqYTsnrlKkoOa7xkRtr5lkohd0fNIlovpjA7ul7gXTCJmN-7QA\",\n    \"refreshToken\": \"0.AAAAUlDBECX4TkWnpxL6HKX2isTgn5spQo1EhuUDw1RaKbZAAPw.AQABAAAAAAAGV_bv21oQQ4ROqh0_1-tAd5BeIK2LglP9yst7tc1Xm3IsBDx_Cgm6jfIxjLeQHfOR5KDoMaN14UPWyYIYjfdLqyajWyz2ywlOLZecETY0DGT_HZWGGBs-nEiAIX4z6gSFDEIpKhbJ6spoXMjoEAKL2eEJMMlcld46_1eCjcsogurv3RT_qKmdWVhsQud7mOtet2U1FsaL-yPlpPVa-MkeMxNU3e9CG0FScsTIg-Rggq261s_cMHLO_sdKjycILNs1MnrgxnTj2NEZuJqHh5iqCGIinZXi4mK-RE-1-pLnjn9aWmMTcw9_lVHUbxIs2jSv1o1_AwTvZvkMeKUc_7nyhg9F0bS4RDQzNHP081fk_iaN9bbcAEoSFTj_aRNUxXE77zO7sO-NynpK8A35Ch3gOuB_XZkoDlbASsh3Ma4YO677rHpFlOsPWh0kPn8h94fhstKKgjkJJT6VQJmb9eS8aLXhPKGsAa-YwENFuiItnIoDloBr9-LlX_W2Z9IcpNJc_qLu9pKj-dHOP-1u-NqZgywkXiA9HgOM8VkRgZPYwork40LJhP0iW2tGJHqfUd8Gm36nwZH_kR4iQmsvrJ88hDAOiPc3s4Z3x3AGkp-Oz-8SUSCOz2SHctwdoeeNxG3pUOw-LqWquMe5n-APfef-KN-1botVdB-kTKTbmKCR01rA7sOdEzHwLyr7YOlVhXiNW9J2hJ--uRbL49jGmwi4tdVvPF6KVxNBZEZCH5Pm1nrMSVPVJBeNX07dzE1TQHuU_Mn8RROiUiiWl816JHJl0iLe3h4rk9-a45YaKl301FIgCnxnOU4aQ1mt8vnkZ5XBanT-N0H32yWEQpEL-NC5f0sP-Y6Hy6wOYQfJhWMm0WO6AlvqFeij0VfN0awiJ2qBmvpiOsJLoIBUmJ62MFbGIAA\",\n    \"userId\": \"5f5b37f6d084390001d03283\",\n    \"userEmail\": \"niks8adlakha@gmail.com\",\n    \"displayName\": \"Nikhil Adlakha\",\n    \"tenantId\": \"5f5b37f43cb41e00016f069d\",\n    \"tenantStorageCredentialId\": \"5f5b39e6859325000146b99f\",\n    \"repositoryId\": \"5f5b39e63d83840001b7bb91\",\n    \"tenantName\": \"niks8adlakha\",\n    \"tenantTrashId\": \"5f5b39e73d83840001b7bb92\",\n    \"trialDaysRemaining\": 3\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Tokens for a Valid User",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "org",
+								"value": "{{ORG}}",
+								"type": "text"
+							},
+							{
+								"key": "accessToken",
+								"value": "eyJ0eXAiOiJKV1QiLCJub25jZSI6IkVTRFlDUVVoZWdJOGZQZHRRZWZpUUJybmxJbUhOQmcwTG5yRE1rZ2N2MEUiLCJhbGciOiJSUzI1NiIsIng1dCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyIsImtpZCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8xMGMxNTA1Mi1mODI1LTQ1NGUtYTdhNy0xMmZhMWNhNWY2OGEvIiwiaWF0IjoxNjAwNzY5ODExLCJuYmYiOjE2MDA3Njk4MTEsImV4cCI6MTYwMDc3MzcxMSwiYWNjdCI6MCwiYWNyIjoiMSIsImFpbyI6IkUyQmdZUEE2eTZ2NlMvTmsvamJYTFAzTG41MmZxSjB2ajlPZFkzVmlEby8veG8xN2Vid0IiLCJhbXIiOlsicHdkIl0sImFwcF9kaXNwbGF5bmFtZSI6IkVDTSBOZXh0QUQgMiIsImFwcGlkIjoiOWI5ZmUwYzQtNDIyOS00NDhkLTg2ZTUtMDNjMzU0NWEyOWI2IiwiYXBwaWRhY3IiOiIwIiwiaWR0eXAiOiJ1c2VyIiwiaXBhZGRyIjoiMjAuNDAuNDQuMTY5IiwibmFtZSI6Ik5pa2hpbCBBZGxha2hhIiwib2lkIjoiOTJkYWQ1ZDctMGY5OS00OTM5LTllYzctZDMzMWY2NmVhN2U1IiwicGxhdGYiOiIxNCIsInB1aWQiOiIxMDAzMjAwMEUyNEUzNkYwIiwicmgiOiIwLkFBQUFVbERCRUNYNFRrV25weEw2SEtYMmlzVGduNXNwUW8xRWh1VUR3MVJhS2JaQUFQdy4iLCJzY3AiOiJEaXJlY3RvcnkuQWNjZXNzQXNVc2VyLkFsbCBEaXJlY3RvcnkuUmVhZC5BbGwgRGlyZWN0b3J5LlJlYWRXcml0ZS5BbGwgR3JvdXAuUmVhZC5BbGwgR3JvdXAuUmVhZFdyaXRlLkFsbCBNZW1iZXIuUmVhZC5IaWRkZW4gb2ZmbGluZV9hY2Nlc3Mgb3BlbmlkIFBvbGljeS5SZWFkLkFsbCBVc2VyLlJlYWQgVXNlci5SZWFkLkFsbCBVc2VyLlJlYWRCYXNpYy5BbGwgVXNlci5SZWFkV3JpdGUgVXNlci5SZWFkV3JpdGUuQWxsIiwic3ViIjoiODh1LWVZcVNxXzJjOW5wTS1BV3hoTDdxWkhka3F4b28yUzd1YnFEdEwwayIsInRlbmFudF9yZWdpb25fc2NvcGUiOiJBUyIsInRpZCI6IjEwYzE1MDUyLWY4MjUtNDU0ZS1hN2E3LTEyZmExY2E1ZjY4YSIsInVuaXF1ZV9uYW1lIjoibmlrczhhZGxha2hhLmdtYWlsLmNvbUBlY21uZXh0YWQub25taWNyb3NvZnQuY29tIiwidXBuIjoibmlrczhhZGxha2hhLmdtYWlsLmNvbUBlY21uZXh0YWQub25taWNyb3NvZnQuY29tIiwidXRpIjoiTWpZckp3QWtua0dnOE04Vk9LelVBQSIsInZlciI6IjEuMCIsIndpZHMiOlsiYjc5ZmJmNGQtM2VmOS00Njg5LTgxNDMtNzZiMTk0ZTg1NTA5Il0sInhtc190Y2R0IjoxNTk0MjAzMjg5fQ.vNDwBUZtORwyqlezWzkZWZmBXy15X8Efd8d0OljxZo1-dULoFFV3i7gaYq1it7cwYOVXQmEavlECcZSISLVZliIyQxpJG18RNpJ9h2EfHr5I-bLWLMIxlTgDGMlgNqQzU0tAw8IljImklbIpvjAmEVwvAJOaDGWmJjLiEloCp36w8FPK6sngwxdVbee7n5sOAxyNLINRAJUNoc9PesZ_a72SW1RjkVDcBW_8sSVpjs8AsIAGEIHsKPdGM0qJlYF9UJZMvk_Zah64Toxpo7WdnPCrnIM4p5Z13ZXMbcRobAKgBK4BwDXTJUvFZMzfl2rnAG_xJzyYsztIimA_AfT3Yg",
+								"type": "text"
+							},
+							{
+								"key": "refreshToken",
+								"value": "0.AAAAUlDBECX4TkWnpxL6HKX2isTgn5spQo1EhuUDw1RaKbZAAPw.AQABAAAAAAAGV_bv21oQQ4ROqh0_1-tAZQ68X_CevDBHfHkLLB_3dNYQAKomrVreuuBDfmhlfQ4yc4ZBRscsdkyJV1qhoamaBOzoBJ782fjx3QGL7jrGNlVAmHaHKWmyUIMZyGrYD05rvk7p11XZ0Igtx40YidvA7IXf7iNE-dxpg7jY3P6l_niMShHlC6GtxIPgsn7a8zhi_giD8j3EmrHHx32nwPoRyMAw5NT0uhSqEHu3jYspWYkMAmvsqZWh3bW0AaQOvHZd4dSiXfHJWqj1VRs8Ov3X2Z9rjxK3rgGjr6WBgU-BaYvATrOawE--tDEJBsaDJIl71dsz1D8pjjSjDT5iDlsQtZokA2C2UThHX-2EfR-rAOlWjvFUtk2G5SpzcjjjT76NQ2zF1kyisN8XGOview3gSYleM40hg2n4QzNsx1BE6jU-vjIsDUpWNrB6YtvltTSAgO_HRnbTMSXIAjDdABGXhf05s2jLYCnhia6M2PJUqnqBEDFIGafF41SB33xi0ZPor8soZSgSZiOjN4h3CULJ_4PuKsFnmSYQjXtqxeJcLUa0OHDvZLkIK6GFLMFE-YCpqfzPng1OMKzL8T8sy8eYmOyzlElXKDrhS9tSw7b2QRxx7fUA6dekS2ypSULyWBAaFjBQHlUy3OwLXCtv-78_zwOIdGQJZuoC1TwrVZmsD1QxJwOrNZmidr3IaMxP7VXbNvd6dFv6yEpC_0Ff-eOxJIVcHtd8TnysEkdK2KcF1tJvtRVaz0SJUZAt7BmPsSKKK4MQ0PQ3g2JYrmjt5OE--0R044ACbY69Ue1dC8u9t6JHYzpUefYXZU7chqAUtA3O3lk22CGCJFL8QPi2Wc6t0uys-VqpEtEp6NEP2Q67zgpslhnB2weTZoaBoSYaPRSl1DW9mINXKzIO7BDh6PONIAA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{LOCAL_URL}}/session/tokens/get",
+							"host": [
+								"{{LOCAL_URL}}"
+							],
+							"path": [
+								"session",
+								"tokens",
+								"get"
+							]
+						},
+						"description": "Tests the /users/getAccessToken : GET API"
+					},
+					"response": [
+						{
+							"name": "Get Tokens for a Valid User with token response null",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "org",
+										"value": "{{ORG}}",
+										"type": "text"
+									},
+									{
+										"key": "accessToken",
+										"value": "eyJ0eXAiOiJKV1QiLCJub25jZSI6IkVTRFlDUVVoZWdJOGZQZHRRZWZpUUJybmxJbUhOQmcwTG5yRE1rZ2N2MEUiLCJhbGciOiJSUzI1NiIsIng1dCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyIsImtpZCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8xMGMxNTA1Mi1mODI1LTQ1NGUtYTdhNy0xMmZhMWNhNWY2OGEvIiwiaWF0IjoxNjAwNzY5ODExLCJuYmYiOjE2MDA3Njk4MTEsImV4cCI6MTYwMDc3MzcxMSwiYWNjdCI6MCwiYWNyIjoiMSIsImFpbyI6IkUyQmdZUEE2eTZ2NlMvTmsvamJYTFAzTG41MmZxSjB2ajlPZFkzVmlEby8veG8xN2Vid0IiLCJhbXIiOlsicHdkIl0sImFwcF9kaXNwbGF5bmFtZSI6IkVDTSBOZXh0QUQgMiIsImFwcGlkIjoiOWI5ZmUwYzQtNDIyOS00NDhkLTg2ZTUtMDNjMzU0NWEyOWI2IiwiYXBwaWRhY3IiOiIwIiwiaWR0eXAiOiJ1c2VyIiwiaXBhZGRyIjoiMjAuNDAuNDQuMTY5IiwibmFtZSI6Ik5pa2hpbCBBZGxha2hhIiwib2lkIjoiOTJkYWQ1ZDctMGY5OS00OTM5LTllYzctZDMzMWY2NmVhN2U1IiwicGxhdGYiOiIxNCIsInB1aWQiOiIxMDAzMjAwMEUyNEUzNkYwIiwicmgiOiIwLkFBQUFVbERCRUNYNFRrV25weEw2SEtYMmlzVGduNXNwUW8xRWh1VUR3MVJhS2JaQUFQdy4iLCJzY3AiOiJEaXJlY3RvcnkuQWNjZXNzQXNVc2VyLkFsbCBEaXJlY3RvcnkuUmVhZC5BbGwgRGlyZWN0b3J5LlJlYWRXcml0ZS5BbGwgR3JvdXAuUmVhZC5BbGwgR3JvdXAuUmVhZFdyaXRlLkFsbCBNZW1iZXIuUmVhZC5IaWRkZW4gb2ZmbGluZV9hY2Nlc3Mgb3BlbmlkIFBvbGljeS5SZWFkLkFsbCBVc2VyLlJlYWQgVXNlci5SZWFkLkFsbCBVc2VyLlJlYWRCYXNpYy5BbGwgVXNlci5SZWFkV3JpdGUgVXNlci5SZWFkV3JpdGUuQWxsIiwic3ViIjoiODh1LWVZcVNxXzJjOW5wTS1BV3hoTDdxWkhka3F4b28yUzd1YnFEdEwwayIsInRlbmFudF9yZWdpb25fc2NvcGUiOiJBUyIsInRpZCI6IjEwYzE1MDUyLWY4MjUtNDU0ZS1hN2E3LTEyZmExY2E1ZjY4YSIsInVuaXF1ZV9uYW1lIjoibmlrczhhZGxha2hhLmdtYWlsLmNvbUBlY21uZXh0YWQub25taWNyb3NvZnQuY29tIiwidXBuIjoibmlrczhhZGxha2hhLmdtYWlsLmNvbUBlY21uZXh0YWQub25taWNyb3NvZnQuY29tIiwidXRpIjoiTWpZckp3QWtua0dnOE04Vk9LelVBQSIsInZlciI6IjEuMCIsIndpZHMiOlsiYjc5ZmJmNGQtM2VmOS00Njg5LTgxNDMtNzZiMTk0ZTg1NTA5Il0sInhtc190Y2R0IjoxNTk0MjAzMjg5fQ.vNDwBUZtORwyqlezWzkZWZmBXy15X8Efd8d0OljxZo1-dULoFFV3i7gaYq1it7cwYOVXQmEavlECcZSISLVZliIyQxpJG18RNpJ9h2EfHr5I-bLWLMIxlTgDGMlgNqQzU0tAw8IljImklbIpvjAmEVwvAJOaDGWmJjLiEloCp36w8FPK6sngwxdVbee7n5sOAxyNLINRAJUNoc9PesZ_a72SW1RjkVDcBW_8sSVpjs8AsIAGEIHsKPdGM0qJlYF9UJZMvk_Zah64Toxpo7WdnPCrnIM4p5Z13ZXMbcRobAKgBK4BwDXTJUvFZMzfl2rnAG_xJzyYsztIimA_AfT3Yg",
+										"type": "text"
+									},
+									{
+										"key": "refreshToken",
+										"value": "0.AAAAUlDBECX4TkWnpxL6HKX2isTgn5spQo1EhuUDw1RaKbZAAPw.AQABAAAAAAAGV_bv21oQQ4ROqh0_1-tAZQ68X_CevDBHfHkLLB_3dNYQAKomrVreuuBDfmhlfQ4yc4ZBRscsdkyJV1qhoamaBOzoBJ782fjx3QGL7jrGNlVAmHaHKWmyUIMZyGrYD05rvk7p11XZ0Igtx40YidvA7IXf7iNE-dxpg7jY3P6l_niMShHlC6GtxIPgsn7a8zhi_giD8j3EmrHHx32nwPoRyMAw5NT0uhSqEHu3jYspWYkMAmvsqZWh3bW0AaQOvHZd4dSiXfHJWqj1VRs8Ov3X2Z9rjxK3rgGjr6WBgU-BaYvATrOawE--tDEJBsaDJIl71dsz1D8pjjSjDT5iDlsQtZokA2C2UThHX-2EfR-rAOlWjvFUtk2G5SpzcjjjT76NQ2zF1kyisN8XGOview3gSYleM40hg2n4QzNsx1BE6jU-vjIsDUpWNrB6YtvltTSAgO_HRnbTMSXIAjDdABGXhf05s2jLYCnhia6M2PJUqnqBEDFIGafF41SB33xi0ZPor8soZSgSZiOjN4h3CULJ_4PuKsFnmSYQjXtqxeJcLUa0OHDvZLkIK6GFLMFE-YCpqfzPng1OMKzL8T8sy8eYmOyzlElXKDrhS9tSw7b2QRxx7fUA6dekS2ypSULyWBAaFjBQHlUy3OwLXCtv-78_zwOIdGQJZuoC1TwrVZmsD1QxJwOrNZmidr3IaMxP7VXbNvd6dFv6yEpC_0Ff-eOxJIVcHtd8TnysEkdK2KcF1tJvtRVaz0SJUZAt7BmPsSKKK4MQ0PQ3g2JYrmjt5OE--0R044ACbY69Ue1dC8u9t6JHYzpUefYXZU7chqAUtA3O3lk22CGCJFL8QPi2Wc6t0uys-VqpEtEp6NEP2Q67zgpslhnB2weTZoaBoSYaPRSl1DW9mINXKzIO7BDh6PONIAA",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{LOCAL_URL}}/session/tokens/get",
+									"host": [
+										"{{LOCAL_URL}}"
+									],
+									"path": [
+										"session",
+										"tokens",
+										"get"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Sample",
+									"value": "8c753e42-8e46-443a-a832-888cb7e7b6de"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 22 Sep 2020 10:22:35 GMT"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": null,\n    \"refreshToken\": \"0.AAAAUlDBECX4TkWnpxL6HKX2isTgn5spQo1EhuUDw1RaKbZAAPw.AQABAAAAAAAGV_bv21oQQ4ROqh0_1-tARz_UkH19UHwL3GPOzgNiBmrJkJt7RyK4HjwGK3UX5WSw1r6yAHKVspqqyyGyXIjOcT1OU34aqaV_aEKEpPhiTqI1rw3s5dny1LOAnjLsjdiknpSyqzgqyfjyIMYgPw1A-v_mQLKBj_JbgF1eEp09zoRH6aeVrRT4cVLFm9zp02FndXkARo2g1JrN36e97BIWkxnGT25n08QO_yXkrvX8CpPjNAPKpvZrdfUfIOVPmxPQn1KQxdWjlm6oNFHK1qOnWLbe-s1Jv1MkxRma5cJD_m8jLxJdKyYu5k124dJ8qW3lzlOW5_qQhmXg8U_QeuEcMHWhmqGoPFL0dM8pzwqlBdRFj-SnNJKLJjBuDTlLdyf6_mKUToFdOOK7G73_L8WYWydsOzOTrfGEQq1o_A_4tTJRmy_au2bhxsA56yQRwA-Woiakznm0sz3MdzHEtCZ5swjK30gRbR7u2oVemhnzA8YH57uIPNrXEq2Uqn7YKQ1drE-mmKJg9W4wxsbrYr88hOhWpnO0rcI6xm8ZRMVSh_F2c-3gelUtbA9l4x9jdybtJbfBXaV8Xcfoif0GnPQePPGcfm5uBEQ8jdRA67k4dPfN15dZzi6Dei9BSitf9itwCQejM6SCdqMNSfd5HW6smlBmIYQnrLVP3ILI3AJ4bmiZ78El6dyA14_u-75IhajvBXP67b2B9tcR4MygUEo8Gi2uM1zJP7PqlA8NZFT0F08ufHHC-lVUyr5g9bGXMZDO-gpJCd0W7-t0Q6znE4xgFFp8bgrHYZyAD7vfUkjne8VTy3r6jFjnWDXU-Q1sjh4gNU0VtqL6BuN0mccy62blYdpGS_rKAVAW0fztrq6J3jgRbVglKV8zmVImDYQOLgLGhk-uPZr8Lk_E_htejBdVIAA\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Validates Token",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "org",
+								"value": "{{ORG}}",
+								"type": "text"
+							},
+							{
+								"key": "accessToken",
+								"value": "eyJ0eXAiOiJKV1QiLCJub25jZSI6IkhRY3JELXpYbGZfQnVVcmhUYmNLOUpVWUMyZ1F5T1RibDdrNS1rTldQWU0iLCJhbGciOiJSUzI1NiIsIng1dCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyIsImtpZCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8xMGMxNTA1Mi1mODI1LTQ1NGUtYTdhNy0xMmZhMWNhNWY2OGEvIiwiaWF0IjoxNjAwNzY4MTkzLCJuYmYiOjE2MDA3NjgxOTMsImV4cCI6MTYwMDc3MjA5MywiYWNjdCI6MCwiYWNyIjoiMSIsImFpbyI6IkUyQmdZRGdoWG1BU1lYV0tPZmgzaVgvRTdLckorNTQ4MzlhVEZ5bTZhaDRubzNlZ3JUMEEiLCJhbXIiOlsicHdkIl0sImFwcF9kaXNwbGF5bmFtZSI6IkVDTSBOZXh0QUQgMiIsImFwcGlkIjoiOWI5ZmUwYzQtNDIyOS00NDhkLTg2ZTUtMDNjMzU0NWEyOWI2IiwiYXBwaWRhY3IiOiIwIiwiaWR0eXAiOiJ1c2VyIiwiaXBhZGRyIjoiMjAuNDAuNDQuMTY5IiwibmFtZSI6Ik5pa2hpbCBBZGxha2hhIiwib2lkIjoiOTJkYWQ1ZDctMGY5OS00OTM5LTllYzctZDMzMWY2NmVhN2U1IiwicGxhdGYiOiIxNCIsInB1aWQiOiIxMDAzMjAwMEUyNEUzNkYwIiwicmgiOiIwLkFBQUFVbERCRUNYNFRrV25weEw2SEtYMmlzVGduNXNwUW8xRWh1VUR3MVJhS2JaQUFQdy4iLCJzY3AiOiJEaXJlY3RvcnkuQWNjZXNzQXNVc2VyLkFsbCBEaXJlY3RvcnkuUmVhZC5BbGwgRGlyZWN0b3J5LlJlYWRXcml0ZS5BbGwgR3JvdXAuUmVhZC5BbGwgR3JvdXAuUmVhZFdyaXRlLkFsbCBNZW1iZXIuUmVhZC5IaWRkZW4gb2ZmbGluZV9hY2Nlc3Mgb3BlbmlkIFBvbGljeS5SZWFkLkFsbCBVc2VyLlJlYWQgVXNlci5SZWFkLkFsbCBVc2VyLlJlYWRCYXNpYy5BbGwgVXNlci5SZWFkV3JpdGUgVXNlci5SZWFkV3JpdGUuQWxsIiwic3ViIjoiODh1LWVZcVNxXzJjOW5wTS1BV3hoTDdxWkhka3F4b28yUzd1YnFEdEwwayIsInRlbmFudF9yZWdpb25fc2NvcGUiOiJBUyIsInRpZCI6IjEwYzE1MDUyLWY4MjUtNDU0ZS1hN2E3LTEyZmExY2E1ZjY4YSIsInVuaXF1ZV9uYW1lIjoibmlrczhhZGxha2hhLmdtYWlsLmNvbUBlY21uZXh0YWQub25taWNyb3NvZnQuY29tIiwidXBuIjoibmlrczhhZGxha2hhLmdtYWlsLmNvbUBlY21uZXh0YWQub25taWNyb3NvZnQuY29tIiwidXRpIjoiTFJPRmh3bm9UMEtmaklYQWlwVUdBUSIsInZlciI6IjEuMCIsIndpZHMiOlsiYjc5ZmJmNGQtM2VmOS00Njg5LTgxNDMtNzZiMTk0ZTg1NTA5Il0sInhtc190Y2R0IjoxNTk0MjAzMjg5fQ.PWDep3UfygAfSQwG7Ua2USwsFEC8qQ0g8my7mCfLafY5_YFC5qs4p-jZV2q8EMJRN6DosS9htWnen3Q45BLpMxrkHkYX8mt8CTIfOJywUsx1qTAcu1lxlss_r_ZATzyujN87zsxJ0VE3gztcgVJtVImaino1V2ITDSLo9qJHVNqyJvSa52CbbagXI5gzPAu6SeCUXEs7fUMwGGsVI-kZmyROD717VM_dCvj6uDfLIXql9Lbs9kBfbNJ2lQpv-j5BpCSqRoXe4qp_JVc4yRQ4erdBMjNrt3xgv3gCbqYTsnrlKkoOa7xkRtr5lkohd0fNIlovpjA7ul7gXTCJmN-7QA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{LOCAL_URL}}/session/tokens/validate",
+							"host": [
+								"{{LOCAL_URL}}"
+							],
+							"path": [
+								"session",
+								"tokens",
+								"validate"
+							]
+						},
+						"description": "Tests the /users/validateToken : GET API"
+					},
+					"response": [
+						{
+							"name": "Validates Token: General Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "org",
+										"value": "{{ORG}}",
+										"type": "text"
+									},
+									{
+										"key": "accessToken",
+										"value": "eyJ0eXAiOiJKV1QiLCJub25jZSI6IkhRY3JELXpYbGZfQnVVcmhUYmNLOUpVWUMyZ1F5T1RibDdrNS1rTldQWU0iLCJhbGciOiJSUzI1NiIsIng1dCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyIsImtpZCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8xMGMxNTA1Mi1mODI1LTQ1NGUtYTdhNy0xMmZhMWNhNWY2OGEvIiwiaWF0IjoxNjAwNzY4MTkzLCJuYmYiOjE2MDA3NjgxOTMsImV4cCI6MTYwMDc3MjA5MywiYWNjdCI6MCwiYWNyIjoiMSIsImFpbyI6IkUyQmdZRGdoWG1BU1lYV0tPZmgzaVgvRTdLckorNTQ4MzlhVEZ5bTZhaDRubzNlZ3JUMEEiLCJhbXIiOlsicHdkIl0sImFwcF9kaXNwbGF5bmFtZSI6IkVDTSBOZXh0QUQgMiIsImFwcGlkIjoiOWI5ZmUwYzQtNDIyOS00NDhkLTg2ZTUtMDNjMzU0NWEyOWI2IiwiYXBwaWRhY3IiOiIwIiwiaWR0eXAiOiJ1c2VyIiwiaXBhZGRyIjoiMjAuNDAuNDQuMTY5IiwibmFtZSI6Ik5pa2hpbCBBZGxha2hhIiwib2lkIjoiOTJkYWQ1ZDctMGY5OS00OTM5LTllYzctZDMzMWY2NmVhN2U1IiwicGxhdGYiOiIxNCIsInB1aWQiOiIxMDAzMjAwMEUyNEUzNkYwIiwicmgiOiIwLkFBQUFVbERCRUNYNFRrV25weEw2SEtYMmlzVGduNXNwUW8xRWh1VUR3MVJhS2JaQUFQdy4iLCJzY3AiOiJEaXJlY3RvcnkuQWNjZXNzQXNVc2VyLkFsbCBEaXJlY3RvcnkuUmVhZC5BbGwgRGlyZWN0b3J5LlJlYWRXcml0ZS5BbGwgR3JvdXAuUmVhZC5BbGwgR3JvdXAuUmVhZFdyaXRlLkFsbCBNZW1iZXIuUmVhZC5IaWRkZW4gb2ZmbGluZV9hY2Nlc3Mgb3BlbmlkIFBvbGljeS5SZWFkLkFsbCBVc2VyLlJlYWQgVXNlci5SZWFkLkFsbCBVc2VyLlJlYWRCYXNpYy5BbGwgVXNlci5SZWFkV3JpdGUgVXNlci5SZWFkV3JpdGUuQWxsIiwic3ViIjoiODh1LWVZcVNxXzJjOW5wTS1BV3hoTDdxWkhka3F4b28yUzd1YnFEdEwwayIsInRlbmFudF9yZWdpb25fc2NvcGUiOiJBUyIsInRpZCI6IjEwYzE1MDUyLWY4MjUtNDU0ZS1hN2E3LTEyZmExY2E1ZjY4YSIsInVuaXF1ZV9uYW1lIjoibmlrczhhZGxha2hhLmdtYWlsLmNvbUBlY21uZXh0YWQub25taWNyb3NvZnQuY29tIiwidXBuIjoibmlrczhhZGxha2hhLmdtYWlsLmNvbUBlY21uZXh0YWQub25taWNyb3NvZnQuY29tIiwidXRpIjoiTFJPRmh3bm9UMEtmaklYQWlwVUdBUSIsInZlciI6IjEuMCIsIndpZHMiOlsiYjc5ZmJmNGQtM2VmOS00Njg5LTgxNDMtNzZiMTk0ZTg1NTA5Il0sInhtc190Y2R0IjoxNTk0MjAzMjg5fQ.PWDep3UfygAfSQwG7Ua2USwsFEC8qQ0g8my7mCfLafY5_YFC5qs4p-jZV2q8EMJRN6DosS9htWnen3Q45BLpMxrkHkYX8mt8CTIfOJywUsx1qTAcu1lxlss_r_ZATzyujN87zsxJ0VE3gztcgVJtVImaino1V2ITDSLo9qJHVNqyJvSa52CbbagXI5gzPAu6SeCUXEs7fUMwGGsVI-kZmyROD717VM_dCvj6uDfLIXql9Lbs9kBfbNJ2lQpv-j5BpCSqRoXe4qp_JVc4yRQ4erdBMjNrt3xgv3gCbqYTsnrlKkoOa7xkRtr5lkohd0fNIlovpjA7ul7gXTCJmN-7QA",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{LOCAL_URL}}/session/tokens/validate",
+									"host": [
+										"{{LOCAL_URL}}"
+									],
+									"path": [
+										"session",
+										"tokens",
+										"validate"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Sample",
+									"value": "60080f9b-4418-4eda-ba7d-1e802fc8c801"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 22 Sep 2020 10:13:03 GMT"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": \"1\",\n    \"statusMessage\": \"Success\",\n    \"trialDaysRemaining\": 3\n}"
+						}
+					]
+				},
+				{
+					"name": "Logout from ECM Next",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "org",
+								"value": "{{ORG}}",
+								"type": "text"
+							},
+							{
+								"key": "accessToken",
+								"value": "eyJ0eXAiOiJKV1QiLCJub25jZSI6IlJESnR2NG1HeGFubjBlM01hdDlqR3kwMjdfTFhyS0RCUFd5d2E5UGJOOVEiLCJhbGciOiJSUzI1NiIsIng1dCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyIsImtpZCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8xMGMxNTA1Mi1mODI1LTQ1NGUtYTdhNy0xMmZhMWNhNWY2OGEvIiwiaWF0IjoxNjAwNzcwMjQ2LCJuYmYiOjE2MDA3NzAyNDYsImV4cCI6MTYwMDc3NDE0NiwiYWNjdCI6MCwiYWNyIjoiMSIsImFpbyI6IkUyQmdZTGg3Y0V2bnRvMThMNUw1Z3hjeCtoN1ExNzRrZUpkcnRRbUxVbC9QanR4alpXMEEiLCJhbXIiOlsicHdkIl0sImFwcF9kaXNwbGF5bmFtZSI6IkVDTSBOZXh0QUQgMiIsImFwcGlkIjoiOWI5ZmUwYzQtNDIyOS00NDhkLTg2ZTUtMDNjMzU0NWEyOWI2IiwiYXBwaWRhY3IiOiIwIiwiaWR0eXAiOiJ1c2VyIiwiaXBhZGRyIjoiMjAuNDAuNDQuMTY5IiwibmFtZSI6Ik5pa2hpbCBBZGxha2hhIiwib2lkIjoiOTJkYWQ1ZDctMGY5OS00OTM5LTllYzctZDMzMWY2NmVhN2U1IiwicGxhdGYiOiIxNCIsInB1aWQiOiIxMDAzMjAwMEUyNEUzNkYwIiwicmgiOiIwLkFBQUFVbERCRUNYNFRrV25weEw2SEtYMmlzVGduNXNwUW8xRWh1VUR3MVJhS2JaQUFQdy4iLCJzY3AiOiJEaXJlY3RvcnkuQWNjZXNzQXNVc2VyLkFsbCBEaXJlY3RvcnkuUmVhZC5BbGwgRGlyZWN0b3J5LlJlYWRXcml0ZS5BbGwgR3JvdXAuUmVhZC5BbGwgR3JvdXAuUmVhZFdyaXRlLkFsbCBNZW1iZXIuUmVhZC5IaWRkZW4gb2ZmbGluZV9hY2Nlc3Mgb3BlbmlkIFBvbGljeS5SZWFkLkFsbCBVc2VyLlJlYWQgVXNlci5SZWFkLkFsbCBVc2VyLlJlYWRCYXNpYy5BbGwgVXNlci5SZWFkV3JpdGUgVXNlci5SZWFkV3JpdGUuQWxsIiwic3ViIjoiODh1LWVZcVNxXzJjOW5wTS1BV3hoTDdxWkhka3F4b28yUzd1YnFEdEwwayIsInRlbmFudF9yZWdpb25fc2NvcGUiOiJBUyIsInRpZCI6IjEwYzE1MDUyLWY4MjUtNDU0ZS1hN2E3LTEyZmExY2E1ZjY4YSIsInVuaXF1ZV9uYW1lIjoibmlrczhhZGxha2hhLmdtYWlsLmNvbUBlY21uZXh0YWQub25taWNyb3NvZnQuY29tIiwidXBuIjoibmlrczhhZGxha2hhLmdtYWlsLmNvbUBlY21uZXh0YWQub25taWNyb3NvZnQuY29tIiwidXRpIjoia1hLWGFDbEZyRWk0dFFUUFFCZHhBUSIsInZlciI6IjEuMCIsIndpZHMiOlsiYjc5ZmJmNGQtM2VmOS00Njg5LTgxNDMtNzZiMTk0ZTg1NTA5Il0sInhtc190Y2R0IjoxNTk0MjAzMjg5fQ.Hi01znyniRBNKSLzBrJphEykttl5w69t4rNdSJiz5kGcjYc19YE89X6ltV4svQ2gecFlKTVV-ywxI7pOQ77wqDl2ULiX7IUnEwOh3TIUbRg4trERBIoNnIGOfZ9yHHPhFCLb4P30R5-fZtONJ68DpWHmRNoWCwR36Fj-4RzDdN5iTjYcWTcHhIq3xPtWsCwL1ZywF4jU9WdyxcCM3NVDpM0AG1B6q9_TiSQ8_AIMzGGHyc4jjn4CCAraUa9vIJMKyI35OLaY6n90g8AvuhWQWR83Y9fjPyxONZfz5Fui5EoJye3stX0vTy9bvy-gTeaQBN8OkIm7W5S52GjYKsH8fg",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{LOCAL_URL}}/session/logout",
+							"host": [
+								"{{LOCAL_URL}}"
+							],
+							"path": [
+								"session",
+								"logout"
+							]
+						},
+						"description": "Tests the /users/logout : GET API"
+					},
+					"response": [
+						{
+							"name": "Logout from ECM Next: Successful logout",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "org",
+										"value": "{{ORG}}",
+										"type": "text"
+									},
+									{
+										"key": "accessToken",
+										"value": "eyJ0eXAiOiJKV1QiLCJub25jZSI6IlJESnR2NG1HeGFubjBlM01hdDlqR3kwMjdfTFhyS0RCUFd5d2E5UGJOOVEiLCJhbGciOiJSUzI1NiIsIng1dCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyIsImtpZCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8xMGMxNTA1Mi1mODI1LTQ1NGUtYTdhNy0xMmZhMWNhNWY2OGEvIiwiaWF0IjoxNjAwNzcwMjQ2LCJuYmYiOjE2MDA3NzAyNDYsImV4cCI6MTYwMDc3NDE0NiwiYWNjdCI6MCwiYWNyIjoiMSIsImFpbyI6IkUyQmdZTGg3Y0V2bnRvMThMNUw1Z3hjeCtoN1ExNzRrZUpkcnRRbUxVbC9QanR4alpXMEEiLCJhbXIiOlsicHdkIl0sImFwcF9kaXNwbGF5bmFtZSI6IkVDTSBOZXh0QUQgMiIsImFwcGlkIjoiOWI5ZmUwYzQtNDIyOS00NDhkLTg2ZTUtMDNjMzU0NWEyOWI2IiwiYXBwaWRhY3IiOiIwIiwiaWR0eXAiOiJ1c2VyIiwiaXBhZGRyIjoiMjAuNDAuNDQuMTY5IiwibmFtZSI6Ik5pa2hpbCBBZGxha2hhIiwib2lkIjoiOTJkYWQ1ZDctMGY5OS00OTM5LTllYzctZDMzMWY2NmVhN2U1IiwicGxhdGYiOiIxNCIsInB1aWQiOiIxMDAzMjAwMEUyNEUzNkYwIiwicmgiOiIwLkFBQUFVbERCRUNYNFRrV25weEw2SEtYMmlzVGduNXNwUW8xRWh1VUR3MVJhS2JaQUFQdy4iLCJzY3AiOiJEaXJlY3RvcnkuQWNjZXNzQXNVc2VyLkFsbCBEaXJlY3RvcnkuUmVhZC5BbGwgRGlyZWN0b3J5LlJlYWRXcml0ZS5BbGwgR3JvdXAuUmVhZC5BbGwgR3JvdXAuUmVhZFdyaXRlLkFsbCBNZW1iZXIuUmVhZC5IaWRkZW4gb2ZmbGluZV9hY2Nlc3Mgb3BlbmlkIFBvbGljeS5SZWFkLkFsbCBVc2VyLlJlYWQgVXNlci5SZWFkLkFsbCBVc2VyLlJlYWRCYXNpYy5BbGwgVXNlci5SZWFkV3JpdGUgVXNlci5SZWFkV3JpdGUuQWxsIiwic3ViIjoiODh1LWVZcVNxXzJjOW5wTS1BV3hoTDdxWkhka3F4b28yUzd1YnFEdEwwayIsInRlbmFudF9yZWdpb25fc2NvcGUiOiJBUyIsInRpZCI6IjEwYzE1MDUyLWY4MjUtNDU0ZS1hN2E3LTEyZmExY2E1ZjY4YSIsInVuaXF1ZV9uYW1lIjoibmlrczhhZGxha2hhLmdtYWlsLmNvbUBlY21uZXh0YWQub25taWNyb3NvZnQuY29tIiwidXBuIjoibmlrczhhZGxha2hhLmdtYWlsLmNvbUBlY21uZXh0YWQub25taWNyb3NvZnQuY29tIiwidXRpIjoia1hLWGFDbEZyRWk0dFFUUFFCZHhBUSIsInZlciI6IjEuMCIsIndpZHMiOlsiYjc5ZmJmNGQtM2VmOS00Njg5LTgxNDMtNzZiMTk0ZTg1NTA5Il0sInhtc190Y2R0IjoxNTk0MjAzMjg5fQ.Hi01znyniRBNKSLzBrJphEykttl5w69t4rNdSJiz5kGcjYc19YE89X6ltV4svQ2gecFlKTVV-ywxI7pOQ77wqDl2ULiX7IUnEwOh3TIUbRg4trERBIoNnIGOfZ9yHHPhFCLb4P30R5-fZtONJ68DpWHmRNoWCwR36Fj-4RzDdN5iTjYcWTcHhIq3xPtWsCwL1ZywF4jU9WdyxcCM3NVDpM0AG1B6q9_TiSQ8_AIMzGGHyc4jjn4CCAraUa9vIJMKyI35OLaY6n90g8AvuhWQWR83Y9fjPyxONZfz5Fui5EoJye3stX0vTy9bvy-gTeaQBN8OkIm7W5S52GjYKsH8fg",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{LOCAL_URL}}session/logout",
+									"host": [
+										"{{LOCAL_URL}}session"
+									],
+									"path": [
+										"logout"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Sample",
+									"value": "2d8dd48c-aba9-4c1c-b8a6-a94f884be8f1"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 22 Sep 2020 10:30:14 GMT"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": \"1\",\n    \"statusMessage\": \"Success\",\n    \"trialDaysRemaining\": \"0\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update User Password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "org",
+								"value": "{{ORG}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"emailId\": \"niks8adlakha@gmail.com\",\r\n  \"password\": \"Sy$tem@1234\",\r\n  \"token\": \"5f9ab9ae-194c-43e7-a7ba-3fae784722f6\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LOCAL_URL}}/users/updatePassword",
+							"host": [
+								"{{LOCAL_URL}}"
+							],
+							"path": [
+								"users",
+								"updatePassword"
+							]
+						},
+						"description": "Tests the /users/updatePassword :POST API"
+					},
+					"response": [
+						{
+							"name": "Update User Password: Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "org",
+										"value": "{{ORG}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"emailId\": \"niks8adlakha@gmail.com\",\r\n  \"password\": \"Sy$tem@1234\",\r\n  \"token\": \"5f9ab9ae-194c-43e7-a7ba-3fae784722f6\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{LOCAL_URL}}/users/updatePassword",
+									"host": [
+										"{{LOCAL_URL}}"
+									],
+									"path": [
+										"users",
+										"updatePassword"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Sample",
+									"value": "8bc68f86-e759-443f-a687-2a8ff609165d"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 22 Sep 2020 12:12:17 GMT"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": \"1\",\n    \"statusMessage\": \"Success\",\n    \"trialDaysRemaining\": \"0\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Change User Password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accessToken",
+								"value": "eyJ0eXAiOiJKV1QiLCJub25jZSI6IjdyX3pPMFRRNVpDbTNhcW1NZnR2aG9adHRqeDRjWXl0c040MDN6cDhoaVEiLCJhbGciOiJSUzI1NiIsIng1dCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyIsImtpZCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8xMGMxNTA1Mi1mODI1LTQ1NGUtYTdhNy0xMmZhMWNhNWY2OGEvIiwiaWF0IjoxNjAwNzcxMDUyLCJuYmYiOjE2MDA3NzEwNTIsImV4cCI6MTYwMDc3NDk1MiwiYWNjdCI6MCwiYWNyIjoiMSIsImFpbyI6IkUyQmdZTGpqWEZyOVphMWlqTEhqMUpMR3JpTDluWmVZSSs2c0txbmRZblBLazMybjNGRUEiLCJhbXIiOlsicHdkIl0sImFwcF9kaXNwbGF5bmFtZSI6IkVDTSBOZXh0QUQgMiIsImFwcGlkIjoiOWI5ZmUwYzQtNDIyOS00NDhkLTg2ZTUtMDNjMzU0NWEyOWI2IiwiYXBwaWRhY3IiOiIwIiwiaWR0eXAiOiJ1c2VyIiwiaXBhZGRyIjoiMjAuNDAuNDQuMTY5IiwibmFtZSI6Ik5pa2hpbCBBZGxha2hhIiwib2lkIjoiOTJkYWQ1ZDctMGY5OS00OTM5LTllYzctZDMzMWY2NmVhN2U1IiwicGxhdGYiOiIxNCIsInB1aWQiOiIxMDAzMjAwMEUyNEUzNkYwIiwicmgiOiIwLkFBQUFVbERCRUNYNFRrV25weEw2SEtYMmlzVGduNXNwUW8xRWh1VUR3MVJhS2JaQUFQdy4iLCJzY3AiOiJEaXJlY3RvcnkuQWNjZXNzQXNVc2VyLkFsbCBEaXJlY3RvcnkuUmVhZC5BbGwgRGlyZWN0b3J5LlJlYWRXcml0ZS5BbGwgR3JvdXAuUmVhZC5BbGwgR3JvdXAuUmVhZFdyaXRlLkFsbCBNZW1iZXIuUmVhZC5IaWRkZW4gb2ZmbGluZV9hY2Nlc3Mgb3BlbmlkIFBvbGljeS5SZWFkLkFsbCBVc2VyLlJlYWQgVXNlci5SZWFkLkFsbCBVc2VyLlJlYWRCYXNpYy5BbGwgVXNlci5SZWFkV3JpdGUgVXNlci5SZWFkV3JpdGUuQWxsIiwic3ViIjoiODh1LWVZcVNxXzJjOW5wTS1BV3hoTDdxWkhka3F4b28yUzd1YnFEdEwwayIsInRlbmFudF9yZWdpb25fc2NvcGUiOiJBUyIsInRpZCI6IjEwYzE1MDUyLWY4MjUtNDU0ZS1hN2E3LTEyZmExY2E1ZjY4YSIsInVuaXF1ZV9uYW1lIjoibmlrczhhZGxha2hhLmdtYWlsLmNvbUBlY21uZXh0YWQub25taWNyb3NvZnQuY29tIiwidXBuIjoibmlrczhhZGxha2hhLmdtYWlsLmNvbUBlY21uZXh0YWQub25taWNyb3NvZnQuY29tIiwidXRpIjoiZmp2MUtyMV8xVUNHcEs3bHJnNEhBUSIsInZlciI6IjEuMCIsIndpZHMiOlsiYjc5ZmJmNGQtM2VmOS00Njg5LTgxNDMtNzZiMTk0ZTg1NTA5Il0sInhtc190Y2R0IjoxNTk0MjAzMjg5fQ.s_QuGPaDQFHSzMr_ZHL6pLuxt3kJRhi2Pr1IkXI2l6EsbWtRLHoWq7ixgwZzsDieD_zOeQ72A0nMnr9p5kOFzIkdJ9iP9IkzNmr9m2V_URCS8ufsjT1ZpgPIH8vAFDJEiECMsIfi_vDAnNTWMk6JOCW3bsBSBLJVe7jsK3o87cxe3EgkYUb9Y9EqPSzH0p6ljczqAxgMpre1ih34x6vH0UboM-nIu1IPMKXk0ZbvPLsJgtIFE8xCldtZ4jbwK3utQy2d_-p0RCrxE8G9awJzFPlxo6e3jXZ7CNJCfM503P5WvRx68pHEdD-siLRNIMsYgnvTY4lFB6okzMLQr_5XCw",
+								"type": "text"
+							},
+							{
+								"key": "org",
+								"value": "{{ORG}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"oldPassword\": \"System@123\",\r\n    \"newPassword\": \"Sy$tem@123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LOCAL_URL}}/users/changePassword/niks8adlakha@gmail.com",
+							"host": [
+								"{{LOCAL_URL}}"
+							],
+							"path": [
+								"users",
+								"changePassword",
+								"niks8adlakha@gmail.com"
+							]
+						},
+						"description": "Tests the /users/changePassword/{email} :POST API"
+					},
+					"response": [
+						{
+							"name": "Change User Password",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "accessToken",
+										"value": "eyJ0eXAiOiJKV1QiLCJub25jZSI6IjdyX3pPMFRRNVpDbTNhcW1NZnR2aG9adHRqeDRjWXl0c040MDN6cDhoaVEiLCJhbGciOiJSUzI1NiIsIng1dCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyIsImtpZCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8xMGMxNTA1Mi1mODI1LTQ1NGUtYTdhNy0xMmZhMWNhNWY2OGEvIiwiaWF0IjoxNjAwNzcxMDUyLCJuYmYiOjE2MDA3NzEwNTIsImV4cCI6MTYwMDc3NDk1MiwiYWNjdCI6MCwiYWNyIjoiMSIsImFpbyI6IkUyQmdZTGpqWEZyOVphMWlqTEhqMUpMR3JpTDluWmVZSSs2c0txbmRZblBLazMybjNGRUEiLCJhbXIiOlsicHdkIl0sImFwcF9kaXNwbGF5bmFtZSI6IkVDTSBOZXh0QUQgMiIsImFwcGlkIjoiOWI5ZmUwYzQtNDIyOS00NDhkLTg2ZTUtMDNjMzU0NWEyOWI2IiwiYXBwaWRhY3IiOiIwIiwiaWR0eXAiOiJ1c2VyIiwiaXBhZGRyIjoiMjAuNDAuNDQuMTY5IiwibmFtZSI6Ik5pa2hpbCBBZGxha2hhIiwib2lkIjoiOTJkYWQ1ZDctMGY5OS00OTM5LTllYzctZDMzMWY2NmVhN2U1IiwicGxhdGYiOiIxNCIsInB1aWQiOiIxMDAzMjAwMEUyNEUzNkYwIiwicmgiOiIwLkFBQUFVbERCRUNYNFRrV25weEw2SEtYMmlzVGduNXNwUW8xRWh1VUR3MVJhS2JaQUFQdy4iLCJzY3AiOiJEaXJlY3RvcnkuQWNjZXNzQXNVc2VyLkFsbCBEaXJlY3RvcnkuUmVhZC5BbGwgRGlyZWN0b3J5LlJlYWRXcml0ZS5BbGwgR3JvdXAuUmVhZC5BbGwgR3JvdXAuUmVhZFdyaXRlLkFsbCBNZW1iZXIuUmVhZC5IaWRkZW4gb2ZmbGluZV9hY2Nlc3Mgb3BlbmlkIFBvbGljeS5SZWFkLkFsbCBVc2VyLlJlYWQgVXNlci5SZWFkLkFsbCBVc2VyLlJlYWRCYXNpYy5BbGwgVXNlci5SZWFkV3JpdGUgVXNlci5SZWFkV3JpdGUuQWxsIiwic3ViIjoiODh1LWVZcVNxXzJjOW5wTS1BV3hoTDdxWkhka3F4b28yUzd1YnFEdEwwayIsInRlbmFudF9yZWdpb25fc2NvcGUiOiJBUyIsInRpZCI6IjEwYzE1MDUyLWY4MjUtNDU0ZS1hN2E3LTEyZmExY2E1ZjY4YSIsInVuaXF1ZV9uYW1lIjoibmlrczhhZGxha2hhLmdtYWlsLmNvbUBlY21uZXh0YWQub25taWNyb3NvZnQuY29tIiwidXBuIjoibmlrczhhZGxha2hhLmdtYWlsLmNvbUBlY21uZXh0YWQub25taWNyb3NvZnQuY29tIiwidXRpIjoiZmp2MUtyMV8xVUNHcEs3bHJnNEhBUSIsInZlciI6IjEuMCIsIndpZHMiOlsiYjc5ZmJmNGQtM2VmOS00Njg5LTgxNDMtNzZiMTk0ZTg1NTA5Il0sInhtc190Y2R0IjoxNTk0MjAzMjg5fQ.s_QuGPaDQFHSzMr_ZHL6pLuxt3kJRhi2Pr1IkXI2l6EsbWtRLHoWq7ixgwZzsDieD_zOeQ72A0nMnr9p5kOFzIkdJ9iP9IkzNmr9m2V_URCS8ufsjT1ZpgPIH8vAFDJEiECMsIfi_vDAnNTWMk6JOCW3bsBSBLJVe7jsK3o87cxe3EgkYUb9Y9EqPSzH0p6ljczqAxgMpre1ih34x6vH0UboM-nIu1IPMKXk0ZbvPLsJgtIFE8xCldtZ4jbwK3utQy2d_-p0RCrxE8G9awJzFPlxo6e3jXZ7CNJCfM503P5WvRx68pHEdD-siLRNIMsYgnvTY4lFB6okzMLQr_5XCw",
+										"type": "text"
+									},
+									{
+										"key": "org",
+										"value": "{{ORG}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"oldPassword\": \"System@123\",\r\n    \"newPassword\": \"Sy$tem@123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{LOCAL_URL}}/users/changePassword/niks8adlakha@gmail.com",
+									"host": [
+										"{{LOCAL_URL}}"
+									],
+									"path": [
+										"users",
+										"changePassword",
+										"niks8adlakha@gmail.com"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Sample",
+									"value": "fc0ad7dd-3de0-4027-ae41-188e9b9c9141"
+								},
+								{
+									"key": "Content-Disposition",
+									"value": "inline;filename=f.txt"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 22 Sep 2020 10:47:32 GMT"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": \"1\",\n    \"statusMessage\": \"Success\",\n    \"trialDaysRemaining\": \"0\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Check Whether User Exists",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "org",
+								"value": "{{ORG}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{LOCAL_URL}}/users/checkUser/niks8adlakha@gmail.com",
+							"host": [
+								"{{LOCAL_URL}}"
+							],
+							"path": [
+								"users",
+								"checkUser",
+								"niks8adlakha@gmail.com"
+							]
+						},
+						"description": "Tests the /users/checkUserExists/{emailId} : GET API"
+					},
+					"response": [
+						{
+							"name": "Check Whether User Exists",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "org",
+										"value": "{{ORG}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{LOCAL_URL}}/users/checkUser/niks8adlakha@gmail.com",
+									"host": [
+										"{{LOCAL_URL}}"
+									],
+									"path": [
+										"users",
+										"checkUser",
+										"niks8adlakha@gmail.com"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Sample",
+									"value": "28fa22de-147f-4a36-a77f-88b45071b32b"
+								},
+								{
+									"key": "Content-Disposition",
+									"value": "inline;filename=f.txt"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 22 Sep 2020 11:45:33 GMT"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"addedBy\": null,\n    \"authType\": \"AD\",\n    \"comments\": null,\n    \"displayName\": null,\n    \"emailId\": \"niks8adlakha@gmail.com\",\n    \"isActive\": false,\n    \"isAdmin\": false,\n    \"password\": null,\n    \"privilege\": {\n        \"empty\": true\n    },\n    \"tenantId\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Forgot Password",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "org",
+								"value": "{{ORG}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{LOCAL_URL}}/users/forgotPassword/niks8adlakha@gmail.com",
+							"host": [
+								"{{LOCAL_URL}}"
+							],
+							"path": [
+								"users",
+								"forgotPassword",
+								"niks8adlakha@gmail.com"
+							]
+						},
+						"description": "Tests the /users/forgotPassword :POST API"
+					},
+					"response": [
+						{
+							"name": "Forgot Password",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "org",
+										"value": "{{ORG}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{LOCAL_URL}}/users/forgotPassword/niks8adlakha@gmail.com",
+									"host": [
+										"{{LOCAL_URL}}"
+									],
+									"path": [
+										"users",
+										"forgotPassword",
+										"niks8adlakha@gmail.com"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Sample",
+									"value": "e2a443a6-d64e-415b-9200-3953a0a3f534"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 22 Sep 2020 11:51:21 GMT"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Disposition",
+									"value": "inline;filename=f.txt"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": \"1\",\n    \"statusMessage\": \"Success\",\n    \"trialDaysRemaining\": \"0\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Login to ECM Next",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "org",
+								"value": "ECM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"emailId\":\"niks8adlakha@gmail.com\",\r\n    \"password\":\"Sy$tem@123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8183/session/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8183",
+							"path": [
+								"session",
+								"login"
+							]
+						},
+						"description": "Tests the /users/login :POST API\r\nlocalhost:8183/session/login"
+					},
+					"response": []
+				}
+			],
+			"description": "This folder contains all the service tests for ECM Next User Authentication services APIs",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "c315b87e-aa25-4d53-a96a-aebdad98c14f",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "2152aa8a-6794-4d68-8464-8abe0a09c57f",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Folder Service",
+			"item": [
+				{
+					"name": "Create a Folder",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "org",
+								"value": "{{ORG}}",
+								"type": "text"
+							},
+							{
+								"key": "tenantId",
+								"value": "5f5b37f43cb41e00016f069d",
+								"type": "text"
+							},
+							{
+								"key": "userId",
+								"value": "5f5b37f6d084390001d03283",
+								"type": "text"
+							},
+							{
+								"key": "accessToken",
+								"value": "eyJ0eXAiOiJKV1QiLCJub25jZSI6IkplNnZfNnlqVTdWbTRqaEdCdW94V0M1Q29IQ0RoTWhsRGdOOHBDdVZzTFEiLCJhbGciOiJSUzI1NiIsIng1dCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyIsImtpZCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8xMGMxNTA1Mi1mODI1LTQ1NGUtYTdhNy0xMmZhMWNhNWY2OGEvIiwiaWF0IjoxNjAwNzc4MjcyLCJuYmYiOjE2MDA3NzgyNzIsImV4cCI6MTYwMDc4MjE3MiwiYWNjdCI6MCwiYWNyIjoiMSIsImFpbyI6IkUyQmdZREM1KzNDcXFmWjVidzJUOWxjWk02enNEUGl5emplWk03M2ptU1lqdTI3bnUzc0EiLCJhbXIiOlsicHdkIl0sImFwcF9kaXNwbGF5bmFtZSI6IkVDTSBOZXh0QUQgMiIsImFwcGlkIjoiOWI5ZmUwYzQtNDIyOS00NDhkLTg2ZTUtMDNjMzU0NWEyOWI2IiwiYXBwaWRhY3IiOiIwIiwiaWR0eXAiOiJ1c2VyIiwiaXBhZGRyIjoiMjAuNDAuNDQuMTY5IiwibmFtZSI6Ik5pa2hpbCBBZGxha2hhIiwib2lkIjoiOTJkYWQ1ZDctMGY5OS00OTM5LTllYzctZDMzMWY2NmVhN2U1IiwicGxhdGYiOiIxNCIsInB1aWQiOiIxMDAzMjAwMEUyNEUzNkYwIiwicmgiOiIwLkFBQUFVbERCRUNYNFRrV25weEw2SEtYMmlzVGduNXNwUW8xRWh1VUR3MVJhS2JaQUFQdy4iLCJzY3AiOiJEaXJlY3RvcnkuQWNjZXNzQXNVc2VyLkFsbCBEaXJlY3RvcnkuUmVhZC5BbGwgRGlyZWN0b3J5LlJlYWRXcml0ZS5BbGwgR3JvdXAuUmVhZC5BbGwgR3JvdXAuUmVhZFdyaXRlLkFsbCBNZW1iZXIuUmVhZC5IaWRkZW4gb2ZmbGluZV9hY2Nlc3Mgb3BlbmlkIFBvbGljeS5SZWFkLkFsbCBVc2VyLlJlYWQgVXNlci5SZWFkLkFsbCBVc2VyLlJlYWRCYXNpYy5BbGwgVXNlci5SZWFkV3JpdGUgVXNlci5SZWFkV3JpdGUuQWxsIiwic3ViIjoiODh1LWVZcVNxXzJjOW5wTS1BV3hoTDdxWkhka3F4b28yUzd1YnFEdEwwayIsInRlbmFudF9yZWdpb25fc2NvcGUiOiJBUyIsInRpZCI6IjEwYzE1MDUyLWY4MjUtNDU0ZS1hN2E3LTEyZmExY2E1ZjY4YSIsInVuaXF1ZV9uYW1lIjoibmlrczhhZGxha2hhLmdtYWlsLmNvbUBlY21uZXh0YWQub25taWNyb3NvZnQuY29tIiwidXBuIjoibmlrczhhZGxha2hhLmdtYWlsLmNvbUBlY21uZXh0YWQub25taWNyb3NvZnQuY29tIiwidXRpIjoiTTVhX3VuTkZ0VTZMTDhXdlJ3cHNBUSIsInZlciI6IjEuMCIsIndpZHMiOlsiYjc5ZmJmNGQtM2VmOS00Njg5LTgxNDMtNzZiMTk0ZTg1NTA5Il0sInhtc190Y2R0IjoxNTk0MjAzMjg5fQ.nBTjnRB80b8iD_VWawADk9122spkvFTrkQvMzsFmqe4QXQqdylU7PQ1RK3Dk7GCJ4b3lZBnlgo5md9X5YUhlePqknWtZjN7Apls69M7jMP0gJJJKYxISvxpW7TW4E8VGJ1QC5HoeWz_IUXcQjniVheQAJKEm3TJoQswNxJrOFjv9MApXTJFQzl0YGI-q53AsEpUtdeTA0f83XRbSVqc6F6ffEFi6NWAOmCT1UX94QX8ioV_xrsxjFAAivIKzvp_OW6dUsHfslzV_OPmOxKf-vpvjD-9UuIDLVfCltqIseC_PTg7qYEKNuuL8-zDbgpv2bueCminIZtPtIt-eWQaNoQ",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"comments\": \"Initial Folder\",\r\n  \"folderName\": \"Niks_Folder\",\r\n  \"folderType\": \"folder\",\r\n  \"metadata\": {},\r\n  \"ownerId\": \"5f5b37f6d084390001d03283\",\r\n  \"ownerName\": \"Nikhil\",\r\n  \"parentFolderId\": \"5f5b39e63d83840001b7bb91\",\r\n  \"privilege\": \"\",\r\n  \"uploadIn\": \"\",\r\n  \"usedFor\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LOCAL_URL}}/folders",
+							"host": [
+								"{{LOCAL_URL}}"
+							],
+							"path": [
+								"folders"
+							]
+						},
+						"description": "Tests the /folders :POST API"
+					},
+					"response": [
+						{
+							"name": "Create a Folder: Read Time-out",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "org",
+										"value": "{{ORG}}",
+										"type": "text"
+									},
+									{
+										"key": "tenantId",
+										"value": "5f5b37f43cb41e00016f069d",
+										"type": "text"
+									},
+									{
+										"key": "userId",
+										"value": "5f5b37f6d084390001d03283",
+										"type": "text"
+									},
+									{
+										"key": "accessToken",
+										"value": "eyJ0eXAiOiJKV1QiLCJub25jZSI6IkplNnZfNnlqVTdWbTRqaEdCdW94V0M1Q29IQ0RoTWhsRGdOOHBDdVZzTFEiLCJhbGciOiJSUzI1NiIsIng1dCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyIsImtpZCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8xMGMxNTA1Mi1mODI1LTQ1NGUtYTdhNy0xMmZhMWNhNWY2OGEvIiwiaWF0IjoxNjAwNzc4MjcyLCJuYmYiOjE2MDA3NzgyNzIsImV4cCI6MTYwMDc4MjE3MiwiYWNjdCI6MCwiYWNyIjoiMSIsImFpbyI6IkUyQmdZREM1KzNDcXFmWjVidzJUOWxjWk02enNEUGl5emplWk03M2ptU1lqdTI3bnUzc0EiLCJhbXIiOlsicHdkIl0sImFwcF9kaXNwbGF5bmFtZSI6IkVDTSBOZXh0QUQgMiIsImFwcGlkIjoiOWI5ZmUwYzQtNDIyOS00NDhkLTg2ZTUtMDNjMzU0NWEyOWI2IiwiYXBwaWRhY3IiOiIwIiwiaWR0eXAiOiJ1c2VyIiwiaXBhZGRyIjoiMjAuNDAuNDQuMTY5IiwibmFtZSI6Ik5pa2hpbCBBZGxha2hhIiwib2lkIjoiOTJkYWQ1ZDctMGY5OS00OTM5LTllYzctZDMzMWY2NmVhN2U1IiwicGxhdGYiOiIxNCIsInB1aWQiOiIxMDAzMjAwMEUyNEUzNkYwIiwicmgiOiIwLkFBQUFVbERCRUNYNFRrV25weEw2SEtYMmlzVGduNXNwUW8xRWh1VUR3MVJhS2JaQUFQdy4iLCJzY3AiOiJEaXJlY3RvcnkuQWNjZXNzQXNVc2VyLkFsbCBEaXJlY3RvcnkuUmVhZC5BbGwgRGlyZWN0b3J5LlJlYWRXcml0ZS5BbGwgR3JvdXAuUmVhZC5BbGwgR3JvdXAuUmVhZFdyaXRlLkFsbCBNZW1iZXIuUmVhZC5IaWRkZW4gb2ZmbGluZV9hY2Nlc3Mgb3BlbmlkIFBvbGljeS5SZWFkLkFsbCBVc2VyLlJlYWQgVXNlci5SZWFkLkFsbCBVc2VyLlJlYWRCYXNpYy5BbGwgVXNlci5SZWFkV3JpdGUgVXNlci5SZWFkV3JpdGUuQWxsIiwic3ViIjoiODh1LWVZcVNxXzJjOW5wTS1BV3hoTDdxWkhka3F4b28yUzd1YnFEdEwwayIsInRlbmFudF9yZWdpb25fc2NvcGUiOiJBUyIsInRpZCI6IjEwYzE1MDUyLWY4MjUtNDU0ZS1hN2E3LTEyZmExY2E1ZjY4YSIsInVuaXF1ZV9uYW1lIjoibmlrczhhZGxha2hhLmdtYWlsLmNvbUBlY21uZXh0YWQub25taWNyb3NvZnQuY29tIiwidXBuIjoibmlrczhhZGxha2hhLmdtYWlsLmNvbUBlY21uZXh0YWQub25taWNyb3NvZnQuY29tIiwidXRpIjoiTTVhX3VuTkZ0VTZMTDhXdlJ3cHNBUSIsInZlciI6IjEuMCIsIndpZHMiOlsiYjc5ZmJmNGQtM2VmOS00Njg5LTgxNDMtNzZiMTk0ZTg1NTA5Il0sInhtc190Y2R0IjoxNTk0MjAzMjg5fQ.nBTjnRB80b8iD_VWawADk9122spkvFTrkQvMzsFmqe4QXQqdylU7PQ1RK3Dk7GCJ4b3lZBnlgo5md9X5YUhlePqknWtZjN7Apls69M7jMP0gJJJKYxISvxpW7TW4E8VGJ1QC5HoeWz_IUXcQjniVheQAJKEm3TJoQswNxJrOFjv9MApXTJFQzl0YGI-q53AsEpUtdeTA0f83XRbSVqc6F6ffEFi6NWAOmCT1UX94QX8ioV_xrsxjFAAivIKzvp_OW6dUsHfslzV_OPmOxKf-vpvjD-9UuIDLVfCltqIseC_PTg7qYEKNuuL8-zDbgpv2bueCminIZtPtIt-eWQaNoQ",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"comments\": \"Initial Folder\",\r\n  \"folderName\": \"Niks_Folder\",\r\n  \"folderType\": \"folder\",\r\n  \"metadata\": {},\r\n  \"ownerId\": \"5f5b37f6d084390001d03283\",\r\n  \"ownerName\": \"Nikhil\",\r\n  \"parentFolderId\": \"5f5b39e63d83840001b7bb91\",\r\n  \"privilege\": \"\",\r\n  \"uploadIn\": \"\",\r\n  \"usedFor\": \"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{LOCAL_URL}}/folders",
+									"host": [
+										"{{LOCAL_URL}}"
+									],
+									"path": [
+										"folders"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 22 Sep 2020 12:46:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 100022,\n    \"message\": \"There is some problem at the server end. Please contact administrator.\"\n}"
+						},
+						{
+							"name": "Create a Folder: Read Timed out",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "org",
+										"value": "{{ORG}}",
+										"type": "text"
+									},
+									{
+										"key": "tenantId",
+										"value": "5f5b37f43cb41e00016f069d",
+										"type": "text"
+									},
+									{
+										"key": "userId",
+										"value": "5f5b37f6d084390001d03283",
+										"type": "text"
+									},
+									{
+										"key": "accessToken",
+										"value": "eyJ0eXAiOiJKV1QiLCJub25jZSI6IkplNnZfNnlqVTdWbTRqaEdCdW94V0M1Q29IQ0RoTWhsRGdOOHBDdVZzTFEiLCJhbGciOiJSUzI1NiIsIng1dCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyIsImtpZCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8xMGMxNTA1Mi1mODI1LTQ1NGUtYTdhNy0xMmZhMWNhNWY2OGEvIiwiaWF0IjoxNjAwNzc4MjcyLCJuYmYiOjE2MDA3NzgyNzIsImV4cCI6MTYwMDc4MjE3MiwiYWNjdCI6MCwiYWNyIjoiMSIsImFpbyI6IkUyQmdZREM1KzNDcXFmWjVidzJUOWxjWk02enNEUGl5emplWk03M2ptU1lqdTI3bnUzc0EiLCJhbXIiOlsicHdkIl0sImFwcF9kaXNwbGF5bmFtZSI6IkVDTSBOZXh0QUQgMiIsImFwcGlkIjoiOWI5ZmUwYzQtNDIyOS00NDhkLTg2ZTUtMDNjMzU0NWEyOWI2IiwiYXBwaWRhY3IiOiIwIiwiaWR0eXAiOiJ1c2VyIiwiaXBhZGRyIjoiMjAuNDAuNDQuMTY5IiwibmFtZSI6Ik5pa2hpbCBBZGxha2hhIiwib2lkIjoiOTJkYWQ1ZDctMGY5OS00OTM5LTllYzctZDMzMWY2NmVhN2U1IiwicGxhdGYiOiIxNCIsInB1aWQiOiIxMDAzMjAwMEUyNEUzNkYwIiwicmgiOiIwLkFBQUFVbERCRUNYNFRrV25weEw2SEtYMmlzVGduNXNwUW8xRWh1VUR3MVJhS2JaQUFQdy4iLCJzY3AiOiJEaXJlY3RvcnkuQWNjZXNzQXNVc2VyLkFsbCBEaXJlY3RvcnkuUmVhZC5BbGwgRGlyZWN0b3J5LlJlYWRXcml0ZS5BbGwgR3JvdXAuUmVhZC5BbGwgR3JvdXAuUmVhZFdyaXRlLkFsbCBNZW1iZXIuUmVhZC5IaWRkZW4gb2ZmbGluZV9hY2Nlc3Mgb3BlbmlkIFBvbGljeS5SZWFkLkFsbCBVc2VyLlJlYWQgVXNlci5SZWFkLkFsbCBVc2VyLlJlYWRCYXNpYy5BbGwgVXNlci5SZWFkV3JpdGUgVXNlci5SZWFkV3JpdGUuQWxsIiwic3ViIjoiODh1LWVZcVNxXzJjOW5wTS1BV3hoTDdxWkhka3F4b28yUzd1YnFEdEwwayIsInRlbmFudF9yZWdpb25fc2NvcGUiOiJBUyIsInRpZCI6IjEwYzE1MDUyLWY4MjUtNDU0ZS1hN2E3LTEyZmExY2E1ZjY4YSIsInVuaXF1ZV9uYW1lIjoibmlrczhhZGxha2hhLmdtYWlsLmNvbUBlY21uZXh0YWQub25taWNyb3NvZnQuY29tIiwidXBuIjoibmlrczhhZGxha2hhLmdtYWlsLmNvbUBlY21uZXh0YWQub25taWNyb3NvZnQuY29tIiwidXRpIjoiTTVhX3VuTkZ0VTZMTDhXdlJ3cHNBUSIsInZlciI6IjEuMCIsIndpZHMiOlsiYjc5ZmJmNGQtM2VmOS00Njg5LTgxNDMtNzZiMTk0ZTg1NTA5Il0sInhtc190Y2R0IjoxNTk0MjAzMjg5fQ.nBTjnRB80b8iD_VWawADk9122spkvFTrkQvMzsFmqe4QXQqdylU7PQ1RK3Dk7GCJ4b3lZBnlgo5md9X5YUhlePqknWtZjN7Apls69M7jMP0gJJJKYxISvxpW7TW4E8VGJ1QC5HoeWz_IUXcQjniVheQAJKEm3TJoQswNxJrOFjv9MApXTJFQzl0YGI-q53AsEpUtdeTA0f83XRbSVqc6F6ffEFi6NWAOmCT1UX94QX8ioV_xrsxjFAAivIKzvp_OW6dUsHfslzV_OPmOxKf-vpvjD-9UuIDLVfCltqIseC_PTg7qYEKNuuL8-zDbgpv2bueCminIZtPtIt-eWQaNoQ",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"comments\": \"Initial Folder\",\r\n  \"folderName\": \"Niks_Folder\",\r\n  \"folderType\": \"folder\",\r\n  \"metadata\": {},\r\n  \"ownerId\": \"5f5b37f6d084390001d03283\",\r\n  \"ownerName\": \"Nikhil\",\r\n  \"parentFolderId\": \"5f5b39e63d83840001b7bb91\",\r\n  \"privilege\": \"\",\r\n  \"uploadIn\": \"\",\r\n  \"usedFor\": \"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{ECM_URL}}/folderservice/folders",
+									"host": [
+										"{{ECM_URL}}"
+									],
+									"path": [
+										"folderservice",
+										"folders"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 22 Sep 2020 12:44:45 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"timestamp\": \"2020-09-22T12:44:45.349+0000\",\n    \"status\": 500,\n    \"error\": \"Internal Server Error\",\n    \"message\": \"Read timed out\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete a Folder",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "org",
+								"value": "{{ORG}}",
+								"type": "text"
+							},
+							{
+								"key": "tenantId",
+								"value": "5f5b37f43cb41e00016f069d",
+								"type": "text"
+							},
+							{
+								"key": "accessToken",
+								"value": "eyJ0eXAiOiJKV1QiLCJub25jZSI6IjdWLTFoYS1JREUya3FUbFFxQ2p5bFlyRzVvQ0tPSDV1clN6YTRiQ1gwemciLCJhbGciOiJSUzI1NiIsIng1dCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyIsImtpZCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8xMGMxNTA1Mi1mODI1LTQ1NGUtYTdhNy0xMmZhMWNhNWY2OGEvIiwiaWF0IjoxNjAwNzg0Nzg1LCJuYmYiOjE2MDA3ODQ3ODUsImV4cCI6MTYwMDc4ODY4NSwiYWNjdCI6MCwiYWNyIjoiMSIsImFpbyI6IkFTUUEyLzhRQUFBQXJiTk5ZR1BGQk1MVmdGc1pmQlNpbzZQdEdSQ2doMit0cTkrUFJ1V20yT0E9IiwiYW1yIjpbInB3ZCJdLCJhcHBfZGlzcGxheW5hbWUiOiJFQ00gTmV4dEFEIDIiLCJhcHBpZCI6IjliOWZlMGM0LTQyMjktNDQ4ZC04NmU1LTAzYzM1NDVhMjliNiIsImFwcGlkYWNyIjoiMCIsImlkdHlwIjoidXNlciIsImlwYWRkciI6IjIwLjQwLjQ0LjE2OSIsIm5hbWUiOiJOaWtoaWwgQWRsYWtoYSIsIm9pZCI6IjkyZGFkNWQ3LTBmOTktNDkzOS05ZWM3LWQzMzFmNjZlYTdlNSIsInBsYXRmIjoiMTQiLCJwdWlkIjoiMTAwMzIwMDBFMjRFMzZGMCIsInJoIjoiMC5BQUFBVWxEQkVDWDRUa1ducHhMNkhLWDJpc1RnbjVzcFFvMUVodVVEdzFSYUtiWkFBUHcuIiwic2NwIjoiRGlyZWN0b3J5LkFjY2Vzc0FzVXNlci5BbGwgRGlyZWN0b3J5LlJlYWQuQWxsIERpcmVjdG9yeS5SZWFkV3JpdGUuQWxsIEdyb3VwLlJlYWQuQWxsIEdyb3VwLlJlYWRXcml0ZS5BbGwgTWVtYmVyLlJlYWQuSGlkZGVuIG9mZmxpbmVfYWNjZXNzIG9wZW5pZCBQb2xpY3kuUmVhZC5BbGwgVXNlci5SZWFkIFVzZXIuUmVhZC5BbGwgVXNlci5SZWFkQmFzaWMuQWxsIFVzZXIuUmVhZFdyaXRlIFVzZXIuUmVhZFdyaXRlLkFsbCIsInN1YiI6Ijg4dS1lWXFTcV8yYzlucE0tQVd4aEw3cVpIZGtxeG9vMlM3dWJxRHRMMGsiLCJ0ZW5hbnRfcmVnaW9uX3Njb3BlIjoiQVMiLCJ0aWQiOiIxMGMxNTA1Mi1mODI1LTQ1NGUtYTdhNy0xMmZhMWNhNWY2OGEiLCJ1bmlxdWVfbmFtZSI6Im5pa3M4YWRsYWtoYS5nbWFpbC5jb21AZWNtbmV4dGFkLm9ubWljcm9zb2Z0LmNvbSIsInVwbiI6Im5pa3M4YWRsYWtoYS5nbWFpbC5jb21AZWNtbmV4dGFkLm9ubWljcm9zb2Z0LmNvbSIsInV0aSI6ImtqWEtobjZxUms2R01ZSDVaWFIzQUEiLCJ2ZXIiOiIxLjAiLCJ3aWRzIjpbImI3OWZiZjRkLTNlZjktNDY4OS04MTQzLTc2YjE5NGU4NTUwOSJdLCJ4bXNfdGNkdCI6MTU5NDIwMzI4OX0.csJ6E1Ug3ZNe0vYYIYxB7O_COUNHI3OsyAMm0YM_lzH4wWIG-WqnY4cVOo9Mwu_tSnFq7E9_VRnFTff0P3Lr29nkl20Oh_7RrTx4FHdlK3m3O1W1W1HzoN90ckI7KxKPdO--8-Qi6ooK932c--lVs1r78Wo41NV-fxFSfpOWG63URwBVmzvV1ARwxS9hWNShYQeEjiW1m3EuqscbTbq5Rs8rp9BtYHOjNq5sJDhiaLVX459qOxQmJ_ZOY_ljGJfEn2uSUZoO8lB4YOekco7M46Ti28Hgnsyhseb7sk2u4i_k8y3WTbk2XWr7hSv8C2xOSFacyd9tufq-KqLTZcllKw",
+								"type": "text"
+							},
+							{
+								"key": "userId",
+								"value": "5f5b37f6d084390001d03283",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{LOCAL_URL}}/folders/5f5b45693d83840001b7bb96",
+							"host": [
+								"{{LOCAL_URL}}"
+							],
+							"path": [
+								"folders",
+								"5f5b45693d83840001b7bb96"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete a Folder: Folder Deleted - 5f5b45693d83840001b7bb96",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "org",
+										"value": "{{ORG}}",
+										"type": "text"
+									},
+									{
+										"key": "tenantId",
+										"value": "5f5b37f43cb41e00016f069d",
+										"type": "text"
+									},
+									{
+										"key": "accessToken",
+										"value": "eyJ0eXAiOiJKV1QiLCJub25jZSI6IjdWLTFoYS1JREUya3FUbFFxQ2p5bFlyRzVvQ0tPSDV1clN6YTRiQ1gwemciLCJhbGciOiJSUzI1NiIsIng1dCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyIsImtpZCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8xMGMxNTA1Mi1mODI1LTQ1NGUtYTdhNy0xMmZhMWNhNWY2OGEvIiwiaWF0IjoxNjAwNzg0Nzg1LCJuYmYiOjE2MDA3ODQ3ODUsImV4cCI6MTYwMDc4ODY4NSwiYWNjdCI6MCwiYWNyIjoiMSIsImFpbyI6IkFTUUEyLzhRQUFBQXJiTk5ZR1BGQk1MVmdGc1pmQlNpbzZQdEdSQ2doMit0cTkrUFJ1V20yT0E9IiwiYW1yIjpbInB3ZCJdLCJhcHBfZGlzcGxheW5hbWUiOiJFQ00gTmV4dEFEIDIiLCJhcHBpZCI6IjliOWZlMGM0LTQyMjktNDQ4ZC04NmU1LTAzYzM1NDVhMjliNiIsImFwcGlkYWNyIjoiMCIsImlkdHlwIjoidXNlciIsImlwYWRkciI6IjIwLjQwLjQ0LjE2OSIsIm5hbWUiOiJOaWtoaWwgQWRsYWtoYSIsIm9pZCI6IjkyZGFkNWQ3LTBmOTktNDkzOS05ZWM3LWQzMzFmNjZlYTdlNSIsInBsYXRmIjoiMTQiLCJwdWlkIjoiMTAwMzIwMDBFMjRFMzZGMCIsInJoIjoiMC5BQUFBVWxEQkVDWDRUa1ducHhMNkhLWDJpc1RnbjVzcFFvMUVodVVEdzFSYUtiWkFBUHcuIiwic2NwIjoiRGlyZWN0b3J5LkFjY2Vzc0FzVXNlci5BbGwgRGlyZWN0b3J5LlJlYWQuQWxsIERpcmVjdG9yeS5SZWFkV3JpdGUuQWxsIEdyb3VwLlJlYWQuQWxsIEdyb3VwLlJlYWRXcml0ZS5BbGwgTWVtYmVyLlJlYWQuSGlkZGVuIG9mZmxpbmVfYWNjZXNzIG9wZW5pZCBQb2xpY3kuUmVhZC5BbGwgVXNlci5SZWFkIFVzZXIuUmVhZC5BbGwgVXNlci5SZWFkQmFzaWMuQWxsIFVzZXIuUmVhZFdyaXRlIFVzZXIuUmVhZFdyaXRlLkFsbCIsInN1YiI6Ijg4dS1lWXFTcV8yYzlucE0tQVd4aEw3cVpIZGtxeG9vMlM3dWJxRHRMMGsiLCJ0ZW5hbnRfcmVnaW9uX3Njb3BlIjoiQVMiLCJ0aWQiOiIxMGMxNTA1Mi1mODI1LTQ1NGUtYTdhNy0xMmZhMWNhNWY2OGEiLCJ1bmlxdWVfbmFtZSI6Im5pa3M4YWRsYWtoYS5nbWFpbC5jb21AZWNtbmV4dGFkLm9ubWljcm9zb2Z0LmNvbSIsInVwbiI6Im5pa3M4YWRsYWtoYS5nbWFpbC5jb21AZWNtbmV4dGFkLm9ubWljcm9zb2Z0LmNvbSIsInV0aSI6ImtqWEtobjZxUms2R01ZSDVaWFIzQUEiLCJ2ZXIiOiIxLjAiLCJ3aWRzIjpbImI3OWZiZjRkLTNlZjktNDY4OS04MTQzLTc2YjE5NGU4NTUwOSJdLCJ4bXNfdGNkdCI6MTU5NDIwMzI4OX0.csJ6E1Ug3ZNe0vYYIYxB7O_COUNHI3OsyAMm0YM_lzH4wWIG-WqnY4cVOo9Mwu_tSnFq7E9_VRnFTff0P3Lr29nkl20Oh_7RrTx4FHdlK3m3O1W1W1HzoN90ckI7KxKPdO--8-Qi6ooK932c--lVs1r78Wo41NV-fxFSfpOWG63URwBVmzvV1ARwxS9hWNShYQeEjiW1m3EuqscbTbq5Rs8rp9BtYHOjNq5sJDhiaLVX459qOxQmJ_ZOY_ljGJfEn2uSUZoO8lB4YOekco7M46Ti28Hgnsyhseb7sk2u4i_k8y3WTbk2XWr7hSv8C2xOSFacyd9tufq-KqLTZcllKw",
+										"type": "text"
+									},
+									{
+										"key": "userId",
+										"value": "5f5b37f6d084390001d03283",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{LOCAL_URL}}/folders/5f5b45693d83840001b7bb96",
+									"host": [
+										"{{LOCAL_URL}}"
+									],
+									"path": [
+										"folders",
+										"5f5b45693d83840001b7bb96"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Sample",
+									"value": "7beae265-9da3-4944-b5e6-714c069f4366"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 22 Sep 2020 14:31:35 GMT"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"5f5b45693d83840001b7bb96\",\n    \"folderName\": \"M3\",\n    \"folderType\": \"folder\",\n    \"comments\": \"Folder\",\n    \"parentFolderId\": \"5f5b454e3d83840001b7bb93\",\n    \"ownerName\": \"Nikhil Adlakha\",\n    \"ownerId\": \"5f5b37f6d084390001d03283\",\n    \"tenantId\": \"5f5b37f43cb41e00016f069d\",\n    \"creationDateTime\": \"2020-09-11T09:37:45.517+0000\",\n    \"revisedDateTime\": \"2020-09-11T09:37:49.769+0000\",\n    \"accessDateTime\": \"2020-09-11T09:37:49.769+0000\",\n    \"usedFor\": \"general\",\n    \"version\": 1,\n    \"privilege\": \"INHERITED\",\n    \"inTrash\": false,\n    \"indexed\": true,\n    \"uploadIn\": \"Asset\",\n    \"folderNameLowerCase\": \"m3\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Search for Folders",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "org",
+								"value": "{{ORG}}",
+								"type": "text"
+							},
+							{
+								"key": "tenantId",
+								"value": "5f5b37f43cb41e00016f069d",
+								"type": "text"
+							},
+							{
+								"key": "accessToken",
+								"value": "eyJ0eXAiOiJKV1QiLCJub25jZSI6Im03X0tHQW43ekhoNzA5U09lMXZuQnhqM0lEa1YwSVItSHMtZEs5UEl1ZW8iLCJhbGciOiJSUzI1NiIsIng1dCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyIsImtpZCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8xMGMxNTA1Mi1mODI1LTQ1NGUtYTdhNy0xMmZhMWNhNWY2OGEvIiwiaWF0IjoxNjAwNzgzNDQzLCJuYmYiOjE2MDA3ODM0NDMsImV4cCI6MTYwMDc4NzM0MywiYWNjdCI6MCwiYWNyIjoiMSIsImFpbyI6IkUyQmdZUGg3UDdRL3BYTzd2Mzh2MDFNbW03YVE1RlRsWndrZVczd2owbjhzVmZtcmZoSUEiLCJhbXIiOlsicHdkIl0sImFwcF9kaXNwbGF5bmFtZSI6IkVDTSBOZXh0QUQgMiIsImFwcGlkIjoiOWI5ZmUwYzQtNDIyOS00NDhkLTg2ZTUtMDNjMzU0NWEyOWI2IiwiYXBwaWRhY3IiOiIwIiwiaWR0eXAiOiJ1c2VyIiwiaXBhZGRyIjoiMjAuNDAuNDQuMTY5IiwibmFtZSI6Ik5pa2hpbCBBZGxha2hhIiwib2lkIjoiOTJkYWQ1ZDctMGY5OS00OTM5LTllYzctZDMzMWY2NmVhN2U1IiwicGxhdGYiOiIxNCIsInB1aWQiOiIxMDAzMjAwMEUyNEUzNkYwIiwicmgiOiIwLkFBQUFVbERCRUNYNFRrV25weEw2SEtYMmlzVGduNXNwUW8xRWh1VUR3MVJhS2JaQUFQdy4iLCJzY3AiOiJEaXJlY3RvcnkuQWNjZXNzQXNVc2VyLkFsbCBEaXJlY3RvcnkuUmVhZC5BbGwgRGlyZWN0b3J5LlJlYWRXcml0ZS5BbGwgR3JvdXAuUmVhZC5BbGwgR3JvdXAuUmVhZFdyaXRlLkFsbCBNZW1iZXIuUmVhZC5IaWRkZW4gb2ZmbGluZV9hY2Nlc3Mgb3BlbmlkIFBvbGljeS5SZWFkLkFsbCBVc2VyLlJlYWQgVXNlci5SZWFkLkFsbCBVc2VyLlJlYWRCYXNpYy5BbGwgVXNlci5SZWFkV3JpdGUgVXNlci5SZWFkV3JpdGUuQWxsIiwic3ViIjoiODh1LWVZcVNxXzJjOW5wTS1BV3hoTDdxWkhka3F4b28yUzd1YnFEdEwwayIsInRlbmFudF9yZWdpb25fc2NvcGUiOiJBUyIsInRpZCI6IjEwYzE1MDUyLWY4MjUtNDU0ZS1hN2E3LTEyZmExY2E1ZjY4YSIsInVuaXF1ZV9uYW1lIjoibmlrczhhZGxha2hhLmdtYWlsLmNvbUBlY21uZXh0YWQub25taWNyb3NvZnQuY29tIiwidXBuIjoibmlrczhhZGxha2hhLmdtYWlsLmNvbUBlY21uZXh0YWQub25taWNyb3NvZnQuY29tIiwidXRpIjoic2d1ZFliZjN2VUNvRDNoOHpGUmpBQSIsInZlciI6IjEuMCIsIndpZHMiOlsiYjc5ZmJmNGQtM2VmOS00Njg5LTgxNDMtNzZiMTk0ZTg1NTA5Il0sInhtc190Y2R0IjoxNTk0MjAzMjg5fQ.WMcNo_GeSct3yt9BMTdWR7Kk8eymyRFoOxU-rbCabriqrLj2C4Yzj9jDHP3ux50wUmyPmdQrPQsUctc2iWEcYEfcYrw4NS7_JkbaJEsglzB7zNf7Qm_rrQgiUMuOVwSZLu_PsK4fwLpmWu5DKZhj_W3CnuG1OzbkgamRNAzlmym_VqeyGQU1-2xVuI1dnTsDmw-E0ojqz8_ovGaNr8AXn4MYupuf697dxHfutaZlrIkt6d6HNpik5L0kVkFjIdqcGM_19eHjXv78cEOdyBKV2ukHGS-dANpcO_zWcaPSJPsTevoTWsy36kN6NG5VhJggpwNN4Qd2IZXsJL0cgucdBg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{LOCAL_URL}}/folders",
+							"host": [
+								"{{LOCAL_URL}}"
+							],
+							"path": [
+								"folders"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Search for Folders: List of all Folders",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "org",
+										"value": "{{ORG}}",
+										"type": "text"
+									},
+									{
+										"key": "tenantId",
+										"value": "5f5b37f43cb41e00016f069d",
+										"type": "text"
+									},
+									{
+										"key": "userId",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "accessToken",
+										"value": "eyJ0eXAiOiJKV1QiLCJub25jZSI6Im03X0tHQW43ekhoNzA5U09lMXZuQnhqM0lEa1YwSVItSHMtZEs5UEl1ZW8iLCJhbGciOiJSUzI1NiIsIng1dCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyIsImtpZCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8xMGMxNTA1Mi1mODI1LTQ1NGUtYTdhNy0xMmZhMWNhNWY2OGEvIiwiaWF0IjoxNjAwNzgzNDQzLCJuYmYiOjE2MDA3ODM0NDMsImV4cCI6MTYwMDc4NzM0MywiYWNjdCI6MCwiYWNyIjoiMSIsImFpbyI6IkUyQmdZUGg3UDdRL3BYTzd2Mzh2MDFNbW03YVE1RlRsWndrZVczd2owbjhzVmZtcmZoSUEiLCJhbXIiOlsicHdkIl0sImFwcF9kaXNwbGF5bmFtZSI6IkVDTSBOZXh0QUQgMiIsImFwcGlkIjoiOWI5ZmUwYzQtNDIyOS00NDhkLTg2ZTUtMDNjMzU0NWEyOWI2IiwiYXBwaWRhY3IiOiIwIiwiaWR0eXAiOiJ1c2VyIiwiaXBhZGRyIjoiMjAuNDAuNDQuMTY5IiwibmFtZSI6Ik5pa2hpbCBBZGxha2hhIiwib2lkIjoiOTJkYWQ1ZDctMGY5OS00OTM5LTllYzctZDMzMWY2NmVhN2U1IiwicGxhdGYiOiIxNCIsInB1aWQiOiIxMDAzMjAwMEUyNEUzNkYwIiwicmgiOiIwLkFBQUFVbERCRUNYNFRrV25weEw2SEtYMmlzVGduNXNwUW8xRWh1VUR3MVJhS2JaQUFQdy4iLCJzY3AiOiJEaXJlY3RvcnkuQWNjZXNzQXNVc2VyLkFsbCBEaXJlY3RvcnkuUmVhZC5BbGwgRGlyZWN0b3J5LlJlYWRXcml0ZS5BbGwgR3JvdXAuUmVhZC5BbGwgR3JvdXAuUmVhZFdyaXRlLkFsbCBNZW1iZXIuUmVhZC5IaWRkZW4gb2ZmbGluZV9hY2Nlc3Mgb3BlbmlkIFBvbGljeS5SZWFkLkFsbCBVc2VyLlJlYWQgVXNlci5SZWFkLkFsbCBVc2VyLlJlYWRCYXNpYy5BbGwgVXNlci5SZWFkV3JpdGUgVXNlci5SZWFkV3JpdGUuQWxsIiwic3ViIjoiODh1LWVZcVNxXzJjOW5wTS1BV3hoTDdxWkhka3F4b28yUzd1YnFEdEwwayIsInRlbmFudF9yZWdpb25fc2NvcGUiOiJBUyIsInRpZCI6IjEwYzE1MDUyLWY4MjUtNDU0ZS1hN2E3LTEyZmExY2E1ZjY4YSIsInVuaXF1ZV9uYW1lIjoibmlrczhhZGxha2hhLmdtYWlsLmNvbUBlY21uZXh0YWQub25taWNyb3NvZnQuY29tIiwidXBuIjoibmlrczhhZGxha2hhLmdtYWlsLmNvbUBlY21uZXh0YWQub25taWNyb3NvZnQuY29tIiwidXRpIjoic2d1ZFliZjN2VUNvRDNoOHpGUmpBQSIsInZlciI6IjEuMCIsIndpZHMiOlsiYjc5ZmJmNGQtM2VmOS00Njg5LTgxNDMtNzZiMTk0ZTg1NTA5Il0sInhtc190Y2R0IjoxNTk0MjAzMjg5fQ.WMcNo_GeSct3yt9BMTdWR7Kk8eymyRFoOxU-rbCabriqrLj2C4Yzj9jDHP3ux50wUmyPmdQrPQsUctc2iWEcYEfcYrw4NS7_JkbaJEsglzB7zNf7Qm_rrQgiUMuOVwSZLu_PsK4fwLpmWu5DKZhj_W3CnuG1OzbkgamRNAzlmym_VqeyGQU1-2xVuI1dnTsDmw-E0ojqz8_ovGaNr8AXn4MYupuf697dxHfutaZlrIkt6d6HNpik5L0kVkFjIdqcGM_19eHjXv78cEOdyBKV2ukHGS-dANpcO_zWcaPSJPsTevoTWsy36kN6NG5VhJggpwNN4Qd2IZXsJL0cgucdBg",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{LOCAL_URL}}/folders",
+									"host": [
+										"{{LOCAL_URL}}"
+									],
+									"path": [
+										"folders"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Sample",
+									"value": "9894df57-3d60-47d8-b09c-dca8d2c69ef0"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 22 Sep 2020 14:13:48 GMT"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"5f5b39e63d83840001b7bb91\",\n        \"folderName\": \"TenantAssetFolder\",\n        \"folderType\": \"folder\",\n        \"comments\": \"System Folder - Tenant Asset Folder\",\n        \"parentFolderId\": \"5f5b39e6f26ac40001e94dd5\",\n        \"ownerName\": \"System\",\n        \"ownerId\": \"System\",\n        \"tenantId\": \"5f5b37f43cb41e00016f069d\",\n        \"creationDateTime\": \"2020-09-11T08:48:38.928+0000\",\n        \"revisedDateTime\": \"2020-09-11T08:48:38.928+0000\",\n        \"usedFor\": \"general\",\n        \"version\": 0,\n        \"privilege\": \"INHERITED\",\n        \"inTrash\": false,\n        \"indexed\": false,\n        \"folderNameLowerCase\": \"tenantassetfolder\"\n    },\n    {\n        \"id\": \"5f5b454e3d83840001b7bb93\",\n        \"folderName\": \"Main\",\n        \"folderType\": \"folder\",\n        \"comments\": \"Folder\",\n        \"parentFolderId\": \"5f5b39e63d83840001b7bb91\",\n        \"ownerName\": \"Nikhil Adlakha\",\n        \"ownerId\": \"5f5b37f6d084390001d03283\",\n        \"tenantId\": \"5f5b37f43cb41e00016f069d\",\n        \"creationDateTime\": \"2020-09-11T09:37:18.100+0000\",\n        \"revisedDateTime\": \"2020-09-15T14:15:30.187+0000\",\n        \"accessDateTime\": \"2020-09-15T14:15:30.187+0000\",\n        \"usedFor\": \"general\",\n        \"version\": 2,\n        \"privilege\": \"INHERITED\",\n        \"inTrash\": false,\n        \"indexed\": true,\n        \"uploadIn\": \"Asset\",\n        \"folderNameLowerCase\": \"main\"\n    },\n    {\n        \"id\": \"5f5b455c3d83840001b7bb94\",\n        \"folderName\": \"M1\",\n        \"folderType\": \"folder\",\n        \"comments\": \"Folder\",\n        \"parentFolderId\": \"5f5b454e3d83840001b7bb93\",\n        \"ownerName\": \"Nikhil Adlakha\",\n        \"ownerId\": \"5f5b37f6d084390001d03283\",\n        \"tenantId\": \"5f5b37f43cb41e00016f069d\",\n        \"creationDateTime\": \"2020-09-11T09:37:32.138+0000\",\n        \"revisedDateTime\": \"2020-09-11T09:37:38.273+0000\",\n        \"accessDateTime\": \"2020-09-11T09:37:38.273+0000\",\n        \"usedFor\": \"general\",\n        \"version\": 1,\n        \"privilege\": \"INHERITED\",\n        \"inTrash\": false,\n        \"indexed\": true,\n        \"uploadIn\": \"Asset\",\n        \"folderNameLowerCase\": \"m1\"\n    },\n    {\n        \"id\": \"5f5b45653d83840001b7bb95\",\n        \"folderName\": \"M2\",\n        \"folderType\": \"folder\",\n        \"comments\": \"Folder\",\n        \"parentFolderId\": \"5f5b454e3d83840001b7bb93\",\n        \"ownerName\": \"Nikhil Adlakha\",\n        \"ownerId\": \"5f5b37f6d084390001d03283\",\n        \"tenantId\": \"5f5b37f43cb41e00016f069d\",\n        \"creationDateTime\": \"2020-09-11T09:37:41.247+0000\",\n        \"revisedDateTime\": \"2020-09-11T09:37:43.862+0000\",\n        \"accessDateTime\": \"2020-09-11T09:37:43.862+0000\",\n        \"usedFor\": \"general\",\n        \"version\": 1,\n        \"privilege\": \"INHERITED\",\n        \"inTrash\": false,\n        \"indexed\": true,\n        \"uploadIn\": \"Asset\",\n        \"folderNameLowerCase\": \"m2\"\n    },\n    {\n        \"id\": \"5f5b45693d83840001b7bb96\",\n        \"folderName\": \"M3\",\n        \"folderType\": \"folder\",\n        \"comments\": \"Folder\",\n        \"parentFolderId\": \"5f5b454e3d83840001b7bb93\",\n        \"ownerName\": \"Nikhil Adlakha\",\n        \"ownerId\": \"5f5b37f6d084390001d03283\",\n        \"tenantId\": \"5f5b37f43cb41e00016f069d\",\n        \"creationDateTime\": \"2020-09-11T09:37:45.517+0000\",\n        \"revisedDateTime\": \"2020-09-11T09:37:49.769+0000\",\n        \"accessDateTime\": \"2020-09-11T09:37:49.769+0000\",\n        \"usedFor\": \"general\",\n        \"version\": 1,\n        \"privilege\": \"INHERITED\",\n        \"inTrash\": false,\n        \"indexed\": true,\n        \"uploadIn\": \"Asset\",\n        \"folderNameLowerCase\": \"m3\"\n    },\n    {\n        \"id\": \"5f5b45703d83840001b7bb97\",\n        \"folderName\": \"M4\",\n        \"folderType\": \"folder\",\n        \"comments\": \"Folder\",\n        \"parentFolderId\": \"5f5b454e3d83840001b7bb93\",\n        \"ownerName\": \"Nikhil Adlakha\",\n        \"ownerId\": \"5f5b37f6d084390001d03283\",\n        \"tenantId\": \"5f5b37f43cb41e00016f069d\",\n        \"creationDateTime\": \"2020-09-11T09:37:52.586+0000\",\n        \"revisedDateTime\": \"2020-09-11T09:37:56.140+0000\",\n        \"accessDateTime\": \"2020-09-11T09:37:56.140+0000\",\n        \"usedFor\": \"general\",\n        \"version\": 1,\n        \"privilege\": \"INHERITED\",\n        \"inTrash\": false,\n        \"indexed\": true,\n        \"uploadIn\": \"Asset\",\n        \"folderNameLowerCase\": \"m4\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Update a Folder",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "org",
+								"value": "{{ORG}}",
+								"type": "text"
+							},
+							{
+								"key": "tenantId",
+								"value": "5f5b37f43cb41e00016f069d",
+								"type": "text"
+							},
+							{
+								"key": "accessToken",
+								"value": "eyJ0eXAiOiJKV1QiLCJub25jZSI6IjdWLTFoYS1JREUya3FUbFFxQ2p5bFlyRzVvQ0tPSDV1clN6YTRiQ1gwemciLCJhbGciOiJSUzI1NiIsIng1dCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyIsImtpZCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8xMGMxNTA1Mi1mODI1LTQ1NGUtYTdhNy0xMmZhMWNhNWY2OGEvIiwiaWF0IjoxNjAwNzg0Nzg1LCJuYmYiOjE2MDA3ODQ3ODUsImV4cCI6MTYwMDc4ODY4NSwiYWNjdCI6MCwiYWNyIjoiMSIsImFpbyI6IkFTUUEyLzhRQUFBQXJiTk5ZR1BGQk1MVmdGc1pmQlNpbzZQdEdSQ2doMit0cTkrUFJ1V20yT0E9IiwiYW1yIjpbInB3ZCJdLCJhcHBfZGlzcGxheW5hbWUiOiJFQ00gTmV4dEFEIDIiLCJhcHBpZCI6IjliOWZlMGM0LTQyMjktNDQ4ZC04NmU1LTAzYzM1NDVhMjliNiIsImFwcGlkYWNyIjoiMCIsImlkdHlwIjoidXNlciIsImlwYWRkciI6IjIwLjQwLjQ0LjE2OSIsIm5hbWUiOiJOaWtoaWwgQWRsYWtoYSIsIm9pZCI6IjkyZGFkNWQ3LTBmOTktNDkzOS05ZWM3LWQzMzFmNjZlYTdlNSIsInBsYXRmIjoiMTQiLCJwdWlkIjoiMTAwMzIwMDBFMjRFMzZGMCIsInJoIjoiMC5BQUFBVWxEQkVDWDRUa1ducHhMNkhLWDJpc1RnbjVzcFFvMUVodVVEdzFSYUtiWkFBUHcuIiwic2NwIjoiRGlyZWN0b3J5LkFjY2Vzc0FzVXNlci5BbGwgRGlyZWN0b3J5LlJlYWQuQWxsIERpcmVjdG9yeS5SZWFkV3JpdGUuQWxsIEdyb3VwLlJlYWQuQWxsIEdyb3VwLlJlYWRXcml0ZS5BbGwgTWVtYmVyLlJlYWQuSGlkZGVuIG9mZmxpbmVfYWNjZXNzIG9wZW5pZCBQb2xpY3kuUmVhZC5BbGwgVXNlci5SZWFkIFVzZXIuUmVhZC5BbGwgVXNlci5SZWFkQmFzaWMuQWxsIFVzZXIuUmVhZFdyaXRlIFVzZXIuUmVhZFdyaXRlLkFsbCIsInN1YiI6Ijg4dS1lWXFTcV8yYzlucE0tQVd4aEw3cVpIZGtxeG9vMlM3dWJxRHRMMGsiLCJ0ZW5hbnRfcmVnaW9uX3Njb3BlIjoiQVMiLCJ0aWQiOiIxMGMxNTA1Mi1mODI1LTQ1NGUtYTdhNy0xMmZhMWNhNWY2OGEiLCJ1bmlxdWVfbmFtZSI6Im5pa3M4YWRsYWtoYS5nbWFpbC5jb21AZWNtbmV4dGFkLm9ubWljcm9zb2Z0LmNvbSIsInVwbiI6Im5pa3M4YWRsYWtoYS5nbWFpbC5jb21AZWNtbmV4dGFkLm9ubWljcm9zb2Z0LmNvbSIsInV0aSI6ImtqWEtobjZxUms2R01ZSDVaWFIzQUEiLCJ2ZXIiOiIxLjAiLCJ3aWRzIjpbImI3OWZiZjRkLTNlZjktNDY4OS04MTQzLTc2YjE5NGU4NTUwOSJdLCJ4bXNfdGNkdCI6MTU5NDIwMzI4OX0.csJ6E1Ug3ZNe0vYYIYxB7O_COUNHI3OsyAMm0YM_lzH4wWIG-WqnY4cVOo9Mwu_tSnFq7E9_VRnFTff0P3Lr29nkl20Oh_7RrTx4FHdlK3m3O1W1W1HzoN90ckI7KxKPdO--8-Qi6ooK932c--lVs1r78Wo41NV-fxFSfpOWG63URwBVmzvV1ARwxS9hWNShYQeEjiW1m3EuqscbTbq5Rs8rp9BtYHOjNq5sJDhiaLVX459qOxQmJ_ZOY_ljGJfEn2uSUZoO8lB4YOekco7M46Ti28Hgnsyhseb7sk2u4i_k8y3WTbk2XWr7hSv8C2xOSFacyd9tufq-KqLTZcllKw",
+								"type": "text"
+							},
+							{
+								"key": "userId",
+								"value": "5f5b37f6d084390001d03283",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{  \r\n\r\n  \"folderName\": \"Main - Niks Folder\"\r\n\r\n}  ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LOCAL_URL}}/folders/5f5b45703d83840001b7bb97",
+							"host": [
+								"{{LOCAL_URL}}"
+							],
+							"path": [
+								"folders",
+								"5f5b45703d83840001b7bb97"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update a Folder: Updating Folder Name",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "org",
+										"value": "{{ORG}}",
+										"type": "text"
+									},
+									{
+										"key": "tenantId",
+										"value": "5f5b37f43cb41e00016f069d",
+										"type": "text"
+									},
+									{
+										"key": "accessToken",
+										"value": "eyJ0eXAiOiJKV1QiLCJub25jZSI6IjdWLTFoYS1JREUya3FUbFFxQ2p5bFlyRzVvQ0tPSDV1clN6YTRiQ1gwemciLCJhbGciOiJSUzI1NiIsIng1dCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyIsImtpZCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8xMGMxNTA1Mi1mODI1LTQ1NGUtYTdhNy0xMmZhMWNhNWY2OGEvIiwiaWF0IjoxNjAwNzg0Nzg1LCJuYmYiOjE2MDA3ODQ3ODUsImV4cCI6MTYwMDc4ODY4NSwiYWNjdCI6MCwiYWNyIjoiMSIsImFpbyI6IkFTUUEyLzhRQUFBQXJiTk5ZR1BGQk1MVmdGc1pmQlNpbzZQdEdSQ2doMit0cTkrUFJ1V20yT0E9IiwiYW1yIjpbInB3ZCJdLCJhcHBfZGlzcGxheW5hbWUiOiJFQ00gTmV4dEFEIDIiLCJhcHBpZCI6IjliOWZlMGM0LTQyMjktNDQ4ZC04NmU1LTAzYzM1NDVhMjliNiIsImFwcGlkYWNyIjoiMCIsImlkdHlwIjoidXNlciIsImlwYWRkciI6IjIwLjQwLjQ0LjE2OSIsIm5hbWUiOiJOaWtoaWwgQWRsYWtoYSIsIm9pZCI6IjkyZGFkNWQ3LTBmOTktNDkzOS05ZWM3LWQzMzFmNjZlYTdlNSIsInBsYXRmIjoiMTQiLCJwdWlkIjoiMTAwMzIwMDBFMjRFMzZGMCIsInJoIjoiMC5BQUFBVWxEQkVDWDRUa1ducHhMNkhLWDJpc1RnbjVzcFFvMUVodVVEdzFSYUtiWkFBUHcuIiwic2NwIjoiRGlyZWN0b3J5LkFjY2Vzc0FzVXNlci5BbGwgRGlyZWN0b3J5LlJlYWQuQWxsIERpcmVjdG9yeS5SZWFkV3JpdGUuQWxsIEdyb3VwLlJlYWQuQWxsIEdyb3VwLlJlYWRXcml0ZS5BbGwgTWVtYmVyLlJlYWQuSGlkZGVuIG9mZmxpbmVfYWNjZXNzIG9wZW5pZCBQb2xpY3kuUmVhZC5BbGwgVXNlci5SZWFkIFVzZXIuUmVhZC5BbGwgVXNlci5SZWFkQmFzaWMuQWxsIFVzZXIuUmVhZFdyaXRlIFVzZXIuUmVhZFdyaXRlLkFsbCIsInN1YiI6Ijg4dS1lWXFTcV8yYzlucE0tQVd4aEw3cVpIZGtxeG9vMlM3dWJxRHRMMGsiLCJ0ZW5hbnRfcmVnaW9uX3Njb3BlIjoiQVMiLCJ0aWQiOiIxMGMxNTA1Mi1mODI1LTQ1NGUtYTdhNy0xMmZhMWNhNWY2OGEiLCJ1bmlxdWVfbmFtZSI6Im5pa3M4YWRsYWtoYS5nbWFpbC5jb21AZWNtbmV4dGFkLm9ubWljcm9zb2Z0LmNvbSIsInVwbiI6Im5pa3M4YWRsYWtoYS5nbWFpbC5jb21AZWNtbmV4dGFkLm9ubWljcm9zb2Z0LmNvbSIsInV0aSI6ImtqWEtobjZxUms2R01ZSDVaWFIzQUEiLCJ2ZXIiOiIxLjAiLCJ3aWRzIjpbImI3OWZiZjRkLTNlZjktNDY4OS04MTQzLTc2YjE5NGU4NTUwOSJdLCJ4bXNfdGNkdCI6MTU5NDIwMzI4OX0.csJ6E1Ug3ZNe0vYYIYxB7O_COUNHI3OsyAMm0YM_lzH4wWIG-WqnY4cVOo9Mwu_tSnFq7E9_VRnFTff0P3Lr29nkl20Oh_7RrTx4FHdlK3m3O1W1W1HzoN90ckI7KxKPdO--8-Qi6ooK932c--lVs1r78Wo41NV-fxFSfpOWG63URwBVmzvV1ARwxS9hWNShYQeEjiW1m3EuqscbTbq5Rs8rp9BtYHOjNq5sJDhiaLVX459qOxQmJ_ZOY_ljGJfEn2uSUZoO8lB4YOekco7M46Ti28Hgnsyhseb7sk2u4i_k8y3WTbk2XWr7hSv8C2xOSFacyd9tufq-KqLTZcllKw",
+										"type": "text"
+									},
+									{
+										"key": "userId",
+										"value": "5f5b37f6d084390001d03283",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{  \r\n\r\n  \"folderName\": \"Main - Niks Folder\"\r\n\r\n}  ",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{LOCAL_URL}}/folders/5f5b45703d83840001b7bb97",
+									"host": [
+										"{{LOCAL_URL}}"
+									],
+									"path": [
+										"folders",
+										"5f5b45703d83840001b7bb97"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Sample",
+									"value": "a7a19207-ad27-486b-b6b0-ccd9f4a11f05"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 22 Sep 2020 14:38:01 GMT"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"type\": \"FOLDER\",\n    \"folderName\": \"Main - Niks Folder\",\n    \"folderType\": \"cabinet\",\n    \"comments\": null,\n    \"parentFolderId\": \"5f5b454e3d83840001b7bb93\",\n    \"ownerName\": \"Nikhil Adlakha\",\n    \"ownerId\": \"5f5b37f6d084390001d03283\",\n    \"usedFor\": \"general\",\n    \"metadata\": null\n}"
+						}
+					]
+				}
+			],
+			"description": "This folder contains all the service tests for ECM Next Folder services APIs",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "15ac7818-dfc3-45c6-8d17-0d3ff21a5d5d",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "b77a69b0-8383-4683-aadb-467c73fde246",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Content Service",
+			"item": [
+				{
+					"name": "Create Content",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "org",
+								"value": "{{ORG}}",
+								"type": "text"
+							},
+							{
+								"key": "tenantId",
+								"value": "{{tenantId}}",
+								"type": "text"
+							},
+							{
+								"key": "userId",
+								"value": "{{userId}}",
+								"type": "text"
+							},
+							{
+								"key": "accessToken",
+								"value": "eyJ0eXAiOiJKV1QiLCJub25jZSI6IktJeTNhSEwwMEFGM1VGUzdnamRJdG1SLVdwd1RxQXR5WG83Wkxtdl9vQTAiLCJhbGciOiJSUzI1NiIsIng1dCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyIsImtpZCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8xMGMxNTA1Mi1mODI1LTQ1NGUtYTdhNy0xMmZhMWNhNWY2OGEvIiwiaWF0IjoxNjAwNzkxMjg2LCJuYmYiOjE2MDA3OTEyODYsImV4cCI6MTYwMDc5NTE4NiwiYWNjdCI6MCwiYWNyIjoiMSIsImFpbyI6IkUyQmdZQ2licUphZTdzZDR0T0c1a2V6WlB3VVREbGZJaS8zTHFGMGd1RVptSWtmUHEyd0EiLCJhbXIiOlsicHdkIl0sImFwcF9kaXNwbGF5bmFtZSI6IkVDTSBOZXh0QUQgMiIsImFwcGlkIjoiOWI5ZmUwYzQtNDIyOS00NDhkLTg2ZTUtMDNjMzU0NWEyOWI2IiwiYXBwaWRhY3IiOiIwIiwiaWR0eXAiOiJ1c2VyIiwiaXBhZGRyIjoiMjAuNDAuNDQuMTY5IiwibmFtZSI6Ik5pa2hpbCBBZGxha2hhIiwib2lkIjoiOTJkYWQ1ZDctMGY5OS00OTM5LTllYzctZDMzMWY2NmVhN2U1IiwicGxhdGYiOiIxNCIsInB1aWQiOiIxMDAzMjAwMEUyNEUzNkYwIiwicmgiOiIwLkFBQUFVbERCRUNYNFRrV25weEw2SEtYMmlzVGduNXNwUW8xRWh1VUR3MVJhS2JaQUFQdy4iLCJzY3AiOiJEaXJlY3RvcnkuQWNjZXNzQXNVc2VyLkFsbCBEaXJlY3RvcnkuUmVhZC5BbGwgRGlyZWN0b3J5LlJlYWRXcml0ZS5BbGwgR3JvdXAuUmVhZC5BbGwgR3JvdXAuUmVhZFdyaXRlLkFsbCBNZW1iZXIuUmVhZC5IaWRkZW4gb2ZmbGluZV9hY2Nlc3Mgb3BlbmlkIFBvbGljeS5SZWFkLkFsbCBVc2VyLlJlYWQgVXNlci5SZWFkLkFsbCBVc2VyLlJlYWRCYXNpYy5BbGwgVXNlci5SZWFkV3JpdGUgVXNlci5SZWFkV3JpdGUuQWxsIiwic3ViIjoiODh1LWVZcVNxXzJjOW5wTS1BV3hoTDdxWkhka3F4b28yUzd1YnFEdEwwayIsInRlbmFudF9yZWdpb25fc2NvcGUiOiJBUyIsInRpZCI6IjEwYzE1MDUyLWY4MjUtNDU0ZS1hN2E3LTEyZmExY2E1ZjY4YSIsInVuaXF1ZV9uYW1lIjoibmlrczhhZGxha2hhLmdtYWlsLmNvbUBlY21uZXh0YWQub25taWNyb3NvZnQuY29tIiwidXBuIjoibmlrczhhZGxha2hhLmdtYWlsLmNvbUBlY21uZXh0YWQub25taWNyb3NvZnQuY29tIiwidXRpIjoiUnhNd0NRYjR3MGU4UExGOVZzTllBUSIsInZlciI6IjEuMCIsIndpZHMiOlsiYjc5ZmJmNGQtM2VmOS00Njg5LTgxNDMtNzZiMTk0ZTg1NTA5Il0sInhtc190Y2R0IjoxNTk0MjAzMjg5fQ.u_5Bz6v2_aaqUVmYr03nT1SNvv73oRb9Azjkwo3tsQ1fufQCamNb1cRxdK1XFjiWYLR9uQ2rHhTg4N0ojW4n_MZpf7g61VtwZ5OKHgmFm_1-Ji1xanhmlZIxH2RIWL_rvM3Ejc3WAa-9WK50W2VH-wJktiqRkxkZrchDOsM8whX6WzB4ytcDfoW0Uggigv3SDYntgDXl1xUN6e_-O4opowX_baWfhpcpwEmCzx3OWKV2nn-2Fhp6_-mwWrB5L_9qDyc_pJb11TW1ebSqfxgIC2v-hnZWL-Bsr2P0T4viCW8k--b1adAzk8InkMGwA_hf6G3a5iACHII4L1lox2lFGQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "DocumentA ",
+									"type": "text"
+								},
+								{
+									"key": "contentType",
+									"value": "image",
+									"type": "text"
+								},
+								{
+									"key": "comments",
+									"value": "test comments ",
+									"type": "text"
+								},
+								{
+									"key": "parentFolderId",
+									"value": " 5f5b45653d83840001b7bb95",
+									"type": "text"
+								},
+								{
+									"key": "ownerName",
+									"value": "Nikhil Adlakha",
+									"type": "text"
+								},
+								{
+									"key": "ownerId",
+									"value": " 5f5b37f6d084390001d03283",
+									"type": "text"
+								},
+								{
+									"key": "noOfPages",
+									"value": "2 ",
+									"type": "text"
+								},
+								{
+									"key": "documentSize",
+									"value": "1212345 ",
+									"type": "text"
+								},
+								{
+									"key": "documentType",
+									"value": "png ",
+									"type": "text"
+								},
+								{
+									"key": "storageCredentialId",
+									"value": " 5f5b39e6859325000146b99f",
+									"type": "text"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LOCAL_URL}}/contents",
+							"host": [
+								"{{LOCAL_URL}}"
+							],
+							"path": [
+								"contents"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Content: Created a content",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "org",
+										"value": "{{ORG}}",
+										"type": "text"
+									},
+									{
+										"key": "tenantId",
+										"value": "{{tenantId}}",
+										"type": "text"
+									},
+									{
+										"key": "userId",
+										"value": "{{userId}}",
+										"type": "text"
+									},
+									{
+										"key": "accessToken",
+										"value": "eyJ0eXAiOiJKV1QiLCJub25jZSI6Im1BSUNkQ29YUWttcGYxZE1qdmxnakk1RG1iOXhnSFBrTTg0bnlVeEdpWXMiLCJhbGciOiJSUzI1NiIsIng1dCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyIsImtpZCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8xMGMxNTA1Mi1mODI1LTQ1NGUtYTdhNy0xMmZhMWNhNWY2OGEvIiwiaWF0IjoxNjAwNzg4Mjg2LCJuYmYiOjE2MDA3ODgyODYsImV4cCI6MTYwMDc5MjE4NiwiYWNjdCI6MCwiYWNyIjoiMSIsImFpbyI6IkUyQmdZRGcveVp1aDk4U3hpcGk0OHBQSGpySWtMbFZSaXIvb1YyMTcxUGhBYzQvZnpUVUEiLCJhbXIiOlsicHdkIl0sImFwcF9kaXNwbGF5bmFtZSI6IkVDTSBOZXh0QUQgMiIsImFwcGlkIjoiOWI5ZmUwYzQtNDIyOS00NDhkLTg2ZTUtMDNjMzU0NWEyOWI2IiwiYXBwaWRhY3IiOiIwIiwiaWR0eXAiOiJ1c2VyIiwiaXBhZGRyIjoiMjAuNDAuNDQuMTY5IiwibmFtZSI6Ik5pa2hpbCBBZGxha2hhIiwib2lkIjoiOTJkYWQ1ZDctMGY5OS00OTM5LTllYzctZDMzMWY2NmVhN2U1IiwicGxhdGYiOiIxNCIsInB1aWQiOiIxMDAzMjAwMEUyNEUzNkYwIiwicmgiOiIwLkFBQUFVbERCRUNYNFRrV25weEw2SEtYMmlzVGduNXNwUW8xRWh1VUR3MVJhS2JaQUFQdy4iLCJzY3AiOiJEaXJlY3RvcnkuQWNjZXNzQXNVc2VyLkFsbCBEaXJlY3RvcnkuUmVhZC5BbGwgRGlyZWN0b3J5LlJlYWRXcml0ZS5BbGwgR3JvdXAuUmVhZC5BbGwgR3JvdXAuUmVhZFdyaXRlLkFsbCBNZW1iZXIuUmVhZC5IaWRkZW4gb2ZmbGluZV9hY2Nlc3Mgb3BlbmlkIFBvbGljeS5SZWFkLkFsbCBVc2VyLlJlYWQgVXNlci5SZWFkLkFsbCBVc2VyLlJlYWRCYXNpYy5BbGwgVXNlci5SZWFkV3JpdGUgVXNlci5SZWFkV3JpdGUuQWxsIiwic3ViIjoiODh1LWVZcVNxXzJjOW5wTS1BV3hoTDdxWkhka3F4b28yUzd1YnFEdEwwayIsInRlbmFudF9yZWdpb25fc2NvcGUiOiJBUyIsInRpZCI6IjEwYzE1MDUyLWY4MjUtNDU0ZS1hN2E3LTEyZmExY2E1ZjY4YSIsInVuaXF1ZV9uYW1lIjoibmlrczhhZGxha2hhLmdtYWlsLmNvbUBlY21uZXh0YWQub25taWNyb3NvZnQuY29tIiwidXBuIjoibmlrczhhZGxha2hhLmdtYWlsLmNvbUBlY21uZXh0YWQub25taWNyb3NvZnQuY29tIiwidXRpIjoiSTdCdzhWMnpOa3lBdDNmTmRPSmlBQSIsInZlciI6IjEuMCIsIndpZHMiOlsiYjc5ZmJmNGQtM2VmOS00Njg5LTgxNDMtNzZiMTk0ZTg1NTA5Il0sInhtc190Y2R0IjoxNTk0MjAzMjg5fQ.HxEFbKPr7cyk9yAY0tZev-YJmaGMmt2Y2r_3a9N-FwMzotItfo-4Acpp2Men4RpYi97EZMAgzslcWjMpJM696qrWqZp3D6fWAeN1CajONowyKIgYo2BcjIW4u2-rKM8VDO1up1utJtlLaz0b9iVnZwx_8UhcuwrJ70y_mTQT2VcXSjl8tAEDTkAxYJqCwEtRXvgzVNfVeEpxqXDSy5HnFJRt1G9Ck6MGaeZVGzIvx5KkCPdFgXSp-1rfh6n-nHQHAqpgpig271VqXSqVYJyy6ZPjyIYL4WMcbp9LclMegjnpdvTIOhlueYP1jKfLY1fNCRUUE_e3RoAD09u-5kdNtw",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"DocumentA\",\r\n    \"contentType\":\"image\",\r\n    \"comments\":\"test comments\",\r\n    \"parentFolderId\": \"5f5b45653d83840001b7bb95\",\r\n    \"ownerName\": \"Nikhil Adlakha\",\r\n    \"ownerId\": \"{{userId}}\",\r\n    \"noOfPages\":2,\r\n    \"documentSize\":1212345,\r\n    \"documentType\":\"png\",\r\n    \"storageCredentialId\":\"{{credentialId}}\"\r\n}  ",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{LOCAL_URL}}/contents",
+									"host": [
+										"{{LOCAL_URL}}"
+									],
+									"path": [
+										"contents"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Sample",
+									"value": "7bafaf17-5541-4c32-983d-783ac697f134"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 22 Sep 2020 15:36:15 GMT"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"checkedOut\": false,\n        \"primaryContentId\": \"5f5b45c7e2ea700001a75e06\",\n        \"flag\": \"COMMITTED\",\n        \"documentType\": \"txt\",\n        \"parentFolderId\": \"5f5b454e3d83840001b7bb93\",\n        \"privilege\": \"INHERITED\",\n        \"accessDateTime\": \"Fri Sep 11 09:39:20 GMT 2020\",\n        \"documentSize\": \"1\",\n        \"ownerId\": \"5f5b37f6d084390001d03283\",\n        \"ownerName\": \"Nikhil Adlakha\",\n        \"noOfPages\": \"1\",\n        \"id\": \"5f5b45c7e2ea700001a75e06\",\n        \"contentType\": \"text/plain\",\n        \"contentLocationId\": \"5f5b45c7e2ea700001a75e05\",\n        \"latest\": true,\n        \"creationDateTime\": \"Fri Sep 11 09:39:19 GMT 2020\",\n        \"lastCheckedInBy\": \"Nikhil Adlakha\",\n        \"accessCount\": 0,\n        \"indexed\": true,\n        \"nameLowerCase\": \"test_1\",\n        \"dataClassText\": \"\",\n        \"docSize\": 1,\n        \"inTrash\": false,\n        \"version\": \"1.0\",\n        \"tenantId\": \"5f5b37f43cb41e00016f069d\",\n        \"name\": \"test_1\",\n        \"revisedDateTime\": \"Fri Sep 11 09:39:20 GMT 2020\",\n        \"uploadIn\": \"Asset\"\n    },\n    {\n        \"checkedOut\": false,\n        \"primaryContentId\": \"5f5b45dae2ea700001a75e08\",\n        \"flag\": \"COMMITTED\",\n        \"documentType\": \"txt\",\n        \"parentFolderId\": \"5f5b454e3d83840001b7bb93\",\n        \"privilege\": \"INHERITED\",\n        \"accessDateTime\": \"Fri Sep 11 09:39:47 GMT 2020\",\n        \"documentSize\": \"1\",\n        \"ownerId\": \"5f5b37f6d084390001d03283\",\n        \"ownerName\": \"Nikhil Adlakha\",\n        \"noOfPages\": \"1\",\n        \"id\": \"5f5b45dae2ea700001a75e08\",\n        \"contentType\": \"text/plain\",\n        \"contentLocationId\": \"5f5b45dae2ea700001a75e07\",\n        \"latest\": true,\n        \"creationDateTime\": \"Fri Sep 11 09:39:38 GMT 2020\",\n        \"lastCheckedInBy\": \"Nikhil Adlakha\",\n        \"accessCount\": 0,\n        \"indexed\": true,\n        \"nameLowerCase\": \"test_2\",\n        \"dataClassText\": \"\",\n        \"docSize\": 1,\n        \"inTrash\": false,\n        \"version\": \"1.0\",\n        \"tenantId\": \"5f5b37f43cb41e00016f069d\",\n        \"name\": \"test_2\",\n        \"revisedDateTime\": \"Fri Sep 11 09:39:47 GMT 2020\",\n        \"uploadIn\": \"Asset\"\n    },\n    {\n        \"checkedOut\": false,\n        \"primaryContentId\": \"5f5b4629e2ea700001a75e0a\",\n        \"flag\": \"COMMITTED\",\n        \"documentType\": \"txt\",\n        \"parentFolderId\": \"5f5b454e3d83840001b7bb93\",\n        \"privilege\": \"INHERITED\",\n        \"accessDateTime\": \"Fri Sep 11 09:41:06 GMT 2020\",\n        \"documentSize\": \"1\",\n        \"ownerId\": \"5f5b37f6d084390001d03283\",\n        \"ownerName\": \"Nikhil Adlakha\",\n        \"noOfPages\": \"1\",\n        \"id\": \"5f5b4629e2ea700001a75e0a\",\n        \"contentType\": \"text/plain\",\n        \"contentLocationId\": \"5f5b4629e2ea700001a75e09\",\n        \"latest\": true,\n        \"creationDateTime\": \"Fri Sep 11 09:40:57 GMT 2020\",\n        \"lastCheckedInBy\": \"Nikhil Adlakha\",\n        \"accessCount\": 0,\n        \"indexed\": true,\n        \"nameLowerCase\": \"test_3\",\n        \"dataClassText\": \"\",\n        \"docSize\": 1,\n        \"inTrash\": false,\n        \"version\": \"1.0\",\n        \"tenantId\": \"5f5b37f43cb41e00016f069d\",\n        \"name\": \"test_3\",\n        \"revisedDateTime\": \"Fri Sep 11 09:41:06 GMT 2020\",\n        \"uploadIn\": \"Asset\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Search for Content",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "org",
+								"value": "{{ORG}}",
+								"type": "text"
+							},
+							{
+								"key": "tenantId",
+								"value": "5f5b37f43cb41e00016f069d",
+								"type": "text"
+							},
+							{
+								"key": "userId",
+								"value": "5f5b37f6d084390001d03283",
+								"type": "text"
+							},
+							{
+								"key": "accessToken",
+								"value": "eyJ0eXAiOiJKV1QiLCJub25jZSI6InZLNUFna0dtcDNEeWlVaHBtbWYweUpxaFhSWU4yS0RFY0xWdmo5UW9VVkUiLCJhbGciOiJSUzI1NiIsIng1dCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyIsImtpZCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8xMGMxNTA1Mi1mODI1LTQ1NGUtYTdhNy0xMmZhMWNhNWY2OGEvIiwiaWF0IjoxNjAwNzkwNDI1LCJuYmYiOjE2MDA3OTA0MjUsImV4cCI6MTYwMDc5NDMyNSwiYWNjdCI6MCwiYWNyIjoiMSIsImFpbyI6IkUyQmdZREM1KzNDcXFmWjVidzJUOWxjWk02enNEUGl5emplWk03M2ptU1lqdTI3bnUzc0EiLCJhbXIiOlsicHdkIl0sImFwcF9kaXNwbGF5bmFtZSI6IkVDTSBOZXh0QUQgMiIsImFwcGlkIjoiOWI5ZmUwYzQtNDIyOS00NDhkLTg2ZTUtMDNjMzU0NWEyOWI2IiwiYXBwaWRhY3IiOiIwIiwiaWR0eXAiOiJ1c2VyIiwiaXBhZGRyIjoiMjAuNDAuNDQuMTY5IiwibmFtZSI6Ik5pa2hpbCBBZGxha2hhIiwib2lkIjoiOTJkYWQ1ZDctMGY5OS00OTM5LTllYzctZDMzMWY2NmVhN2U1IiwicGxhdGYiOiIxNCIsInB1aWQiOiIxMDAzMjAwMEUyNEUzNkYwIiwicmgiOiIwLkFBQUFVbERCRUNYNFRrV25weEw2SEtYMmlzVGduNXNwUW8xRWh1VUR3MVJhS2JaQUFQdy4iLCJzY3AiOiJEaXJlY3RvcnkuQWNjZXNzQXNVc2VyLkFsbCBEaXJlY3RvcnkuUmVhZC5BbGwgRGlyZWN0b3J5LlJlYWRXcml0ZS5BbGwgR3JvdXAuUmVhZC5BbGwgR3JvdXAuUmVhZFdyaXRlLkFsbCBNZW1iZXIuUmVhZC5IaWRkZW4gb2ZmbGluZV9hY2Nlc3Mgb3BlbmlkIFBvbGljeS5SZWFkLkFsbCBVc2VyLlJlYWQgVXNlci5SZWFkLkFsbCBVc2VyLlJlYWRCYXNpYy5BbGwgVXNlci5SZWFkV3JpdGUgVXNlci5SZWFkV3JpdGUuQWxsIiwic3ViIjoiODh1LWVZcVNxXzJjOW5wTS1BV3hoTDdxWkhka3F4b28yUzd1YnFEdEwwayIsInRlbmFudF9yZWdpb25fc2NvcGUiOiJBUyIsInRpZCI6IjEwYzE1MDUyLWY4MjUtNDU0ZS1hN2E3LTEyZmExY2E1ZjY4YSIsInVuaXF1ZV9uYW1lIjoibmlrczhhZGxha2hhLmdtYWlsLmNvbUBlY21uZXh0YWQub25taWNyb3NvZnQuY29tIiwidXBuIjoibmlrczhhZGxha2hhLmdtYWlsLmNvbUBlY21uZXh0YWQub25taWNyb3NvZnQuY29tIiwidXRpIjoiYm1aN3NoSlZzMDJMNkhDVHg1TUNBUSIsInZlciI6IjEuMCIsIndpZHMiOlsiYjc5ZmJmNGQtM2VmOS00Njg5LTgxNDMtNzZiMTk0ZTg1NTA5Il0sInhtc190Y2R0IjoxNTk0MjAzMjg5fQ.cHB4Fe7dZUrwE7OTdU0UNwOdhZweqcMJNlo1G2Q91kuqzgCHp3cqT_dmA_w43VR683pIkXi-Mu-imvRoo9rBwPQrufGZVRsmY6ik62eVujG7HBw7cj_Xo-sTHDMMHUUXEE8NcbLCDntJh1bhhISJjn6XLONoQPHrXjeaj-3te-gxrhewaJOf55uIXDKDqS4H7DV2ggQmhJfyMWn-e6G0VAswfpMcttTK64EJP6_7nMVCOz42t337etiD_AOi6TKVNmIOaGv32SoZNu3DsyFx49NtfFcz4OVSWsSK8UcO5YtxU1lxA5eAom0rWItq-ULDKzwsOKep5FM41-3UBoaIvQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{LOCAL_URL}}/contents",
+							"host": [
+								"{{LOCAL_URL}}"
+							],
+							"path": [
+								"contents"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Search for Content: List of Contents",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "org",
+										"value": "{{ORG}}",
+										"type": "text"
+									},
+									{
+										"key": "tenantId",
+										"value": "{{tenantId}}",
+										"type": "text"
+									},
+									{
+										"key": "userId",
+										"value": "{{userId}}",
+										"type": "text"
+									},
+									{
+										"key": "accessToken",
+										"value": "eyJ0eXAiOiJKV1QiLCJub25jZSI6IjBnVjVoSmstdE9aODBTMW90eVNuOHhBWHJlUktxWWE0RzdiSTczanU4UHciLCJhbGciOiJSUzI1NiIsIng1dCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyIsImtpZCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8xMGMxNTA1Mi1mODI1LTQ1NGUtYTdhNy0xMmZhMWNhNWY2OGEvIiwiaWF0IjoxNjAwNzg4MDY3LCJuYmYiOjE2MDA3ODgwNjcsImV4cCI6MTYwMDc5MTk2NywiYWNjdCI6MCwiYWNyIjoiMSIsImFpbyI6IkUyQmdZQ2lkVldTdzA2b29lSTI5OXpaem02dC82ejUwWHRhOHFLK1FKTC9tS1l0dFNTd0EiLCJhbXIiOlsicHdkIl0sImFwcF9kaXNwbGF5bmFtZSI6IkVDTSBOZXh0QUQgMiIsImFwcGlkIjoiOWI5ZmUwYzQtNDIyOS00NDhkLTg2ZTUtMDNjMzU0NWEyOWI2IiwiYXBwaWRhY3IiOiIwIiwiaWR0eXAiOiJ1c2VyIiwiaXBhZGRyIjoiMjAuNDAuNDQuMTY5IiwibmFtZSI6Ik5pa2hpbCBBZGxha2hhIiwib2lkIjoiOTJkYWQ1ZDctMGY5OS00OTM5LTllYzctZDMzMWY2NmVhN2U1IiwicGxhdGYiOiIxNCIsInB1aWQiOiIxMDAzMjAwMEUyNEUzNkYwIiwicmgiOiIwLkFBQUFVbERCRUNYNFRrV25weEw2SEtYMmlzVGduNXNwUW8xRWh1VUR3MVJhS2JaQUFQdy4iLCJzY3AiOiJEaXJlY3RvcnkuQWNjZXNzQXNVc2VyLkFsbCBEaXJlY3RvcnkuUmVhZC5BbGwgRGlyZWN0b3J5LlJlYWRXcml0ZS5BbGwgR3JvdXAuUmVhZC5BbGwgR3JvdXAuUmVhZFdyaXRlLkFsbCBNZW1iZXIuUmVhZC5IaWRkZW4gb2ZmbGluZV9hY2Nlc3Mgb3BlbmlkIFBvbGljeS5SZWFkLkFsbCBVc2VyLlJlYWQgVXNlci5SZWFkLkFsbCBVc2VyLlJlYWRCYXNpYy5BbGwgVXNlci5SZWFkV3JpdGUgVXNlci5SZWFkV3JpdGUuQWxsIiwic3ViIjoiODh1LWVZcVNxXzJjOW5wTS1BV3hoTDdxWkhka3F4b28yUzd1YnFEdEwwayIsInRlbmFudF9yZWdpb25fc2NvcGUiOiJBUyIsInRpZCI6IjEwYzE1MDUyLWY4MjUtNDU0ZS1hN2E3LTEyZmExY2E1ZjY4YSIsInVuaXF1ZV9uYW1lIjoibmlrczhhZGxha2hhLmdtYWlsLmNvbUBlY21uZXh0YWQub25taWNyb3NvZnQuY29tIiwidXBuIjoibmlrczhhZGxha2hhLmdtYWlsLmNvbUBlY21uZXh0YWQub25taWNyb3NvZnQuY29tIiwidXRpIjoiRnhBaEwydUdmRXFoeEdrSkFFdHhBQSIsInZlciI6IjEuMCIsIndpZHMiOlsiYjc5ZmJmNGQtM2VmOS00Njg5LTgxNDMtNzZiMTk0ZTg1NTA5Il0sInhtc190Y2R0IjoxNTk0MjAzMjg5fQ.1_bjGCVFvju5l9dQsBlFFr3enKyXXhGFmyCBVDP9vJuL5_2qJbOmJ7_39oyJjYz8re90aYW_eQ1B1MohtTH7RKWZh1nQfMJa9G9T4xVDBAApR7om-AuSQljuuu4FLbPHPHCM_MgTfF5EVY-ZTR70c2fWL6OrmL-BHahsNwA4tsCegKHMPR0boAZoiJuKLADIYYyAgWgC37rG-NQJT2jEMBBOx2OCCEiOQv6ZR3WmMF7Z1dU3HX5RZbktNcEKIBVzHdQOiBr2c3LE9QjS6Z2n28GAgU8_Q0Ucfsxqgt5cGUgTZPGkInXMJUylmrhq4yStApJRO8EOTv6_LYJ4cjrhkw",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{LOCAL_URL}}/contents",
+									"host": [
+										"{{LOCAL_URL}}"
+									],
+									"path": [
+										"contents"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Sample",
+									"value": "cb2a7a4e-43f2-47fd-9ff6-b4fad701817d"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 22 Sep 2020 15:27:09 GMT"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"checkedOut\": false,\n        \"primaryContentId\": \"5f5b45c7e2ea700001a75e06\",\n        \"flag\": \"COMMITTED\",\n        \"documentType\": \"txt\",\n        \"parentFolderId\": \"5f5b454e3d83840001b7bb93\",\n        \"privilege\": \"INHERITED\",\n        \"accessDateTime\": \"Fri Sep 11 09:39:20 GMT 2020\",\n        \"documentSize\": \"1\",\n        \"ownerId\": \"5f5b37f6d084390001d03283\",\n        \"ownerName\": \"Nikhil Adlakha\",\n        \"noOfPages\": \"1\",\n        \"id\": \"5f5b45c7e2ea700001a75e06\",\n        \"contentType\": \"text/plain\",\n        \"contentLocationId\": \"5f5b45c7e2ea700001a75e05\",\n        \"latest\": true,\n        \"creationDateTime\": \"Fri Sep 11 09:39:19 GMT 2020\",\n        \"lastCheckedInBy\": \"Nikhil Adlakha\",\n        \"accessCount\": 0,\n        \"indexed\": true,\n        \"nameLowerCase\": \"test_1\",\n        \"dataClassText\": \"\",\n        \"docSize\": 1,\n        \"inTrash\": false,\n        \"version\": \"1.0\",\n        \"tenantId\": \"5f5b37f43cb41e00016f069d\",\n        \"name\": \"test_1\",\n        \"revisedDateTime\": \"Fri Sep 11 09:39:20 GMT 2020\",\n        \"uploadIn\": \"Asset\"\n    },\n    {\n        \"checkedOut\": false,\n        \"primaryContentId\": \"5f5b45dae2ea700001a75e08\",\n        \"flag\": \"COMMITTED\",\n        \"documentType\": \"txt\",\n        \"parentFolderId\": \"5f5b454e3d83840001b7bb93\",\n        \"privilege\": \"INHERITED\",\n        \"accessDateTime\": \"Fri Sep 11 09:39:47 GMT 2020\",\n        \"documentSize\": \"1\",\n        \"ownerId\": \"5f5b37f6d084390001d03283\",\n        \"ownerName\": \"Nikhil Adlakha\",\n        \"noOfPages\": \"1\",\n        \"id\": \"5f5b45dae2ea700001a75e08\",\n        \"contentType\": \"text/plain\",\n        \"contentLocationId\": \"5f5b45dae2ea700001a75e07\",\n        \"latest\": true,\n        \"creationDateTime\": \"Fri Sep 11 09:39:38 GMT 2020\",\n        \"lastCheckedInBy\": \"Nikhil Adlakha\",\n        \"accessCount\": 0,\n        \"indexed\": true,\n        \"nameLowerCase\": \"test_2\",\n        \"dataClassText\": \"\",\n        \"docSize\": 1,\n        \"inTrash\": false,\n        \"version\": \"1.0\",\n        \"tenantId\": \"5f5b37f43cb41e00016f069d\",\n        \"name\": \"test_2\",\n        \"revisedDateTime\": \"Fri Sep 11 09:39:47 GMT 2020\",\n        \"uploadIn\": \"Asset\"\n    },\n    {\n        \"checkedOut\": false,\n        \"primaryContentId\": \"5f5b4629e2ea700001a75e0a\",\n        \"flag\": \"COMMITTED\",\n        \"documentType\": \"txt\",\n        \"parentFolderId\": \"5f5b454e3d83840001b7bb93\",\n        \"privilege\": \"INHERITED\",\n        \"accessDateTime\": \"Fri Sep 11 09:41:06 GMT 2020\",\n        \"documentSize\": \"1\",\n        \"ownerId\": \"5f5b37f6d084390001d03283\",\n        \"ownerName\": \"Nikhil Adlakha\",\n        \"noOfPages\": \"1\",\n        \"id\": \"5f5b4629e2ea700001a75e0a\",\n        \"contentType\": \"text/plain\",\n        \"contentLocationId\": \"5f5b4629e2ea700001a75e09\",\n        \"latest\": true,\n        \"creationDateTime\": \"Fri Sep 11 09:40:57 GMT 2020\",\n        \"lastCheckedInBy\": \"Nikhil Adlakha\",\n        \"accessCount\": 0,\n        \"indexed\": true,\n        \"nameLowerCase\": \"test_3\",\n        \"dataClassText\": \"\",\n        \"docSize\": 1,\n        \"inTrash\": false,\n        \"version\": \"1.0\",\n        \"tenantId\": \"5f5b37f43cb41e00016f069d\",\n        \"name\": \"test_3\",\n        \"revisedDateTime\": \"Fri Sep 11 09:41:06 GMT 2020\",\n        \"uploadIn\": \"Asset\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Delete Content ",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "org",
+								"value": "{{ORG}}",
+								"type": "text"
+							},
+							{
+								"key": "tenantId",
+								"value": "{{tenantId}}",
+								"type": "text"
+							},
+							{
+								"key": "userId",
+								"value": "{{userId}}",
+								"type": "text"
+							},
+							{
+								"key": "accessToken",
+								"value": "eyJ0eXAiOiJKV1QiLCJub25jZSI6IkpTeHhldldyNDd2WGpKbVVEWFhsOHVMTHB5VmFhTVZzSXJWQzZ0YUk3cUEiLCJhbGciOiJSUzI1NiIsIng1dCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyIsImtpZCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8xMGMxNTA1Mi1mODI1LTQ1NGUtYTdhNy0xMmZhMWNhNWY2OGEvIiwiaWF0IjoxNjAwNzg5MTg3LCJuYmYiOjE2MDA3ODkxODcsImV4cCI6MTYwMDc5MzA4NywiYWNjdCI6MCwiYWNyIjoiMSIsImFpbyI6IkFTUUEyLzhRQUFBQVA2RUZucnMrcHIzMXc0M3dZbUF1dHBMQTJMUEs2bjhYWGlhTDI2QWNlU2M9IiwiYW1yIjpbInB3ZCJdLCJhcHBfZGlzcGxheW5hbWUiOiJFQ00gTmV4dEFEIDIiLCJhcHBpZCI6IjliOWZlMGM0LTQyMjktNDQ4ZC04NmU1LTAzYzM1NDVhMjliNiIsImFwcGlkYWNyIjoiMCIsImlkdHlwIjoidXNlciIsImlwYWRkciI6IjIwLjQwLjQ0LjE2OSIsIm5hbWUiOiJOaWtoaWwgQWRsYWtoYSIsIm9pZCI6IjkyZGFkNWQ3LTBmOTktNDkzOS05ZWM3LWQzMzFmNjZlYTdlNSIsInBsYXRmIjoiMTQiLCJwdWlkIjoiMTAwMzIwMDBFMjRFMzZGMCIsInJoIjoiMC5BQUFBVWxEQkVDWDRUa1ducHhMNkhLWDJpc1RnbjVzcFFvMUVodVVEdzFSYUtiWkFBUHcuIiwic2NwIjoiRGlyZWN0b3J5LkFjY2Vzc0FzVXNlci5BbGwgRGlyZWN0b3J5LlJlYWQuQWxsIERpcmVjdG9yeS5SZWFkV3JpdGUuQWxsIEdyb3VwLlJlYWQuQWxsIEdyb3VwLlJlYWRXcml0ZS5BbGwgTWVtYmVyLlJlYWQuSGlkZGVuIG9mZmxpbmVfYWNjZXNzIG9wZW5pZCBQb2xpY3kuUmVhZC5BbGwgVXNlci5SZWFkIFVzZXIuUmVhZC5BbGwgVXNlci5SZWFkQmFzaWMuQWxsIFVzZXIuUmVhZFdyaXRlIFVzZXIuUmVhZFdyaXRlLkFsbCIsInN1YiI6Ijg4dS1lWXFTcV8yYzlucE0tQVd4aEw3cVpIZGtxeG9vMlM3dWJxRHRMMGsiLCJ0ZW5hbnRfcmVnaW9uX3Njb3BlIjoiQVMiLCJ0aWQiOiIxMGMxNTA1Mi1mODI1LTQ1NGUtYTdhNy0xMmZhMWNhNWY2OGEiLCJ1bmlxdWVfbmFtZSI6Im5pa3M4YWRsYWtoYS5nbWFpbC5jb21AZWNtbmV4dGFkLm9ubWljcm9zb2Z0LmNvbSIsInVwbiI6Im5pa3M4YWRsYWtoYS5nbWFpbC5jb21AZWNtbmV4dGFkLm9ubWljcm9zb2Z0LmNvbSIsInV0aSI6InpLcU40WnpnOVVHc0Rrcl8zZ0YwQUEiLCJ2ZXIiOiIxLjAiLCJ3aWRzIjpbImI3OWZiZjRkLTNlZjktNDY4OS04MTQzLTc2YjE5NGU4NTUwOSJdLCJ4bXNfdGNkdCI6MTU5NDIwMzI4OX0.X_5EKq5aqPCuzRawACjVqUJ7RgABPsTq7I9sIwLQM0n_vX8dgITtv4DUMkoy23VWFWw35--JH33Lkz4eFL9jQZaKYMFUzaYCvBYjedT2o7SzfxduFX7b9eT6pddUvmjqgmUNN5tC2-r0xjdb9cGZsoM1mdW-4456WWT1tngBiMzbiGY_9AsP8ws547RpxqPu24boan-ENm-MvioYm7qgCuAVk6ABRfA_KkeDf7-YkaRUbnJZ7JXVD9-kATEinZJwJqbxcnTab3zd5uMDy9td8fERV5sFkOIdBd8Ks0T0gTp0Ndh5ou4Cv5ppPsH7BszrT32cF1vY2UsHThL5Qskwfw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{LOCAL_URL}}/contents/5f5b45c7e2ea700001a75e06",
+							"host": [
+								"{{LOCAL_URL}}"
+							],
+							"path": [
+								"contents",
+								"5f5b45c7e2ea700001a75e06"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete Content: Content Deleted",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "org",
+										"value": "{{ORG}}",
+										"type": "text"
+									},
+									{
+										"key": "tenantId",
+										"value": "{{tenantId}}",
+										"type": "text"
+									},
+									{
+										"key": "userId",
+										"value": "{{userId}}",
+										"type": "text"
+									},
+									{
+										"key": "accessToken",
+										"value": "eyJ0eXAiOiJKV1QiLCJub25jZSI6IkpTeHhldldyNDd2WGpKbVVEWFhsOHVMTHB5VmFhTVZzSXJWQzZ0YUk3cUEiLCJhbGciOiJSUzI1NiIsIng1dCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyIsImtpZCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8xMGMxNTA1Mi1mODI1LTQ1NGUtYTdhNy0xMmZhMWNhNWY2OGEvIiwiaWF0IjoxNjAwNzg5MTg3LCJuYmYiOjE2MDA3ODkxODcsImV4cCI6MTYwMDc5MzA4NywiYWNjdCI6MCwiYWNyIjoiMSIsImFpbyI6IkFTUUEyLzhRQUFBQVA2RUZucnMrcHIzMXc0M3dZbUF1dHBMQTJMUEs2bjhYWGlhTDI2QWNlU2M9IiwiYW1yIjpbInB3ZCJdLCJhcHBfZGlzcGxheW5hbWUiOiJFQ00gTmV4dEFEIDIiLCJhcHBpZCI6IjliOWZlMGM0LTQyMjktNDQ4ZC04NmU1LTAzYzM1NDVhMjliNiIsImFwcGlkYWNyIjoiMCIsImlkdHlwIjoidXNlciIsImlwYWRkciI6IjIwLjQwLjQ0LjE2OSIsIm5hbWUiOiJOaWtoaWwgQWRsYWtoYSIsIm9pZCI6IjkyZGFkNWQ3LTBmOTktNDkzOS05ZWM3LWQzMzFmNjZlYTdlNSIsInBsYXRmIjoiMTQiLCJwdWlkIjoiMTAwMzIwMDBFMjRFMzZGMCIsInJoIjoiMC5BQUFBVWxEQkVDWDRUa1ducHhMNkhLWDJpc1RnbjVzcFFvMUVodVVEdzFSYUtiWkFBUHcuIiwic2NwIjoiRGlyZWN0b3J5LkFjY2Vzc0FzVXNlci5BbGwgRGlyZWN0b3J5LlJlYWQuQWxsIERpcmVjdG9yeS5SZWFkV3JpdGUuQWxsIEdyb3VwLlJlYWQuQWxsIEdyb3VwLlJlYWRXcml0ZS5BbGwgTWVtYmVyLlJlYWQuSGlkZGVuIG9mZmxpbmVfYWNjZXNzIG9wZW5pZCBQb2xpY3kuUmVhZC5BbGwgVXNlci5SZWFkIFVzZXIuUmVhZC5BbGwgVXNlci5SZWFkQmFzaWMuQWxsIFVzZXIuUmVhZFdyaXRlIFVzZXIuUmVhZFdyaXRlLkFsbCIsInN1YiI6Ijg4dS1lWXFTcV8yYzlucE0tQVd4aEw3cVpIZGtxeG9vMlM3dWJxRHRMMGsiLCJ0ZW5hbnRfcmVnaW9uX3Njb3BlIjoiQVMiLCJ0aWQiOiIxMGMxNTA1Mi1mODI1LTQ1NGUtYTdhNy0xMmZhMWNhNWY2OGEiLCJ1bmlxdWVfbmFtZSI6Im5pa3M4YWRsYWtoYS5nbWFpbC5jb21AZWNtbmV4dGFkLm9ubWljcm9zb2Z0LmNvbSIsInVwbiI6Im5pa3M4YWRsYWtoYS5nbWFpbC5jb21AZWNtbmV4dGFkLm9ubWljcm9zb2Z0LmNvbSIsInV0aSI6InpLcU40WnpnOVVHc0Rrcl8zZ0YwQUEiLCJ2ZXIiOiIxLjAiLCJ3aWRzIjpbImI3OWZiZjRkLTNlZjktNDY4OS04MTQzLTc2YjE5NGU4NTUwOSJdLCJ4bXNfdGNkdCI6MTU5NDIwMzI4OX0.X_5EKq5aqPCuzRawACjVqUJ7RgABPsTq7I9sIwLQM0n_vX8dgITtv4DUMkoy23VWFWw35--JH33Lkz4eFL9jQZaKYMFUzaYCvBYjedT2o7SzfxduFX7b9eT6pddUvmjqgmUNN5tC2-r0xjdb9cGZsoM1mdW-4456WWT1tngBiMzbiGY_9AsP8ws547RpxqPu24boan-ENm-MvioYm7qgCuAVk6ABRfA_KkeDf7-YkaRUbnJZ7JXVD9-kATEinZJwJqbxcnTab3zd5uMDy9td8fERV5sFkOIdBd8Ks0T0gTp0Ndh5ou4Cv5ppPsH7BszrT32cF1vY2UsHThL5Qskwfw",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{LOCAL_URL}}/contents/5f5b45c7e2ea700001a75e06",
+									"host": [
+										"{{LOCAL_URL}}"
+									],
+									"path": [
+										"contents",
+										"5f5b45c7e2ea700001a75e06"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Sample",
+									"value": "d2d993a1-992a-4c8d-bae9-d990582e4cdd"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 22 Sep 2020 15:49:51 GMT"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Update Content",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "org",
+								"value": "{{ORG}}",
+								"type": "text"
+							},
+							{
+								"key": "tenantId",
+								"value": "{{tenantId}}",
+								"type": "text"
+							},
+							{
+								"key": "userId",
+								"value": "{{userId}}",
+								"type": "text"
+							},
+							{
+								"key": "accessToken",
+								"value": "eyJ0eXAiOiJKV1QiLCJub25jZSI6InZLNUFna0dtcDNEeWlVaHBtbWYweUpxaFhSWU4yS0RFY0xWdmo5UW9VVkUiLCJhbGciOiJSUzI1NiIsIng1dCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyIsImtpZCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8xMGMxNTA1Mi1mODI1LTQ1NGUtYTdhNy0xMmZhMWNhNWY2OGEvIiwiaWF0IjoxNjAwNzkwNDI1LCJuYmYiOjE2MDA3OTA0MjUsImV4cCI6MTYwMDc5NDMyNSwiYWNjdCI6MCwiYWNyIjoiMSIsImFpbyI6IkUyQmdZREM1KzNDcXFmWjVidzJUOWxjWk02enNEUGl5emplWk03M2ptU1lqdTI3bnUzc0EiLCJhbXIiOlsicHdkIl0sImFwcF9kaXNwbGF5bmFtZSI6IkVDTSBOZXh0QUQgMiIsImFwcGlkIjoiOWI5ZmUwYzQtNDIyOS00NDhkLTg2ZTUtMDNjMzU0NWEyOWI2IiwiYXBwaWRhY3IiOiIwIiwiaWR0eXAiOiJ1c2VyIiwiaXBhZGRyIjoiMjAuNDAuNDQuMTY5IiwibmFtZSI6Ik5pa2hpbCBBZGxha2hhIiwib2lkIjoiOTJkYWQ1ZDctMGY5OS00OTM5LTllYzctZDMzMWY2NmVhN2U1IiwicGxhdGYiOiIxNCIsInB1aWQiOiIxMDAzMjAwMEUyNEUzNkYwIiwicmgiOiIwLkFBQUFVbERCRUNYNFRrV25weEw2SEtYMmlzVGduNXNwUW8xRWh1VUR3MVJhS2JaQUFQdy4iLCJzY3AiOiJEaXJlY3RvcnkuQWNjZXNzQXNVc2VyLkFsbCBEaXJlY3RvcnkuUmVhZC5BbGwgRGlyZWN0b3J5LlJlYWRXcml0ZS5BbGwgR3JvdXAuUmVhZC5BbGwgR3JvdXAuUmVhZFdyaXRlLkFsbCBNZW1iZXIuUmVhZC5IaWRkZW4gb2ZmbGluZV9hY2Nlc3Mgb3BlbmlkIFBvbGljeS5SZWFkLkFsbCBVc2VyLlJlYWQgVXNlci5SZWFkLkFsbCBVc2VyLlJlYWRCYXNpYy5BbGwgVXNlci5SZWFkV3JpdGUgVXNlci5SZWFkV3JpdGUuQWxsIiwic3ViIjoiODh1LWVZcVNxXzJjOW5wTS1BV3hoTDdxWkhka3F4b28yUzd1YnFEdEwwayIsInRlbmFudF9yZWdpb25fc2NvcGUiOiJBUyIsInRpZCI6IjEwYzE1MDUyLWY4MjUtNDU0ZS1hN2E3LTEyZmExY2E1ZjY4YSIsInVuaXF1ZV9uYW1lIjoibmlrczhhZGxha2hhLmdtYWlsLmNvbUBlY21uZXh0YWQub25taWNyb3NvZnQuY29tIiwidXBuIjoibmlrczhhZGxha2hhLmdtYWlsLmNvbUBlY21uZXh0YWQub25taWNyb3NvZnQuY29tIiwidXRpIjoiYm1aN3NoSlZzMDJMNkhDVHg1TUNBUSIsInZlciI6IjEuMCIsIndpZHMiOlsiYjc5ZmJmNGQtM2VmOS00Njg5LTgxNDMtNzZiMTk0ZTg1NTA5Il0sInhtc190Y2R0IjoxNTk0MjAzMjg5fQ.cHB4Fe7dZUrwE7OTdU0UNwOdhZweqcMJNlo1G2Q91kuqzgCHp3cqT_dmA_w43VR683pIkXi-Mu-imvRoo9rBwPQrufGZVRsmY6ik62eVujG7HBw7cj_Xo-sTHDMMHUUXEE8NcbLCDntJh1bhhISJjn6XLONoQPHrXjeaj-3te-gxrhewaJOf55uIXDKDqS4H7DV2ggQmhJfyMWn-e6G0VAswfpMcttTK64EJP6_7nMVCOz42t337etiD_AOi6TKVNmIOaGv32SoZNu3DsyFx49NtfFcz4OVSWsSK8UcO5YtxU1lxA5eAom0rWItq-ULDKzwsOKep5FM41-3UBoaIvQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"DocumentABN\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LOCAL_URL}}/contents/5f5b4629e2ea700001a75e0a",
+							"host": [
+								"{{LOCAL_URL}}"
+							],
+							"path": [
+								"contents",
+								"5f5b4629e2ea700001a75e0a"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Content: Successful Update",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "org",
+										"value": "{{ORG}}",
+										"type": "text"
+									},
+									{
+										"key": "tenantId",
+										"value": "{{tenantId}}",
+										"type": "text"
+									},
+									{
+										"key": "userId",
+										"value": "{{userId}}",
+										"type": "text"
+									},
+									{
+										"key": "accessToken",
+										"value": "eyJ0eXAiOiJKV1QiLCJub25jZSI6InZLNUFna0dtcDNEeWlVaHBtbWYweUpxaFhSWU4yS0RFY0xWdmo5UW9VVkUiLCJhbGciOiJSUzI1NiIsIng1dCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyIsImtpZCI6ImppYk5ia0ZTU2JteFBZck45Q0ZxUms0SzRndyJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8xMGMxNTA1Mi1mODI1LTQ1NGUtYTdhNy0xMmZhMWNhNWY2OGEvIiwiaWF0IjoxNjAwNzkwNDI1LCJuYmYiOjE2MDA3OTA0MjUsImV4cCI6MTYwMDc5NDMyNSwiYWNjdCI6MCwiYWNyIjoiMSIsImFpbyI6IkUyQmdZREM1KzNDcXFmWjVidzJUOWxjWk02enNEUGl5emplWk03M2ptU1lqdTI3bnUzc0EiLCJhbXIiOlsicHdkIl0sImFwcF9kaXNwbGF5bmFtZSI6IkVDTSBOZXh0QUQgMiIsImFwcGlkIjoiOWI5ZmUwYzQtNDIyOS00NDhkLTg2ZTUtMDNjMzU0NWEyOWI2IiwiYXBwaWRhY3IiOiIwIiwiaWR0eXAiOiJ1c2VyIiwiaXBhZGRyIjoiMjAuNDAuNDQuMTY5IiwibmFtZSI6Ik5pa2hpbCBBZGxha2hhIiwib2lkIjoiOTJkYWQ1ZDctMGY5OS00OTM5LTllYzctZDMzMWY2NmVhN2U1IiwicGxhdGYiOiIxNCIsInB1aWQiOiIxMDAzMjAwMEUyNEUzNkYwIiwicmgiOiIwLkFBQUFVbERCRUNYNFRrV25weEw2SEtYMmlzVGduNXNwUW8xRWh1VUR3MVJhS2JaQUFQdy4iLCJzY3AiOiJEaXJlY3RvcnkuQWNjZXNzQXNVc2VyLkFsbCBEaXJlY3RvcnkuUmVhZC5BbGwgRGlyZWN0b3J5LlJlYWRXcml0ZS5BbGwgR3JvdXAuUmVhZC5BbGwgR3JvdXAuUmVhZFdyaXRlLkFsbCBNZW1iZXIuUmVhZC5IaWRkZW4gb2ZmbGluZV9hY2Nlc3Mgb3BlbmlkIFBvbGljeS5SZWFkLkFsbCBVc2VyLlJlYWQgVXNlci5SZWFkLkFsbCBVc2VyLlJlYWRCYXNpYy5BbGwgVXNlci5SZWFkV3JpdGUgVXNlci5SZWFkV3JpdGUuQWxsIiwic3ViIjoiODh1LWVZcVNxXzJjOW5wTS1BV3hoTDdxWkhka3F4b28yUzd1YnFEdEwwayIsInRlbmFudF9yZWdpb25fc2NvcGUiOiJBUyIsInRpZCI6IjEwYzE1MDUyLWY4MjUtNDU0ZS1hN2E3LTEyZmExY2E1ZjY4YSIsInVuaXF1ZV9uYW1lIjoibmlrczhhZGxha2hhLmdtYWlsLmNvbUBlY21uZXh0YWQub25taWNyb3NvZnQuY29tIiwidXBuIjoibmlrczhhZGxha2hhLmdtYWlsLmNvbUBlY21uZXh0YWQub25taWNyb3NvZnQuY29tIiwidXRpIjoiYm1aN3NoSlZzMDJMNkhDVHg1TUNBUSIsInZlciI6IjEuMCIsIndpZHMiOlsiYjc5ZmJmNGQtM2VmOS00Njg5LTgxNDMtNzZiMTk0ZTg1NTA5Il0sInhtc190Y2R0IjoxNTk0MjAzMjg5fQ.cHB4Fe7dZUrwE7OTdU0UNwOdhZweqcMJNlo1G2Q91kuqzgCHp3cqT_dmA_w43VR683pIkXi-Mu-imvRoo9rBwPQrufGZVRsmY6ik62eVujG7HBw7cj_Xo-sTHDMMHUUXEE8NcbLCDntJh1bhhISJjn6XLONoQPHrXjeaj-3te-gxrhewaJOf55uIXDKDqS4H7DV2ggQmhJfyMWn-e6G0VAswfpMcttTK64EJP6_7nMVCOz42t337etiD_AOi6TKVNmIOaGv32SoZNu3DsyFx49NtfFcz4OVSWsSK8UcO5YtxU1lxA5eAom0rWItq-ULDKzwsOKep5FM41-3UBoaIvQ",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"DocumentABN\" \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{LOCAL_URL}}/contents/5f5b4629e2ea700001a75e0a",
+									"host": [
+										"{{LOCAL_URL}}"
+									],
+									"path": [
+										"contents",
+										"5f5b4629e2ea700001a75e0a"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Sample",
+									"value": "4277a7fe-83e5-4ff4-b807-37509529967b"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 22 Sep 2020 16:15:20 GMT"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"5f5b4629e2ea700001a75e0a\",\n    \"name\": \"DocumentABN\",\n    \"contentType\": \"text/plain\",\n    \"comments\": null,\n    \"parentFolderId\": \"5f5b454e3d83840001b7bb93\",\n    \"ownerName\": \"Nikhil Adlakha\",\n    \"ownerId\": \"5f5b37f6d084390001d03283\",\n    \"tenantId\": \"5f5b37f43cb41e00016f069d\",\n    \"contentLocationId\": \"5f5b4629e2ea700001a75e09\",\n    \"privilege\": \"INHERITED\",\n    \"content\": null,\n    \"parentFolderName\": null,\n    \"creationDateTime\": \"2020-09-11T09:40:57.430+0000\",\n    \"revisedDateTime\": \"2020-09-22T16:15:20.009+0000\",\n    \"accessDateTime\": \"2020-09-22T16:15:20.009+0000\",\n    \"version\": 1,\n    \"previousVersion\": null,\n    \"flag\": \"COMMITTED\",\n    \"token\": null,\n    \"odId\": null,\n    \"noOfPages\": \"1\",\n    \"documentType\": \"txt\",\n    \"documentSize\": \"1\",\n    \"metadata\": null,\n    \"dataclass\": null,\n    \"primaryContentId\": \"5f5b4629e2ea700001a75e0a\",\n    \"latest\": true,\n    \"changeSetContentId\": null,\n    \"versionComments\": null,\n    \"checkedOut\": false,\n    \"checkedOutBy\": null,\n    \"lastCheckedInBy\": \"Nikhil Adlakha\",\n    \"lastCheckedInbyUserName\": null,\n    \"dataClassText\": \"\",\n    \"previousVersionContentId\": null,\n    \"checkedOutTime\": null,\n    \"accessCount\": 0,\n    \"inTrash\": false,\n    \"indexed\": false,\n    \"parentHierarchy\": null,\n    \"uploadIn\": \"Asset\",\n    \"nameLowerCase\": \"documentabn\",\n    \"docSize\": 1\n}"
+						}
+					]
+				}
+			],
+			"description": "This folder contains all the service tests for ECM Next Content services APIs",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "3de8ae5e-03b0-4a5c-8be1-0fc6d97560fb",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "a84961a4-3407-4b13-b3a9-ba8bed9e9897",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "09c500f5-a80a-4b1b-8f42-11deeaa86d8b",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "84d904ca-21f8-45ed-89ec-c94cdfa820e0",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "71d75b14-21bf-4eab-9868-8f658eedc783",
+			"key": "userId",
+			"value": "5f5b37f6d084390001d03283"
+		},
+		{
+			"id": "ca08b7e2-0a01-4980-a303-949190bcfd0f",
+			"key": "credentialId",
+			"value": "5f5b39e6859325000146b99f"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
