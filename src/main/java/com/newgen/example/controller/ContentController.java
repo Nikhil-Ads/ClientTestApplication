@@ -3,11 +3,8 @@
  */
 package com.newgen.example.controller;
 
-import java.util.List;
-
 import javax.validation.constraints.NotEmpty;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,47 +15,48 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-import com.newgen.example.dto.ContentDTO;
 import com.newgen.example.exception.CustomException;
 import com.newgen.example.service.ContentService;
-import com.newgen.example.validation.InputValidator;
 
 /**
  * @author Nikhil Adlakha
  *
  */
+
+@RestController
 @RequestMapping("/contents")
 public class ContentController extends GeneralController {
 		
+	
 	private ContentService contentService;
 
-	public ContentController(InputValidator inputValidator,ContentService contentService) {
-		super(inputValidator);
+	public ContentController(ContentService contentService) {
 		this.contentService=contentService;
 	}
 	
 	@GetMapping()
-	public ResponseEntity<List<ContentDTO>> getContents(
-			@RequestHeader
+	public ResponseEntity<String> getContents(
+			@RequestHeader(name="org")
 			@NotEmpty(message="Header: org cannot be empty")
 			String org,
-			@RequestHeader
+			@RequestHeader(name="tenantId")
 			@NotEmpty(message = "Header: tenantId cannot be empty")
 			String tenantId,
-			@RequestHeader
+			@RequestHeader(name="userId")
 			@NotEmpty(message = "Header: userId cannot be empty")
 			String userId,
-			@RequestHeader
+			@RequestHeader(name="accessToken")
 			@NotEmpty(message = "Header: accessToken cannot be empty")
 			String token,
-			@RequestHeader(required = false)
+			@RequestHeader(name="offset",required = false)
 			String offset,
-			@RequestHeader(required = false)
+			@RequestHeader(name="sortOn",required = false)
 			String sortOn,
-			@RequestHeader(required = false)
+			@RequestHeader(name="sortOrder",required = false)
 			String sortOrder,
-			@RequestHeader(required = false)
+			@RequestHeader(name="limit",required = false)
 			String limit,			
 			@RequestParam(name = "count",required = false)
 			String count,
@@ -66,57 +64,47 @@ public class ContentController extends GeneralController {
 			String property,
 			@RequestParam(name = "order",required = false)
 			String order) throws CustomException{
-		List<ContentDTO> entity=null;
-		
-		if(inputValidator.validateInput("header_org", org, "String", 5, false,"ECM"))
-				throwInvalidOrgException();			
-		else {	entity=contentService.searchContents(org, tenantId, userId, token, count,property,order,offset,sortOn,sortOrder,limit);
-				if(entity == null)
-					throwECMServiceException();
-		}
-		return new ResponseEntity<List<ContentDTO>>(entity,HttpStatus.OK);
+		ResponseEntity<String> entity=contentService.searchContents(org, tenantId, userId, token, count,property,order,offset,sortOn,sortOrder,limit);
+		if(entity.getStatusCode().is5xxServerError())
+			throwECMServiceException();			 
+		return entity;
 	}
 
 	@PostMapping
 	public ResponseEntity<String> createContent(
-			@RequestHeader
+			@RequestHeader(name="org")
 			@NotEmpty(message="Header: org cannot be empty")
 			String org,
-			@RequestHeader
+			@RequestHeader(name="tenantId")
 			@NotEmpty(message = "Header: tenantId cannot be empty")
 			String tenantId,
-			@RequestHeader
+			@RequestHeader(name="userId")
 			@NotEmpty(message = "Header: userId cannot be empty")
 			String userId,
-			@RequestHeader
+			@RequestHeader(name="accessToken")
 			@NotEmpty(message = "Header: accessToken cannot be empty")
 			String token,
 			@RequestBody
 			@NotEmpty(message = "Request: Body cannot be empty")
 			String payLoad) throws CustomException {
-		String entity=null;
-		
-		if(inputValidator.validateInput("header_org", org, "String", 5, false,"ECM"))
-				throwInvalidOrgException();
-		else {	entity=contentService.createContent(org, tenantId, userId, token, payLoad);
-				if(entity == null)
-					throwECMServiceException();
-			 }
-		return new ResponseEntity<String>(entity,HttpStatus.OK);
+		ResponseEntity<String> entity=contentService.createContent(org, tenantId, userId, token, payLoad);
+		if(entity.getStatusCode().is5xxServerError())
+			throwECMServiceException();			 
+		return entity;
 	}
 	
 	@PutMapping("/{id}")
 	public ResponseEntity<String> updateContent(
-			@RequestHeader
+			@RequestHeader(name="org")
 			@NotEmpty(message="Header: org cannot be empty")
 			String org,
-			@RequestHeader
+			@RequestHeader(name="tenantId")
 			@NotEmpty(message = "Header: tenantId cannot be empty")
 			String tenantId,
-			@RequestHeader
+			@RequestHeader(name="userId")
 			@NotEmpty(message = "Header: userId cannot be empty")
 			String userId,
-			@RequestHeader
+			@RequestHeader(name="accessToken")
 			@NotEmpty(message = "Header: accessToken cannot be empty")
 			String token,
 			@RequestBody
@@ -128,29 +116,24 @@ public class ContentController extends GeneralController {
 			@RequestParam(name = "version",required = false)
 			String version)
 			throws CustomException{
-		String entity=null;
-		
-		if(inputValidator.validateInput("header_org", org, "String", 5, false,"ECM"))
-				throwInvalidOrgException();	
-	    else {	entity=contentService.updateContent(org, tenantId, userId, token, payLoad,id,version);
-				if(entity == null)
-					throwECMServiceException();
-			 }
-		return new ResponseEntity<String>(entity,HttpStatus.OK);		
+		ResponseEntity<String> entity=contentService.updateContent(org, tenantId, userId, token, payLoad,id,version);
+		if(entity.getStatusCode().is5xxServerError())
+			throwECMServiceException();			 
+		return entity;	
 	}
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<String> deleteContent(
-			@RequestHeader
+			@RequestHeader(name="org")
 			@NotEmpty(message="Header: org cannot be empty")
 			String org,
-			@RequestHeader
+			@RequestHeader(name="tenantId")
 			@NotEmpty(message = "Header: tenantId cannot be empty")
 			String tenantId,
-			@RequestHeader
+			@RequestHeader(name="userId")
 			@NotEmpty(message = "Header: userId cannot be empty")
 			String userId,
-			@RequestHeader
+			@RequestHeader(name="accessToken")
 			@NotEmpty(message = "Header: accessToken cannot be empty")
 			String token,
 			@PathVariable(name = "id")
@@ -159,15 +142,10 @@ public class ContentController extends GeneralController {
 			@RequestParam(name = "version",required = false)
 			String version)
 			throws CustomException{
-		String entity=null;
-		
-		if(inputValidator.validateInput("header_org", org, "String", 5, false,"ECM"))
-				throwInvalidOrgException();	
-	    else {	entity=contentService.deleteContent(org, tenantId, userId, token, id,version);
-				if(entity == null)
-					throwECMServiceException();
-			 }
-		return new ResponseEntity<String>(entity,HttpStatus.OK);
+		ResponseEntity<String> entity=contentService.deleteContent(org, tenantId, userId, token, id,version);
+		if(entity.getStatusCode().is5xxServerError())
+			throwECMServiceException();			 
+		return entity;
 		}
 	
 	

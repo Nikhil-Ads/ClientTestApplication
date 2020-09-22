@@ -7,9 +7,8 @@ import javax.persistence.Entity;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 
+import org.json.JSONObject;
 import org.springframework.validation.annotation.Validated;
-
-import com.newgen.example.model.Privilege;
 
 import lombok.Data;
 
@@ -40,7 +39,7 @@ public class UserDTO {
 
 	private String password;
 
-	private Privilege privilege;
+	private JSONObject privilege;
 
 	private String tenantId;
 }

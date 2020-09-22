@@ -3,23 +3,17 @@
  */
 package com.newgen.example.service;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.newgen.example.converter.FolderToFolderDTOConverter;
 import com.newgen.example.dto.FolderDTO;
 import com.newgen.example.exception.CustomException;
-import com.newgen.example.model.Folder;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -31,21 +25,24 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class FolderServiceImpl extends GeneralService implements FolderService {
 	
-	@Autowired
-	private FolderToFolderDTOConverter converter;
-	
-	@Value("${ecm_next.url}+${folder_service}+${folder_create_folder}")
+	@Value("${ecm_next.url}${folder_service}${folder_create_folder}")
 	private String createFolder_url;
 	
-	@Value("${ecm_next.url}+${folder_service}+${folder_search_folder}")
+	@Value("${ecm_next.url}${folder_service}${folder_search_folder}")
 	private String searchFolders_url;
 	
-	@Value("${ecm_next.url}+${folder_service}+${folder_delete_folder}")
+	@Value("${ecm_next.url}${folder_service}${folder_delete_folder}")
 	private String deleteFolder_url;
+	
+	@Value("${ecm_next.url}${folder_service}${folder_update_folder}")
+	private String updateFolder_url;
 
 	@Override
-	public FolderDTO createFolder(String org, String tenantId, String userId, String token, FolderDTO folderDTO) throws CustomException {
+	public ResponseEntity<FolderDTO> createFolder(String org, String tenantId, String userId, String token, FolderDTO folderDTO) throws CustomException {
 		log.debug("Entering method: createFolder()");
+		
+		log.info(createFolder_url);
+		log.info(folderDTO.toString());
 		
 		UriComponentsBuilder builder=UriComponentsBuilder.fromUriString(createFolder_url);
 		
@@ -54,64 +51,82 @@ public class FolderServiceImpl extends GeneralService implements FolderService {
 		headers.set("tenantId",tenantId);
 		headers.set("userId",userId);
 		headers.set("accessToken",token);
+		headers.setContentType(MediaType.APPLICATION_JSON);
 		
 		HttpEntity<FolderDTO> request=new HttpEntity<>(folderDTO,headers);
 		
-		ResponseEntity<Folder> response=restTemplate.exchange(builder.toUriString(), HttpMethod.POST , request, Folder.class);
-		
-		HttpStatus status=response.getStatusCode();
-		if(status.is4xxClientError()) { 
-				throwCustomException(response.getBody().toString(), status);
-				return null;}
-		else if(status.is5xxServerError())
-				return null;
-		else 	return converter.convert(response.getBody());
+		return restTemplate.exchange(builder.toUriString(), HttpMethod.POST , request, FolderDTO.class);
 	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
-	public List<FolderDTO> searchFolders(String org, String tenantId, String userId, String token, String query) {
+	public ResponseEntity<String> searchFolders(String org, String tenantId, String token, String query) {
 		log.debug("Entering method: getUser()");
 		
-		UriComponentsBuilder builder=UriComponentsBuilder.fromUriString(searchFolders_url+"/"+query);
+		UriComponentsBuilder builder=null;
+		if(query != null)
+				builder=UriComponentsBuilder.fromUriString(searchFolders_url+query);
+		else	builder=UriComponentsBuilder.fromUriString(searchFolders_url);
+		
+		HttpHeaders headers=new HttpHeaders();
+		headers.set("org", org);
+		headers.set("tenantId",tenantId);
+		headers.set("accessToken",token);
+		headers.setContentType(MediaType.APPLICATION_JSON);
+		
+		HttpEntity<String> request = new HttpEntity<>(headers);
+		
+		return restTemplate.exchange(builder.toUriString(), HttpMethod.GET, request, String.class);
+	}
+
+	@Override
+	public ResponseEntity<String> deleteFolder(String org, String tenantId, String userId, String token, String id,
+											   String version, Boolean recursive, Boolean isCabinet) {
+		log.debug("Entering method: getUser()");
+		
+		String url=deleteFolder_url+"/"+id;
+		
+		if(version != null)
+			url+="?version="+version;
+		if(recursive != null)
+			url+="?recursive="+recursive;
+		if(isCabinet != null)
+			url+="?isCabinet="+isCabinet;		
+		
+		UriComponentsBuilder builder=UriComponentsBuilder.fromUriString(url);
 		
 		HttpHeaders headers=new HttpHeaders();
 		headers.set("org", org);
 		headers.set("tenantId",tenantId);
 		headers.set("userId",userId);
 		headers.set("accessToken",token);
+		headers.setContentType(MediaType.APPLICATION_JSON);
 		
 		HttpEntity<String> request = new HttpEntity<>(headers);
 		
-		ResponseEntity<List> response=restTemplate.exchange(builder.toUriString(), HttpMethod.GET, request, List.class);
-		
-		List<FolderDTO> folderDTOs=new ArrayList<>();
-		response.getBody().forEach((e) -> {folderDTOs.add(converter.convert((Folder)e));});
-		
-		if(response.getStatusCode().is4xxClientError())
-				return null;
-		else	return folderDTOs;
+		return restTemplate.exchange(builder.toUriString(), HttpMethod.GET, request, String.class);
 	}
 
 	@Override
-	public String deleteFolder(String org, String tenantId, String userId, String token, String id) {
-		log.debug("Entering method: getUser()");
+	public ResponseEntity<FolderDTO> updateFolder(String id, String org, String tenantId, String userId, String token,
+			FolderDTO folderDTO, String version) throws CustomException {
+		log.debug("Entering method: updateFolder()");
 		
-		UriComponentsBuilder builder=UriComponentsBuilder.fromUriString(deleteFolder_url+"/"+id);
+		String url=updateFolder_url+"/"+id;
+		if(version != null)
+			url+="?version="+version;		
+		
+		UriComponentsBuilder builder=UriComponentsBuilder.fromUriString(url);
 		
 		HttpHeaders headers=new HttpHeaders();
-		headers.set("org", org);
+		headers.set("org",org);
 		headers.set("tenantId",tenantId);
 		headers.set("userId",userId);
 		headers.set("accessToken",token);
+		headers.setContentType(MediaType.APPLICATION_JSON);
 		
-		HttpEntity<String> request = new HttpEntity<>(headers);
+		HttpEntity<FolderDTO> request=new HttpEntity<>(folderDTO,headers);
 		
-		ResponseEntity<String> response=restTemplate.exchange(builder.toUriString(), HttpMethod.GET, request, String.class);
-			
-		if(response.getStatusCode().is4xxClientError())
-				return null;
-		else	return response.getBody();
+		return restTemplate.exchange(builder.toUriString(), HttpMethod.PUT , request, FolderDTO.class);
 	}
 
 }

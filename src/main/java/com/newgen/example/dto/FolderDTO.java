@@ -2,31 +2,22 @@ package com.newgen.example.dto;
 
 import java.util.Map;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Pattern;
-
 import com.newgen.example.model.ChildType;
 
 public class FolderDTO extends ChildDTO{
 
-	@NotEmpty(message = "Folder Name must not be blank!")
 	private String folderName;
 
-	@Pattern(regexp = "cabinet", message = "Folder Type is not valid.")
-	private String folderType = "cabinet";
+	private String folderType;
 
 	private String comments;
 
 	private String parentFolderId;
 
-	@NotEmpty(message = "Owner Name must not be blank!")
 	private String ownerName;
 
-	@NotEmpty(message = "Owner Id must not be blank!")
-	@Pattern(regexp = "^[a-zA-Z0-9]+$", message = "Owner Id is not valid.")
 	private String ownerId;
 
-	@Pattern(regexp = "general", message = "Used For is not valid.")
 	private String usedFor = "general";
 
 	private Map<String, String> metadata;

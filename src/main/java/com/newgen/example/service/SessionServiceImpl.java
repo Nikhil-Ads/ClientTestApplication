@@ -32,7 +32,7 @@ public class SessionServiceImpl extends GeneralService implements SessionService
 	private String validateToken_url;
 	
 	@Override
-	public String login(String org, LoginForm form){
+	public ResponseEntity<String> login(String org, LoginForm form){
 		log.debug("Entering Method: login()");
 		UriComponentsBuilder builder=UriComponentsBuilder.fromUriString(login_url);
 		
@@ -42,35 +42,29 @@ public class SessionServiceImpl extends GeneralService implements SessionService
 		
 		HttpEntity<LoginForm> request=new HttpEntity<>(form, headers);
 		
-		ResponseEntity<String> response = restTemplate.exchange(builder.toUriString(), HttpMethod.POST, request, String.class);
-		
-		if(response.getStatusCode().is5xxServerError())
-				return null;
-		else	return response.getBody();
+		return restTemplate.exchange(builder.toUriString(), HttpMethod.POST, request, String.class);
 	}
 
 	@Override
-	public StatusResponse logout(String org, String token){
+	public ResponseEntity<StatusResponse> logout(String org, String token){
 		log.debug("Entering method: logout()");
+		
+		log.info(logout_url);
 		
 		UriComponentsBuilder builder=UriComponentsBuilder.fromUriString(logout_url);
 		
 		HttpHeaders headers=new HttpHeaders();
 		headers.set("org", org);
-		headers.set("Content-Type", "application/json");
+		headers.setContentType(MediaType.APPLICATION_JSON);
 		headers.set("accessToken", token);
 		
 		HttpEntity<String> request=new HttpEntity<String>(headers);
 		
-		ResponseEntity<StatusResponse> response=restTemplate.exchange(builder.toUriString(), HttpMethod.GET, request, StatusResponse.class);
-		
-		if(response.getStatusCode().is5xxServerError())
-				return null;
-		else	return response.getBody();
+		return restTemplate.exchange(builder.toUriString(), HttpMethod.GET, request, StatusResponse.class);
 	}
 	
 	@Override
-	public TokenResponse getTokens(String org, String token, String refreshToken) {
+	public ResponseEntity<TokenResponse> getTokens(String org, String token, String refreshToken) {
 		log.debug("Entering method: getTokens()");
 		
 		UriComponentsBuilder builder=UriComponentsBuilder.fromUriString(getTokens_url);
@@ -79,34 +73,29 @@ public class SessionServiceImpl extends GeneralService implements SessionService
 		headers.set("org", org);
 		headers.set("accessToken", token);
 		headers.set("refreshToken", refreshToken);
+		headers.setContentType(MediaType.APPLICATION_JSON);
 		
 		HttpEntity<String> request=new HttpEntity<String>(headers);
 		
-		ResponseEntity<TokenResponse> response=restTemplate.exchange(builder.toUriString(), HttpMethod.GET, request, TokenResponse.class);
-		
-		if(response.getStatusCode().is5xxServerError())
-				return null;
-		else	return response.getBody();				
+		return restTemplate.exchange(builder.toUriString(), HttpMethod.GET, request, TokenResponse.class);				
 	}
 
 	@Override
-	public String validateToken(String org, String token) {
+	public ResponseEntity<String> validateToken(String org, String token) {
 		log.debug("Entering method: validateToken()");
 		
-		UriComponentsBuilder builder=UriComponentsBuilder.fromUriString(getTokens_url);
+		log.debug(validateToken_url);
+		
+		UriComponentsBuilder builder=UriComponentsBuilder.fromUriString(validateToken_url);
 		
 		HttpHeaders headers=new HttpHeaders();
 		headers.set("org", org);
-		headers.set("Content-Type", "application/json");
+		headers.setContentType(MediaType.APPLICATION_JSON);
 		headers.set("accessToken", token);
 		
 		HttpEntity<String> request=new HttpEntity<String>(headers);
 		
-		ResponseEntity<String> response=restTemplate.exchange(builder.toUriString(), HttpMethod.GET, request, String.class);
-		
-		if(response.getStatusCode().is5xxServerError())
-				return null;
-		else	return response.getBody();	
+		return restTemplate.exchange(builder.toUriString(), HttpMethod.GET, request, String.class);	
 	}
 
 }

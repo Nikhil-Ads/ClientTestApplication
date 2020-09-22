@@ -7,15 +7,17 @@ import org.springframework.validation.annotation.Validated;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Validated
+@NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 public class TokenResponse {
-	
+		
 	@NotEmpty(message="Access Token cannout be empty")
 	private String token;
 	

@@ -1,7 +1,5 @@
 package com.newgen.example.aspect;
 
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -14,7 +12,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.google.gson.Gson;
 import com.newgen.example.logger.RequestCorrelation;
 
 @Aspect
@@ -38,11 +35,7 @@ public class LoggingAspect {
 					inputArgs.append("HttpServletRequest object");
 				} else if (signatureArg instanceof MultipartFile) {
 					inputArgs.append("File object");
-				} else if (signatureArg instanceof Map) {
-					Gson gson = new Gson();
-					String json = gson.toJson(signatureArg);
-					inputArgs.append(json.toString());
-				} 
+				}
 				else if (signatureArg instanceof Exception) {
 					continue;
 				}

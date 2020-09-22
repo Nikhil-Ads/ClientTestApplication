@@ -1,16 +1,18 @@
 package com.newgen.example.service;
 
+import org.springframework.http.ResponseEntity;
+
 import com.newgen.example.model.LoginForm;
 import com.newgen.example.model.StatusResponse;
 import com.newgen.example.model.TokenResponse;
 
 public interface SessionService {
 
-	String 			login(String org, LoginForm form);
+	ResponseEntity<String> 		login(String org, LoginForm form);
 	
-	StatusResponse 	logout(String org, String token);
+	ResponseEntity<StatusResponse> 	logout(String org, String token);
 
-	TokenResponse 	getTokens(String org, String token, String refreshToken);
+	ResponseEntity<TokenResponse> 	getTokens(String org, String token, String refreshToken);
 	
-	String			validateToken(String org, String token);
+	ResponseEntity<String>			validateToken(String org, String token);
 }

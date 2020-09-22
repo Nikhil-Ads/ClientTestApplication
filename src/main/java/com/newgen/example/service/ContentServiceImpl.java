@@ -3,23 +3,16 @@
  */
 package com.newgen.example.service;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.validation.constraints.NotEmpty;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.util.UriComponentsBuilder;
-
-import com.newgen.example.converter.ContentToContentDTOConverter;
-import com.newgen.example.dto.ContentDTO;
-import com.newgen.example.model.Content;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -31,24 +24,20 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class ContentServiceImpl extends GeneralService implements ContentService {
 	
-	@Autowired
-	private ContentToContentDTOConverter converter;
-	
-	@Value("${ecm_next.url}+${content_service}+${content_get_content}")
+	@Value("${ecm_next.url}${content_service}${content_get_content}")
 	private String searchContents_url;
 
-	@Value("${ecm_next.url}+${content_service}+${content_create_content}")
+	@Value("${ecm_next.url}${content_service}${content_create_content}")
 	private String createContent_url;
 
-	@Value("${ecm_next.url}+${content_service}+${content_update_content}")
+	@Value("${ecm_next.url}${content_service}${content_update_content}")
 	private String updateContent_url;
 
-	@Value("${ecm_next.url}+${content_service}+${content_delete_content}")
+	@Value("${ecm_next.url}${content_service}${content_delete_content}")
 	private String deleteContent_url;
 	
-	@SuppressWarnings("unchecked")
 	@Override
-	public List<ContentDTO> searchContents(@NotEmpty(message = "Header: org cannot be empty") String org,
+	public ResponseEntity<String> searchContents(@NotEmpty(message = "Header: org cannot be empty") String org,
 			@NotEmpty(message = "Header: tenantId cannot be empty") String tenantId,
 			@NotEmpty(message = "Header: userId cannot be empty") String userId,
 			@NotEmpty(message = "Header: accessToken cannot be empty") String token, 
@@ -83,44 +72,40 @@ public class ContentServiceImpl extends GeneralService implements ContentService
 		
 		HttpEntity<String> request = new HttpEntity<>(headers);
 		
-		@SuppressWarnings("rawtypes")
-		ResponseEntity<List> response=restTemplate.exchange(builder.toUriString(), HttpMethod.GET, request, List.class);
-		
-		List<ContentDTO> contentDTOs=new ArrayList<>();
-		response.getBody().forEach((e) -> {contentDTOs.add(converter.convert((Content)e));});
-		
-		if(response.getStatusCode().is4xxClientError())
-				return null;
-		else	return contentDTOs;
+		return restTemplate.exchange(builder.toUriString(), HttpMethod.GET, request, String.class);
 	}
 
 	@Override
-	public String createContent(@NotEmpty(message = "Header: org cannot be empty") String org,
+	public ResponseEntity<String> createContent(@NotEmpty(message = "Header: org cannot be empty") String org,
 			@NotEmpty(message = "Header: tenantId cannot be empty") String tenantId,
 			@NotEmpty(message = "Header: userId cannot be empty") String userId,
 			@NotEmpty(message = "Header: accessToken cannot be empty") String token,
 			@NotEmpty(message = "Request: Body cannot be empty") String payLoad) {
 		log.debug("Entering method: createContent()");
+		log.info(createContent_url);
 		
-		UriComponentsBuilder builder=UriComponentsBuilder.fromUriString(createContent_url);
+		log.info(org);
+		log.info(tenantId);
+		log.info(userId);
+		log.info(payLoad);
+		log.info(token);
+		
+		UriComponentsBuilder builder=UriComponentsBuilder.fromUriString(createContent_url);		
 		
 		HttpHeaders headers=new HttpHeaders();
 		headers.set("org", org);
 		headers.set("tenantId",tenantId);
 		headers.set("userId",userId);
 		headers.set("accessToken",token);
+		headers.setContentType(MediaType.APPLICATION_JSON);
 		
 		HttpEntity<String> request = new HttpEntity<>(payLoad,headers);
 		
-		ResponseEntity<String> response=restTemplate.exchange(builder.toUriString(), HttpMethod.GET, request, String.class);
-		
-		if(response.getStatusCode().is4xxClientError())
-				return null;
-		else	return response.getBody();
+		return restTemplate.exchange(builder.toUriString(), HttpMethod.POST, request, String.class);
 	}
 
 	@Override
-	public String updateContent(@NotEmpty(message = "Header: org cannot be empty") String org,
+	public ResponseEntity<String> updateContent(@NotEmpty(message = "Header: org cannot be empty") String org,
 			@NotEmpty(message = "Header: tenantId cannot be empty") String tenantId,
 			@NotEmpty(message = "Header: userId cannot be empty") String userId,
 			@NotEmpty(message = "Header: accessToken cannot be empty") String token,
@@ -128,9 +113,16 @@ public class ContentServiceImpl extends GeneralService implements ContentService
 			@NotEmpty(message = "Path: id cannot be empty") String id, String version) {
 		log.debug("Entering method: updateContent()");
 				
-		String url=updateContent_url;
+		String url=updateContent_url+"/"+id;
 		if(version 	!= null)
 			url+="?version="+version;
+		log.info(url);
+		
+		log.info(org);
+		log.info(tenantId);
+		log.info(userId);
+		log.info(payLoad);
+		log.info(token);
 		
 		UriComponentsBuilder builder=UriComponentsBuilder.fromUriString(url);
 		
@@ -139,25 +131,22 @@ public class ContentServiceImpl extends GeneralService implements ContentService
 		headers.set("tenantId",tenantId);
 		headers.set("userId",userId);
 		headers.set("accessToken",token);
+		headers.setContentType(MediaType.APPLICATION_JSON);
 		
 		HttpEntity<String> request = new HttpEntity<>(payLoad,headers);
 		
-		ResponseEntity<String> response=restTemplate.exchange(builder.toUriString(), HttpMethod.GET, request, String.class);
-		
-		if(response.getStatusCode().is4xxClientError())
-				return null;
-		else	return response.getBody();
+		return restTemplate.exchange(builder.toUriString(), HttpMethod.PUT, request, String.class);
 	}
 
 	@Override
-	public String deleteContent(@NotEmpty(message = "Header: org cannot be empty") String org,
+	public ResponseEntity<String> deleteContent(@NotEmpty(message = "Header: org cannot be empty") String org,
 			@NotEmpty(message = "Header: tenantId cannot be empty") String tenantId,
 			@NotEmpty(message = "Header: userId cannot be empty") String userId,
 			@NotEmpty(message = "Header: accessToken cannot be empty") String token,
 			@NotEmpty(message = "Path: id cannot be empty") String id, String version) {
 		log.debug("Entering method: updateContent()");
 		
-		String url=deleteContent_url;
+		String url=deleteContent_url+"/"+id;
 		if(version 	!= null)
 			url+="?version="+version;
 		
@@ -168,13 +157,10 @@ public class ContentServiceImpl extends GeneralService implements ContentService
 		headers.set("tenantId",tenantId);
 		headers.set("userId",userId);
 		headers.set("accessToken",token);
+		headers.setContentType(MediaType.APPLICATION_JSON);
 		
 		HttpEntity<String> request = new HttpEntity<>(headers);
 		
-		ResponseEntity<String> response=restTemplate.exchange(builder.toUriString(), HttpMethod.GET, request, String.class);
-		
-		if(response.getStatusCode().is4xxClientError())
-				return null;
-		else	return response.getBody();
+		return restTemplate.exchange(builder.toUriString(), HttpMethod.DELETE, request, String.class);
 	}
 }

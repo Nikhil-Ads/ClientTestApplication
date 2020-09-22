@@ -9,9 +9,7 @@ import javax.validation.constraints.Pattern;
 
 import org.springframework.validation.annotation.Validated;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 /**
  * @author nikhil.adlakha
@@ -19,9 +17,7 @@ import lombok.Setter;
  */
 @Entity
 @Validated
-@AllArgsConstructor
-@Getter
-@Setter
+@Data
 public class StatusResponse {
 	
 	@NotEmpty(message="Status Code cannot be empty")
@@ -32,5 +28,5 @@ public class StatusResponse {
 	@Pattern(regexp="\\w{2,}",message="")
 	private String statusMessage;
 	
-	private String daysLeft;
+	private String trialDaysRemaining;
 }

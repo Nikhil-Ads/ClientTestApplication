@@ -15,11 +15,11 @@ public class ChangePasswordDTO {
 
 	@NotEmpty(message="${field}+${email}+${empty_str}")
 	@Pattern(regexp="${email_reg}",message="${field}+${email}+${invalid}")
-	private String email;
+	private String emailId;
 	
 	@NotEmpty(message="${field}+${pass}+${empty_str}")
 	@Pattern(regexp=".*",message="${field}+${email}+${invalid}")	
-	private String pass;
+	private String password;
 	
 	@NotEmpty(message="${field}+${token}+${empty_str}")
 	private String token;

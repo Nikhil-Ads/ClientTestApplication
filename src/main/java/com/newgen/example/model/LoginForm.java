@@ -10,13 +10,17 @@ import org.springframework.validation.annotation.Validated;
 @Validated
 public class LoginForm {
 	
-	@NotEmpty(message="")
+	@NotEmpty(message="Email must not be blank!!")
 	@Pattern(regexp="[a-z0-9\\-_.]*[a-z0-9]+@([a-z0-9\\-]*[.])+[a-z]{2,}", message= "emailId must have a prefix, @ and a suffix")
 	private String emailId;
 	
-	@NotEmpty(message="")
+	@NotEmpty(message="Password must not blank!!")
 	@Pattern(regexp=".*", message = "passwordword does not follow set standards")
 	private String password;
+	
+	public LoginForm() {
+		
+	}
 	
 	public LoginForm(String emailId,String password) {
 		this.emailId=emailId;
@@ -54,8 +58,8 @@ public class LoginForm {
 	@Override
 	public String toString() {
 		return "{"+
-					" \"emailIdId\" : "+getemailId()+
-					",\"password\": "+getpassword()+					
-					"}";
+					" \"emailId\" : \""+getemailId()+
+					"\", \"password\": \""+getpassword()+					
+					"\" }";
 	}
 }

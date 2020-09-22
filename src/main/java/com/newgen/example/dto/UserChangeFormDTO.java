@@ -5,14 +5,17 @@ import javax.validation.constraints.NotEmpty;
 
 import org.springframework.validation.annotation.Validated;
 
+import lombok.Data;
+
 @Entity
 @Validated
+@Data
 public class UserChangeFormDTO {
 	
-	@NotEmpty(message = "Old value is required to validate")
-	private String oldValue;
+	@NotEmpty(message = "Old Password is required to validate")
+	private String oldPassword;
 	
-	@NotEmpty(message = "New value is required to validate")
-	private String newValue;
+	@NotEmpty(message = "New Password is required to update")
+	private String newPassword;
 
 }
